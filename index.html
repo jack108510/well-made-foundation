@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Well Made Foundation — The Living Love Collective</title>
+<title>WellMade Foundation — WELL + MADE</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -35,13 +35,17 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(45,74,62,.72),rgba(45,74,62,.55))}
 .hero-content{position:relative;z-index:2;max-width:800px;padding:2rem;color:var(--cream)}
 .hero-content h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:700;margin-bottom:.5rem}
-.tagline{font-size:clamp(1rem,2.2vw,1.35rem);font-weight:300;margin-bottom:1.5rem;opacity:.9;font-style:italic;font-family:var(--serif)}
-.hero-mission{font-size:clamp(1.15rem,2vw,1.5rem);font-weight:400;margin-bottom:2.5rem;letter-spacing:.02em;line-height:1.6}
-.hero-mission span{display:block}
+.hero-content h1 span.well-word{color:var(--gold)}
+.hero-content h1 span.made-word{color:var(--cream)}
+.tagline{font-size:clamp(1rem,2.2vw,1.35rem);font-weight:300;margin-bottom:.5rem;opacity:.9;font-style:italic;font-family:var(--serif)}
+.hero-acronym{font-size:clamp(.95rem,1.8vw,1.15rem);opacity:.8;margin-bottom:1.5rem;line-height:1.7}
+.hero-acronym strong{color:var(--gold);font-weight:600}
+.hero-mission{font-size:clamp(1.05rem,1.8vw,1.25rem);font-weight:400;margin-bottom:2.5rem;letter-spacing:.02em;line-height:1.6;opacity:.85}
 .hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-block;padding:.9rem 2.2rem;border-radius:100px;text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;transition:all .3s;cursor:pointer;border:none;font-family:var(--sans)}
 .btn-gold{background:var(--gold);color:var(--ocean)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.3)}
 .btn-outline{background:transparent;color:var(--cream);border:1.5px solid rgba(253,251,247,.5)}.btn-outline:hover{border-color:var(--cream);background:rgba(253,251,247,.1)}
+.btn-outline-dark{background:transparent;color:var(--ocean);border:1.5px solid var(--ocean)}.btn-outline-dark:hover{background:rgba(45,74,62,.06)}
 .scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;animation:bob 2s ease-in-out infinite}
 .scroll-indicator svg{width:24px;height:24px;stroke:rgba(253,251,247,.6)}
 @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
@@ -117,13 +121,38 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.15s}.reveal-delay-2{transition-delay:.3s}.reveal-delay-3{transition-delay:.45s}
 .text-center{text-align:center}
+/* WELL / MADE framework sections */
+.framework-split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.5rem}
+.framework-card{border-radius:20px;padding:2.5rem;position:relative;overflow:hidden}
+.well-card{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.2));border:1.5px solid rgba(201,168,76,.25)}
+.made-card{background:linear-gradient(135deg,rgba(163,177,138,.12),rgba(212,160,160,.12));border:1.5px solid rgba(163,177,138,.25)}
+.framework-card h3{font-family:var(--serif);font-size:1.6rem;margin-bottom:.3rem}
+.framework-card .acronym{font-size:.85rem;color:var(--sage);font-style:italic;font-family:var(--serif);margin-bottom:1.2rem}
+.framework-card p{font-size:.92rem;line-height:1.7;margin-bottom:1rem;opacity:.85}
+.framework-card ul{list-style:none;padding:0;margin-bottom:1.5rem}
+.framework-card ul li{font-size:.9rem;padding:.4rem 0;padding-left:1.5rem;position:relative;opacity:.85}
+.framework-card ul li::before{content:'';position:absolute;left:0;top:.75rem;width:8px;height:8px;border-radius:50%}
+.well-card ul li::before{background:var(--gold)}
+.made-card ul li::before{background:var(--sage)}
+.well-host-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.well-host-card{background:var(--cream);border:1px solid rgba(45,74,62,.08);border-radius:16px;padding:2rem;text-align:center;transition:all .3s}
+.well-host-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(45,74,62,.08);border-color:var(--gold)}
+.well-host-card h4{font-family:var(--serif);font-size:1.1rem;margin-bottom:.5rem;color:var(--ocean)}
+.well-host-card p{font-size:.85rem;color:var(--sage);line-height:1.6}
+.made-programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem}
+.made-program{background:rgba(253,251,247,.6);border:1px solid rgba(45,74,62,.08);border-radius:12px;padding:1.5rem;text-align:center;transition:all .3s}
+.made-program:hover{border-color:var(--gold);transform:translateY(-2px)}
+.made-program h4{font-family:var(--serif);font-size:1.05rem;color:var(--ocean);margin-bottom:.3rem}
+.made-program p{font-size:.82rem;color:var(--sage);line-height:1.5}
 @media(max-width:768px){
 .nav-links{display:none}.hamburger{display:flex}
 .membership-grid,.sovereign-grid,.sampaguita-grid,.contact-grid{grid-template-columns:1fr}
 .footer-grid{grid-template-columns:1fr;text-align:center}
-.pillars{grid-template-columns:1fr}
+.pillars,.framework-split{grid-template-columns:1fr}
 .hero-content h1{font-size:2.4rem}
 .programs-grid{grid-template-columns:1fr 1fr}
+.well-host-grid{grid-template-columns:1fr}
+.made-programs-grid{grid-template-columns:1fr}
 .ledger-item{grid-template-columns:auto 1fr;gap:1rem}
 .ledger-pct{grid-column:1/-1;text-align:center}
 }
@@ -134,15 +163,15 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">Well Made Foundation</a>
+    <a href="#" class="nav-logo">WellMade Foundation</a>
     <ul class="nav-links">
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#families">Families</a></li>
+      <li><a href="#well-framework">WELL</a></li>
+      <li><a href="#made-framework">MADE</a></li>
       <li><a href="#membership">Membership</a></li>
       <li><a href="#programs">Programs</a></li>
       <li><a href="#shield">Shield</a></li>
       <li><a href="#transparency">Transparency</a></li>
-      <li><a href="#membership" class="nav-cta">Donate</a></li>
+      <li><a href="#membership" class="nav-cta">Join</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -150,8 +179,9 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#mission" class="mobile-link">Mission</a>
-  <a href="#families" class="mobile-link">Families</a>
+  <a href="#well-framework" class="mobile-link">WELL Framework</a>
+  <a href="#made-framework" class="mobile-link">MADE Framework</a>
+  <a href="#families" class="mobile-link">1M Families</a>
   <a href="#membership" class="mobile-link">Membership</a>
   <a href="#programs" class="mobile-link">Programs</a>
   <a href="#shield" class="mobile-link">Anti-Trafficking Shield</a>
@@ -165,16 +195,129 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Well Made Foundation</h1>
-    <p class="tagline">Global Impact · Humanitarian Core · Protected Legacy</p>
-
-    <p style="font-size:.95rem;opacity:.75;max-width:550px;margin:0 auto 2rem;line-height:1.7">A vetted humanitarian shield dedicated to multi-generational preservation and protective advocacy.</p>
+    <h1><span class="well-word">Well</span><span class="made-word">Made</span> Foundation</h1>
+    <p class="tagline">Global Impact -- Humanitarian Core -- Protected Legacy</p>
+    <p class="hero-acronym">
+      <strong>WELL</strong> = Wisdom Empowering Love &amp; Leadership<br>
+      <strong>MADE</strong> = Mothers And Daughters Empowered / Moms And Dads Empowered
+    </p>
+    <p class="hero-mission">A vetted humanitarian shield dedicated to multi-generational preservation, protective advocacy, and empowering families through wisdom and community.</p>
     <div class="hero-buttons">
-      <a href="#membership" class="btn btn-gold">Become a Founding Family</a>
-      <a href="#shield" class="btn btn-outline">Support the Shield</a>
+      <a href="#well-framework" class="btn btn-gold">Start a WELL</a>
+      <a href="#made-framework" class="btn btn-outline">Explore MADE</a>
     </div>
   </div>
   <div class="scroll-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg></div>
+</section>
+
+<!-- WELL + MADE SPLIT -->
+<section class="section section-gold">
+  <div class="section-inner text-center reveal">
+    <p class="section-label">Two Frameworks, One Mission</p>
+    <h2 class="section-title">WellMade = WELL + MADE</h2>
+    <p class="section-subtitle">The name itself carries our purpose</p>
+    <div class="framework-split">
+      <div class="framework-card well-card reveal">
+        <h3>WELL</h3>
+        <div class="acronym">Wisdom Empowering Love &amp; Leadership</h3></div>
+        <p>A platform for wisdom holders to gather, share, and lead. WELL focus groups create space for meaningful conversation and collective growth.</p>
+        <ul>
+          <li>Hosted focus groups on meaningful topics</li>
+          <li>Anyone can apply to start a WELL</li>
+          <li>Proceeds support the foundation</li>
+          <li>Pay-it-forward model: wisdom shared is wisdom multiplied</li>
+        </ul>
+        <a href="#well-framework" class="btn btn-gold" style="font-size:.82rem;padding:.6rem 1.5rem">Start a WELL</a>
+      </div>
+      <div class="framework-card made-card reveal reveal-delay-1">
+        <h3>MADE</h3>
+        <div class="acronym">Mothers And Daughters Empowered / Moms And Dads Empowered</div>
+        <p>A universally welcoming umbrella for family empowerment. Rooted in Filipino cultural values of bayanihan and sampaguita grace, MADE programs are open to all families everywhere.</p>
+        <ul>
+          <li>MADE to Travel -- family adventure and cultural exchange</li>
+          <li>MADE with Money -- financial literacy for families</li>
+          <li>MADE in the Bay -- Bay Area community programs</li>
+          <li>MADE on Maui -- island-based healing and retreats</li>
+        </ul>
+        <a href="#made-framework" class="btn btn-outline-dark" style="font-size:.82rem;padding:.6rem 1.5rem">Explore MADE Programs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WELL FRAMEWORK (DETAILED) -->
+<section class="section" id="well-framework">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <p class="section-label">The WELL Framework</p>
+      <h2 class="section-title">Start a WELL</h2>
+      <p class="section-subtitle">Wisdom Empowering Love &amp; Leadership</p>
+      <p style="max-width:700px;margin:0 auto 2rem;line-height:1.8;opacity:.85">
+        A WELL is a hosted focus group on a meaningful topic. If you carry wisdom, experience, or a gift that can uplift others, you can apply to host a WELL. Gather your community, share your knowledge, and pay it forward. All proceeds go to the WellMade Foundation.
+      </p>
+    </div>
+    <div class="well-host-grid reveal">
+      <div class="well-host-card">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
+          <span style="color:var(--ocean);font-size:1.2rem;font-family:var(--serif);font-weight:700">1</span>
+        </div>
+        <h4>Apply to Host</h4>
+        <p>Submit your topic and vision for a WELL focus group. We welcome all wisdom holders.</p>
+      </div>
+      <div class="well-host-card">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
+          <span style="color:var(--ocean);font-size:1.2rem;font-family:var(--serif);font-weight:700">2</span>
+        </div>
+        <h4>Gather &amp; Share</h4>
+        <p>Lead your session, share your wisdom, and create meaningful connection with participants.</p>
+      </div>
+      <div class="well-host-card">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
+          <span style="color:var(--ocean);font-size:1.2rem;font-family:var(--serif);font-weight:700">3</span>
+        </div>
+        <h4>Pay It Forward</h4>
+        <p>Proceeds from every WELL go directly to the foundation, fueling the next wave of impact.</p>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:2.5rem">
+      <button class="btn btn-gold" onclick="openModal('well-modal')">Apply to Start a WELL</button>
+    </div>
+  </div>
+</section>
+
+<!-- MADE FRAMEWORK (DETAILED) -->
+<section class="section section-alt" id="made-framework">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <p class="section-label">The MADE Framework</p>
+      <h2 class="section-title">Mothers And Daughters Empowered / Moms And Dads Empowered</h2>
+      <p class="section-subtitle">Rooted in Filipino values, open to all families</p>
+      <p style="max-width:700px;margin:0 auto 1rem;line-height:1.8;color:rgba(253,251,247,.8)">
+        MADE carries the spirit of bayanihan -- the Filipino tradition of communal unity -- and the grace of the sampaguita flower. While the cultural roots are Filipino, every program is designed to welcome all families, everywhere. You do not need to share the culture to belong here.
+      </p>
+    </div>
+    <div class="made-programs-grid reveal">
+      <div class="made-program">
+        <h4>MADE to Travel</h4>
+        <p>Family adventures and cultural exchange experiences that broaden horizons and deepen bonds.</p>
+      </div>
+      <div class="made-program">
+        <h4>MADE with Money</h4>
+        <p>Financial literacy workshops designed for families -- building generational wealth and security together.</p>
+      </div>
+      <div class="made-program">
+        <h4>MADE in the Bay</h4>
+        <p>Community programs, gatherings, and resources for families in the San Francisco Bay Area.</p>
+      </div>
+      <div class="made-program">
+        <h4>MADE on Maui</h4>
+        <p>Island-based healing retreats, nature immersion, and family restoration on Maui.</p>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:2rem">
+      <button class="btn btn-gold" onclick="openModal('made-modal')">Get Involved with MADE</button>
+    </div>
+  </div>
 </section>
 
 <!-- 1M FAMILIES TRACKER -->
@@ -194,15 +337,15 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
     </div>
     <h3 class="tracker-goal">Our Goal: 1,000,000 Families</h3>
     <div class="tracker-bar"><div class="tracker-bar-fill" id="trackerBar"></div></div>
-    
   </div>
 </section>
 
-<!-- TWO PILLARS -->
+<!-- TWO PILLARS (Sampaguita + Bayani under MADE) -->
 <section class="section section-gold">
   <div class="section-inner text-center reveal">
-    <p class="section-label">Our Foundation</p>
-    <h2 class="section-title">Two Pillars of Protection</h2>
+    <p class="section-label">Cultural Roots of MADE</p>
+    <h2 class="section-title">Sampaguita &amp; Bayani</h2>
+    <p style="max-width:600px;margin:0 auto 2rem;font-size:.95rem;line-height:1.7;opacity:.8">The two pillars that ground the MADE framework, drawn from Filipino heritage and offered to the world.</p>
     <div class="pillars" style="max-width:700px;margin:2rem auto 0">
       <div class="pillar pillar-fem">
         <div style="width:56px;height:56px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem"><span style="color:#fff;font-size:1.4rem;font-family:var(--serif);font-weight:600">S</span></div>
@@ -228,7 +371,7 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
         <p class="section-label">Join the Movement</p>
         <div class="membership-price">$30</div>
         <div class="membership-tag">Lifetime Founding Family Membership</div>
-        <p class="membership-desc">Your $30 membership directly fuels operational scalability — building the infrastructure to protect families. 100% of memberships go toward growing this ecosystem.</p>
+        <p class="membership-desc">Your $30 membership directly fuels operational scalability -- building the infrastructure to protect and empower families. 100% of memberships go toward growing this ecosystem.</p>
         <div style="margin-top:2rem"><a href="#donate-form" class="btn btn-gold">Become a Founding Family</a></div>
       </div>
       <div class="form-card reveal reveal-delay-1" id="donate-form">
@@ -238,7 +381,7 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
           <input type="text" name="name" placeholder="Full Name" required>
           <input type="email" name="email" placeholder="Email Address" required>
           <input type="tel" name="phone" placeholder="Phone (optional)">
-          <button type="submit" class="btn btn-gold">Become a Founding Family — $30</button>
+          <button type="submit" class="btn btn-gold">Become a Founding Family -- $30</button>
         </form>
         <div style="text-align:center;margin-top:1.2rem">
           <button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.82rem;padding:.6rem 1.5rem" onclick="openModal('shield-modal')">Fund the Anti-Trafficking Shield</button>
@@ -257,14 +400,14 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
       <p class="section-subtitle">Building strength, connection, and legacy through community</p>
     </div>
     <div class="programs-grid">
-      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Mothers & Daughters Empowered</h3><p>Empowerment program for mothers and daughters.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Mothers & Daughters Empowered')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Moms & Dads Empowered</h3><p>Resources and support for parents.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Moms & Dads Empowered')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-2"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Community Fundraisers</h3><p>Community fundraising initiatives.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Community Fundraisers')">Get Involved</button></div>
-      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Safety Circles</h3><p>Protective community spaces.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Safety Circles')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Youth Development</h3><p>Youth leadership and development.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Youth Development')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-2"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Family Pentathlon</h3><p>Annual family athletic tournament.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Family Pentathlon')">Get Involved</button></div>
-      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Sampaguita Sunday Scholarship Gala</h3><p>Annual scholarship gala held each May.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Sampaguita Sunday Scholarship Gala')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Mabuhay Monday Awards</h3><p>Community leadership awards.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Mabuhay Monday Awards')">Get Involved</button></div>
+      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Bloom Circle</h3><p>Seasonal wellness circles for healing, reflection, and renewal.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Bloom Circle')">Get Involved</button></div>
+      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Community Fundraisers</h3><p>Community fundraising initiatives that bring people together for purpose.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Community Fundraisers')">Get Involved</button></div>
+      <div class="program-card reveal reveal-delay-2"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Safety Circles</h3><p>Protective community spaces for those who need shelter and solidarity.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Safety Circles')">Get Involved</button></div>
+      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Youth Development</h3><p>Youth leadership and mentorship for the next generation.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Youth Development')">Get Involved</button></div>
+      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Family Pentathlon</h3><p>Annual family athletic tournament building bonds through friendly competition.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Family Pentathlon')">Get Involved</button></div>
+      <div class="program-card reveal reveal-delay-2"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Sampaguita Sunday Scholarship Gala</h3><p>Annual scholarship gala held each May honoring academic excellence.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Sampaguita Sunday Scholarship Gala')">Get Involved</button></div>
+      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Mabuhay Monday Awards</h3><p>Community leadership awards celebrating those who uplift others.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Mabuhay Monday Awards')">Get Involved</button></div>
+      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Seasonal Programming</h3><p>Rotating seasonal offerings aligned with nature's rhythms and community needs.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Seasonal Programming')">Get Involved</button></div>
     </div>
   </div>
 </section>
@@ -272,7 +415,6 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 <!-- ANTI-TRAFFICKING SHIELD -->
 <section class="section section-gold" id="shield">
   <div class="section-inner text-center reveal">
-    
     <p class="section-label">Protecting the Vulnerable</p>
     <h2 class="section-title">The Anti-Trafficking Shield</h2>
     <div class="shield-quote">
@@ -283,7 +425,7 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
     </p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
       <button class="btn btn-gold" onclick="openModal('shield-modal')">Support the Shield</button>
-      <a href="#membership" class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean)">Become a Member</a>
+      <a href="#membership" class="btn btn-outline-dark">Become a Member</a>
     </div>
   </div>
 </section>
@@ -298,10 +440,7 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
       <div class="reveal reveal-delay-1">
         <p class="section-label">Our Legacy</p>
         <h2 class="section-title">The Sampaguita Promise</h2>
-        <p style="margin-bottom:1.5rem;line-height:1.8;opacity:.85">The foundation functions as an immortal, employee-owned entity designed to protect lineages forever.</p>
-        
-
-        
+        <p style="margin-bottom:1.5rem;line-height:1.8;opacity:.85">The foundation functions as an immortal, employee-owned entity designed to protect lineages forever. Like the sampaguita -- delicate yet enduring -- our commitment to families is unwavering.</p>
       </div>
     </div>
   </div>
@@ -336,17 +475,22 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
     <div class="ledger reveal">
       <div class="ledger-item">
         <div class="ledger-icon" style="font-size:1rem">●</div>
-        <div class="ledger-text"><h4>Pure Wellness Joy → Foundation</h4><p>10% of all profits flow into the Foundation — 70% scholarships, 30% operations</p></div>
+        <div class="ledger-text"><h4>Pure Wellness Joy -- Foundation</h4><p>10% of all profits flow into the Foundation -- 70% scholarships, 30% operations</p></div>
         <div class="ledger-pct">10%</div>
       </div>
       <div class="ledger-item">
         <div class="ledger-icon" style="font-size:1rem">●</div>
-        <div class="ledger-text"><h4>Premium Retreat Tickets → Anti-Trafficking Shield</h4><p>$100 from every DrJ premium retreat ticket goes directly to the Shield</p></div>
+        <div class="ledger-text"><h4>Premium Retreat Tickets -- Anti-Trafficking Shield</h4><p>$100 from every DrJ premium retreat ticket goes directly to the Shield</p></div>
         <div class="ledger-pct">$100</div>
       </div>
       <div class="ledger-item">
         <div class="ledger-icon" style="font-size:1rem">●</div>
-        <div class="ledger-text"><h4>Membership → Operational Scalability</h4><p>100% of $30 Lifetime Founding Family Memberships fuel growth</p></div>
+        <div class="ledger-text"><h4>Membership -- Operational Scalability</h4><p>100% of $30 Lifetime Founding Family Memberships fuel growth</p></div>
+        <div class="ledger-pct">100%</div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-icon" style="font-size:1rem">●</div>
+        <div class="ledger-text"><h4>WELL Focus Groups -- Foundation</h4><p>All proceeds from hosted WELL sessions go directly to the foundation</p></div>
         <div class="ledger-pct">100%</div>
       </div>
     </div>
@@ -356,10 +500,9 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 <!-- EACH ONE SHIELD ONE -->
 <section class="section section-gold">
   <div class="section-inner text-center reveal">
-    
     <p class="section-label">Community Outreach</p>
     <h2 class="section-title">Each One, Shield One</h2>
-    <p style="max-width:600px;margin:1rem auto 2rem;line-height:1.8;opacity:.85"> Request your community outreach kit.</p>
+    <p style="max-width:600px;margin:1rem auto 2rem;line-height:1.8;opacity:.85">Request your community outreach kit.</p>
     <button class="btn btn-gold" onclick="openModal('outreach-modal')">Request Your Kit</button>
   </div>
 </section>
@@ -383,7 +526,7 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
     </div>
     <div class="contact-grid reveal" style="margin-top:2rem">
       <div>
-        <p style="margin-bottom:1.5rem;line-height:1.8;opacity:.85">Whether you're looking to join as a Founding Family, volunteer, or simply learn more — we'd love to hear from you.</p>
+        <p style="margin-bottom:1.5rem;line-height:1.8;opacity:.85">Whether you're looking to join as a Founding Family, start a WELL, get involved with MADE, volunteer, or simply learn more -- we'd love to hear from you.</p>
         <div style="margin-top:2rem">
           <img src="https://static.showit.co/800/N0yzYqAaYvu31ErFtlLn_g/321008/517953063_10165720430890744_2291706329923788505_n.jpg" alt="Community" style="width:100%;border-radius:16px;height:280px;object-fit:cover">
         </div>
@@ -405,34 +548,36 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 <footer class="footer">
   <div class="footer-grid">
     <div>
+      <h4>WellMade Foundation</h4>
+      <a href="#well-framework">Start a WELL</a>
+      <a href="#made-framework">MADE Programs</a>
+      <a href="#membership">Founding Family Membership</a>
+      <a href="#programs">All Programs</a>
+    </div>
+    <div>
       <h4>Pure Wellness Joy</h4>
       <a href="#">Wellness Retreats</a>
       <a href="#">Healing Programs</a>
       <a href="#">Premium Experiences</a>
     </div>
     <div>
-      <h4>Well Made Foundation</h4>
-      <a href="#membership">Founding Family Membership</a>
-      <a href="#programs">Program Areas</a>
-      <a href="#shield">Anti-Trafficking Shield</a>
-      <a href="#transparency">Financial Transparency</a>
-    </div>
-    <div>
       <h4>Dr. Jasmine</h4>
       <a href="#">About Dr. Jasmine</a>
+      <a href="#shield">Anti-Trafficking Shield</a>
       <a href="#">The Sovereign Syndicate</a>
-      <a href="#">Speaking & Events</a>
+      <a href="#transparency">Financial Transparency</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 The Living Love Collective. Founded and guided with complete devotion by Dr. Jasmine Therese Esguerra.</p>
+    <p class="footer-copy">&copy; 2026 WellMade Foundation. Founded and guided with complete devotion by Dr. Jasmine Therese Esguerra.<br>
+    WELL = Wisdom Empowering Love &amp; Leadership. MADE = Mothers And Daughters Empowered / Moms And Dads Empowered.</p>
   </div>
 </footer>
 
 <!-- MODALS -->
 <div class="modal-overlay" id="shield-modal">
   <div class="modal">
-    <button class="close-modal" onclick="closeModal('shield-modal')">×</button>
+    <button class="close-modal" onclick="closeModal('shield-modal')">&#215;</button>
     <h2>Support the Shield</h2>
     <p>Support the Anti-Trafficking Shield. Your contribution helps provide emergency sanctuary, legal infrastructure, and protective rescue.</p>
     <form class="form" onsubmit="return submitForm(event,'Anti-Trafficking Shield Support')">
@@ -446,7 +591,7 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 
 <div class="modal-overlay" id="sovereign-modal">
   <div class="modal">
-    <button class="close-modal" onclick="closeModal('sovereign-modal')">×</button>
+    <button class="close-modal" onclick="closeModal('sovereign-modal')">&#215;</button>
     <h2>The Sovereign Syndicate</h2>
     <p>Request access to the private legacy wealth pillar. Discretion is sacred. All inquiries are confidential.</p>
     <form class="form" onsubmit="return submitForm(event,'Sovereign Syndicate Access Request')">
@@ -460,7 +605,7 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 
 <div class="modal-overlay" id="outreach-modal">
   <div class="modal">
-    <button class="close-modal" onclick="closeModal('outreach-modal')">×</button>
+    <button class="close-modal" onclick="closeModal('outreach-modal')">&#215;</button>
     <h2>Each One, Shield One</h2>
     <p>Request your community outreach kit.</p>
     <form class="form" onsubmit="return submitForm(event,'Each One Shield One Kit Request')">
@@ -474,13 +619,50 @@ h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
 
 <div class="modal-overlay" id="program-modal">
   <div class="modal">
-    <button class="close-modal" onclick="closeModal('program-modal')">×</button>
+    <button class="close-modal" onclick="closeModal('program-modal')">&#215;</button>
     <h2 id="program-modal-title">Get Involved</h2>
     <p>Express your interest in this program. We'll reach out with next steps.</p>
     <form class="form" onsubmit="return submitForm(event,'Program Interest')">
       <input type="text" name="name" placeholder="Full Name" required>
       <input type="email" name="email" placeholder="Email Address" required>
       <textarea name="message" placeholder="How would you like to be involved?"></textarea>
+      <button type="submit" class="btn btn-gold">Express Interest</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="well-modal">
+  <div class="modal">
+    <button class="close-modal" onclick="closeModal('well-modal')">&#215;</button>
+    <h2>Start a WELL</h2>
+    <p>Apply to host a WELL focus group. Share your wisdom, gather your community, and pay it forward. All proceeds go to the WellMade Foundation.</p>
+    <form class="form" onsubmit="return submitForm(event,'WELL Host Application')">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="topic" placeholder="Proposed WELL topic">
+      <textarea name="message" placeholder="Describe your vision for this WELL..." required></textarea>
+      <button type="submit" class="btn btn-gold">Submit Application</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="made-modal">
+  <div class="modal">
+    <button class="close-modal" onclick="closeModal('made-modal')">&#215;</button>
+    <h2>Get Involved with MADE</h2>
+    <p>Whether you're a mother, daughter, father, or son -- MADE programs welcome all families. Tell us how you'd like to participate.</p>
+    <form class="form" onsubmit="return submitForm(event,'MADE Program Interest')">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <select name="program" style="padding:.85rem 1.2rem;border:1.5px solid rgba(45,74,62,.15);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--cream);color:var(--ocean)">
+        <option value="">Select a program...</option>
+        <option value="MADE to Travel">MADE to Travel</option>
+        <option value="MADE with Money">MADE with Money</option>
+        <option value="MADE in the Bay">MADE in the Bay</option>
+        <option value="MADE on Maui">MADE on Maui</option>
+        <option value="General">General Interest</option>
+      </select>
+      <textarea name="message" placeholder="Tell us about yourself and your family..."></textarea>
       <button type="submit" class="btn btn-gold">Express Interest</button>
     </form>
   </div>
@@ -512,18 +694,14 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(el => observer.observe(el));
 
 // FAMILY COUNTER
-// Family goal counter - animate on scroll
 let counted = false;
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting && !counted) {
       counted = true;
-      // Animate ring to show goal progress
       const ring = document.getElementById('ringProgress');
       const circumference = 754;
-      // Show 0% filled - no verified families yet
       ring.style.strokeDashoffset = circumference;
-      // Bar at 0
       document.getElementById('trackerBar').style.width = '0%';
     }
   });
@@ -542,13 +720,11 @@ function closeModal(id) {
   document.getElementById(id).classList.remove('open');
   document.body.style.overflow = '';
 }
-// Close modal on overlay click
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeModal(overlay.id);
   });
 });
-// ESC to close modals and mobile menu
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
@@ -563,10 +739,9 @@ function submitForm(event, type) {
   const name = form.querySelector('[name="name"]').value;
   const email = form.querySelector('[name="email"]').value;
   const message = form.querySelector('[name="message"]')?.value || '';
-  const subject = encodeURIComponent('Well Made Foundation — ' + type);
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nType: ${type}\n\n${message}`);
-  window.location.href = `mailto:wildejack1010@gmail.com?subject=${subject}&body=${body}`;
-  // Close modal if in one
+  const subject = encodeURIComponent('WellMade Foundation -- ' + type);
+  const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nType: ' + type + '\n\n' + message);
+  window.location.href = 'mailto:wildejack1010@gmail.com?subject=' + subject + '&body=' + body;
   const modal = form.closest('.modal-overlay');
   if (modal) closeModal(modal.id);
   return false;

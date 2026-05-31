@@ -3,749 +3,463 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WellMade Foundation — WELL + MADE</title>
+<title>WellMade Foundation</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#fdfbf7;--ocean:#2d4a3e;--gold:#c9a84c;--sage:#a3b18a;--rose:#d4a0a0;--ocean-light:#3d6355;--gold-light:#e0c96e;--cream-dark:#f0ebe0;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
-html{scroll-behavior:smooth}body{font-family:var(--sans);color:var(--ocean);background:var(--cream);overflow-x:hidden;line-height:1.7}
-h1,h2,h3,h4{font-family:var(--serif);line-height:1.2}
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .4s;padding:1.2rem 2rem}
-.nav.scrolled{background:rgba(253,251,247,.95);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(45,74,62,.08);padding:.8rem 2rem}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--serif);font-size:1.3rem;color:var(--cream);text-decoration:none;font-weight:600}
-.nav.scrolled .nav-logo{color:var(--ocean)}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
-.nav-links a{color:rgba(253,251,247,.85);text-decoration:none;font-size:.85rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;transition:color .3s}
-.nav.scrolled .nav-links a{color:var(--ocean)}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold)!important;color:var(--ocean)!important;padding:.55rem 1.4rem;border-radius:100px;font-weight:500!important}
-.nav-cta:hover{background:var(--gold-light)!important}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;background:none;border:none;padding:6px}
-.hamburger span{width:26px;height:2px;background:var(--cream);transition:all .3s;border-radius:2px}
-.nav.scrolled .hamburger span{background:var(--ocean)}
-.mobile-menu{position:fixed;top:0;right:-100%;width:100%;max-width:400px;height:100vh;background:var(--cream);z-index:999;transition:right .4s cubic-bezier(.4,0,.2,1);padding:6rem 2.5rem 2rem;display:flex;flex-direction:column;gap:1.5rem}
-.mobile-menu.open{right:0}
-.mobile-menu a{font-family:var(--serif);font-size:1.5rem;color:var(--ocean);text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(45,74,62,.08)}
-.mobile-menu a:hover{color:var(--gold)}
-.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:998;opacity:0;pointer-events:none;transition:opacity .3s}
-.mobile-overlay.open{opacity:1;pointer-events:all}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://static.showit.co/800/fRyRSIEZ0Jx9g24YN_oIjA/321008/mysticbella_beautiful_hawaii_sunrise_over_the_sea_nikon_85mm_c4f561bf-0da9-4fe3-93ee-774000328b46_0.png') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(45,74,62,.72),rgba(45,74,62,.55))}
-.hero-content{position:relative;z-index:2;max-width:800px;padding:2rem;color:var(--cream)}
-.hero-content h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:700;margin-bottom:.5rem}
-.hero-content h1 span.well-word{color:var(--gold)}
-.hero-content h1 span.made-word{color:var(--cream)}
-.tagline{font-size:clamp(1rem,2.2vw,1.35rem);font-weight:300;margin-bottom:.5rem;opacity:.9;font-style:italic;font-family:var(--serif)}
-.hero-acronym{font-size:clamp(.95rem,1.8vw,1.15rem);opacity:.8;margin-bottom:1.5rem;line-height:1.7}
-.hero-acronym strong{color:var(--gold);font-weight:600}
-.hero-mission{font-size:clamp(1.05rem,1.8vw,1.25rem);font-weight:400;margin-bottom:2.5rem;letter-spacing:.02em;line-height:1.6;opacity:.85}
-.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;padding:.9rem 2.2rem;border-radius:100px;text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;transition:all .3s;cursor:pointer;border:none;font-family:var(--sans)}
-.btn-gold{background:var(--gold);color:var(--ocean)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.3)}
-.btn-outline{background:transparent;color:var(--cream);border:1.5px solid rgba(253,251,247,.5)}.btn-outline:hover{border-color:var(--cream);background:rgba(253,251,247,.1)}
-.btn-outline-dark{background:transparent;color:var(--ocean);border:1.5px solid var(--ocean)}.btn-outline-dark:hover{background:rgba(45,74,62,.06)}
-.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;animation:bob 2s ease-in-out infinite}
-.scroll-indicator svg{width:24px;height:24px;stroke:rgba(253,251,247,.6)}
-@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
-.section{padding:clamp(4rem,8vw,7rem) 2rem}.section-inner{max-width:1100px;margin:0 auto}
-.section-label{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:.75rem;font-weight:500}
-.section-title{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;color:var(--ocean)}
-.section-subtitle{font-size:1.1rem;color:var(--sage);font-style:italic;font-family:var(--serif);margin-bottom:2.5rem}
-.section-alt{background:var(--ocean);color:var(--cream)}.section-alt .section-label{color:var(--sage)}.section-alt .section-title{color:var(--cream)}.section-alt .section-subtitle{color:rgba(253,251,247,.7)}
-.section-gold{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.15))}
-.tracker{text-align:center;padding:clamp(5rem,10vw,8rem) 2rem;background:linear-gradient(180deg,var(--cream),var(--cream-dark))}
-.tracker-label{font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem}
-.tracker-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);color:var(--ocean);margin-bottom:3rem}
-.tracker-ring{position:relative;width:280px;height:280px;margin:0 auto 2rem}
-.tracker-ring svg{transform:rotate(-90deg);width:100%;height:100%}
-.tracker-ring .bg{fill:none;stroke:rgba(45,74,62,.1);stroke-width:8}
-.tracker-ring .progress{fill:none;stroke:var(--gold);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 2s ease}
-.tracker-ring .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.tracker-number{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);color:var(--ocean);font-weight:700}
-.tracker-of{font-size:.85rem;color:var(--sage);margin-top:.2rem}
-.tracker-goal{font-family:var(--serif);font-size:clamp(1rem,2vw,1.3rem);color:var(--ocean);margin-top:1.5rem;letter-spacing:.06em;font-weight:600}
-.tracker-bar{max-width:500px;margin:2rem auto 0;height:6px;background:rgba(45,74,62,.1);border-radius:3px;overflow:hidden}
-.tracker-bar-fill{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:3px;width:0;transition:width 2s ease}
-.membership-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.membership-price{font-family:var(--serif);font-size:clamp(3.5rem,8vw,6rem);color:var(--gold);font-weight:700;line-height:1}
-.membership-tag{font-family:var(--serif);font-size:1.4rem;color:var(--ocean);margin-top:.5rem;margin-bottom:1.5rem}
-.membership-desc{color:var(--ocean);opacity:.8;margin-bottom:2rem;line-height:1.8}
-.form{display:flex;flex-direction:column;gap:1rem}
-.form input,.form textarea{padding:.85rem 1.2rem;border:1.5px solid rgba(45,74,62,.15);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--cream);color:var(--ocean);transition:border .3s;outline:none}
-.form input:focus,.form textarea:focus{border-color:var(--gold)}
-.form textarea{min-height:100px;resize:vertical}
-.form .btn{width:100%;text-align:center;margin-top:.5rem}
-.form-card{background:var(--cream);border:1.5px solid rgba(45,74,62,.1);border-radius:16px;padding:2.5rem;box-shadow:0 4px 40px rgba(45,74,62,.06)}
-.programs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.program-card{background:var(--cream);border:1px solid rgba(45,74,62,.08);border-radius:16px;padding:2rem;transition:all .3s;text-align:center}
-.program-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(45,74,62,.08);border-color:var(--gold)}
-.program-icon{font-size:2.5rem;margin-bottom:1rem}
-.program-card h3{font-family:var(--serif);font-size:1.15rem;margin-bottom:.5rem;color:var(--ocean)}
-.program-card p{font-size:.88rem;color:var(--sage);margin-bottom:1.2rem;line-height:1.6}
-.program-card .btn{font-size:.8rem;padding:.55rem 1.4rem}
-.shield-quote{font-family:var(--serif);font-size:clamp(1.15rem,2.5vw,1.6rem);font-style:italic;line-height:1.7;margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto}
-.sovereign-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.sovereign-visual{height:400px;border-radius:16px;background:linear-gradient(135deg,var(--ocean),var(--ocean-light));display:flex;align-items:center;justify-content:center;font-size:5rem}
-.sovereign-content h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--cream);margin-bottom:1rem}
-.sovereign-content p{color:rgba(253,251,247,.75);margin-bottom:2rem;line-height:1.8}
-.sampaguita-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.sampaguita-img{width:100%;border-radius:16px;object-fit:cover;height:450px}
-.ledger{display:grid;gap:1.5rem;max-width:800px;margin:0 auto}
-.ledger-item{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;padding:1.5rem 2rem;background:var(--cream);border-radius:12px;border:1px solid rgba(45,74,62,.06)}
-.ledger-icon{font-size:1.8rem;width:50px;height:50px;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(163,177,138,.15));border-radius:12px;display:flex;align-items:center;justify-content:center}
-.ledger-text h4{font-family:var(--serif);font-size:1.05rem;margin-bottom:.25rem}
-.ledger-text p{font-size:.85rem;color:var(--sage);line-height:1.5}
-.ledger-pct{font-family:var(--serif);font-size:1.8rem;color:var(--gold);font-weight:700}
-.pillars{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
-.pillar{padding:2rem;border-radius:16px;text-align:center}
-.pillar-fem{background:linear-gradient(135deg,rgba(212,160,160,.15),rgba(201,168,76,.1));border:1px solid rgba(212,160,160,.2)}
-.pillar-mas{background:linear-gradient(135deg,rgba(163,177,138,.15),rgba(45,74,62,.08));border:1px solid rgba(163,177,138,.2)}
-.pillar h3{font-family:var(--serif);font-size:1.2rem;margin-bottom:.3rem}.pillar p{font-size:.85rem;color:var(--sage)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.footer{background:var(--ocean);color:rgba(253,251,247,.7);padding:4rem 2rem 2rem}
-.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-bottom:3rem}
-.footer h4{font-family:var(--serif);color:var(--cream);font-size:1.1rem;margin-bottom:1rem}
-.footer a{color:rgba(253,251,247,.6);text-decoration:none;font-size:.9rem;display:block;margin-bottom:.4rem;transition:color .3s}
-.footer a:hover{color:var(--gold)}
-.footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid rgba(253,251,247,.1);max-width:1100px;margin:0 auto}
-.footer-copy{font-size:.8rem;line-height:1.7;font-style:italic}
-.modal-overlay{position:fixed;inset:0;background:rgba(45,74,62,.5);z-index:2000;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:2rem}
-.modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:var(--cream);border-radius:20px;padding:2.5rem;max-width:500px;width:100%;transform:translateY(20px);transition:transform .3s;max-height:90vh;overflow-y:auto;position:relative}
-.modal-overlay.open .modal{transform:translateY(0)}
-.modal h2{font-family:var(--serif);margin-bottom:.5rem;font-size:1.5rem}
-.modal p{color:var(--sage);margin-bottom:1.5rem;font-size:.95rem}
-.close-modal{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ocean);padding:.5rem}
-.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.15s}.reveal-delay-2{transition-delay:.3s}.reveal-delay-3{transition-delay:.45s}
-.text-center{text-align:center}
-/* WELL / MADE framework sections */
-.framework-split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.5rem}
-.framework-card{border-radius:20px;padding:2.5rem;position:relative;overflow:hidden}
-.well-card{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.2));border:1.5px solid rgba(201,168,76,.25)}
-.made-card{background:linear-gradient(135deg,rgba(163,177,138,.12),rgba(212,160,160,.12));border:1.5px solid rgba(163,177,138,.25)}
-.framework-card h3{font-family:var(--serif);font-size:1.6rem;margin-bottom:.3rem}
-.framework-card .acronym{font-size:.85rem;color:var(--sage);font-style:italic;font-family:var(--serif);margin-bottom:1.2rem}
-.framework-card p{font-size:.92rem;line-height:1.7;margin-bottom:1rem;opacity:.85}
-.framework-card ul{list-style:none;padding:0;margin-bottom:1.5rem}
-.framework-card ul li{font-size:.9rem;padding:.4rem 0;padding-left:1.5rem;position:relative;opacity:.85}
-.framework-card ul li::before{content:'';position:absolute;left:0;top:.75rem;width:8px;height:8px;border-radius:50%}
-.well-card ul li::before{background:var(--gold)}
-.made-card ul li::before{background:var(--sage)}
-.well-host-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
-.well-host-card{background:var(--cream);border:1px solid rgba(45,74,62,.08);border-radius:16px;padding:2rem;text-align:center;transition:all .3s}
-.well-host-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(45,74,62,.08);border-color:var(--gold)}
-.well-host-card h4{font-family:var(--serif);font-size:1.1rem;margin-bottom:.5rem;color:var(--ocean)}
-.well-host-card p{font-size:.85rem;color:var(--sage);line-height:1.6}
-.made-programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem}
-.made-program{background:rgba(253,251,247,.6);border:1px solid rgba(45,74,62,.08);border-radius:12px;padding:1.5rem;text-align:center;transition:all .3s}
-.made-program:hover{border-color:var(--gold);transform:translateY(-2px)}
-.made-program h4{font-family:var(--serif);font-size:1.05rem;color:var(--ocean);margin-bottom:.3rem}
-.made-program p{font-size:.82rem;color:var(--sage);line-height:1.5}
-@media(max-width:768px){
-.nav-links{display:none}.hamburger{display:flex}
-.membership-grid,.sovereign-grid,.sampaguita-grid,.contact-grid{grid-template-columns:1fr}
-.footer-grid{grid-template-columns:1fr;text-align:center}
-.pillars,.framework-split{grid-template-columns:1fr}
-.hero-content h1{font-size:2.4rem}
-.programs-grid{grid-template-columns:1fr 1fr}
-.well-host-grid{grid-template-columns:1fr}
-.made-programs-grid{grid-template-columns:1fr}
-.ledger-item{grid-template-columns:auto 1fr;gap:1rem}
-.ledger-pct{grid-column:1/-1;text-align:center}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --cream: #FAF7F2; --cream-dark: #F0EBE3; --gold: #C9A96E; --gold-light: #E8D5A8;
+  --sage: #8FA68A; --sage-dark: #6B8565; --white: #FFFFFF; --text: #3A3A3A;
+  --text-light: #6B6B6B; --warm-bg: #F5F0E8;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--cream); line-height: 1.7; }
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.3; }
+a { text-decoration: none; color: var(--gold); }
+img { max-width: 100%; }
+
+/* Nav */
+nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(250,247,242,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--cream-dark); padding: 0 2rem; }
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--text); }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--text-light); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text); }
+
+/* Hero */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(201,169,110,0.06) 0%, transparent 70%); }
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.hero-logo { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.hero-logo .well { color: var(--sage-dark); }
+.hero-logo .made { color: var(--gold); }
+.hero-acronyms { display: flex; justify-content: center; gap: 3rem; margin: 1.5rem 0 2rem; flex-wrap: wrap; }
+.hero-acronym { text-align: center; }
+.hero-acronym h3 { font-size: 1rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.25rem; }
+.hero-acronym p { font-size: 0.85rem; color: var(--text-light); font-style: italic; }
+.hero-tagline { font-size: 1.2rem; color: var(--text-light); font-weight: 300; margin-bottom: 2.5rem; }
+.hero-cta { display: inline-block; background: var(--gold); color: var(--white); padding: 0.875rem 2.5rem; border-radius: 50px; font-weight: 500; font-size: 0.95rem; letter-spacing: 0.05em; transition: background 0.3s; }
+.hero-cta:hover { background: #b8953d; }
+
+/* Sections */
+section { padding: 5rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.section-title { font-size: 2.5rem; margin-bottom: 1rem; }
+.section-subtitle { color: var(--text-light); font-size: 1.05rem; max-width: 650px; margin-bottom: 3rem; font-weight: 300; }
+
+/* WELL Framework */
+.well-section { background: var(--white); }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2rem; }
+.step { text-align: center; padding: 2.5rem 1.5rem; border-radius: 16px; background: var(--cream); transition: transform 0.3s; }
+.step:hover { transform: translateY(-4px); }
+.step-number { width: 48px; height: 48px; border-radius: 50%; background: var(--sage); color: var(--white); display: inline-flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; }
+.step h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.step p { color: var(--text-light); font-size: 0.9rem; }
+
+/* MADE Framework */
+.made-section { background: var(--warm-bg); }
+.made-intro { font-size: 1.1rem; font-style: italic; color: var(--text-light); text-align: center; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.programs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.program { background: var(--white); border-radius: 16px; padding: 2.5rem; border-left: 4px solid var(--gold); transition: transform 0.3s; }
+.program:hover { transform: translateY(-3px); }
+.program h3 { font-size: 1.3rem; color: var(--gold); margin-bottom: 0.5rem; }
+.program p { color: var(--text-light); font-size: 0.9rem; }
+
+/* Cultural Roots */
+.culture-section { background: var(--white); }
+.pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-top: 2rem; }
+.pillar { text-align: center; padding: 3rem 2rem; border-radius: 20px; background: var(--cream); }
+.pillar-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.pillar h3 { font-size: 1.5rem; color: var(--sage-dark); margin-bottom: 0.5rem; }
+.pillar p { color: var(--text-light); font-size: 0.9rem; }
+.pillar-tag { display: inline-block; margin-top: 1rem; padding: 0.35rem 1rem; background: var(--sage); color: var(--white); border-radius: 50px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; }
+
+/* Tracker */
+.tracker-section { background: linear-gradient(180deg, var(--cream) 0%, var(--warm-bg) 100%); text-align: center; }
+.tracker-widget { background: var(--white); border-radius: 20px; padding: 3rem; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
+.tracker-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--gold); font-weight: 700; }
+.tracker-label { color: var(--text-light); margin-top: 0.5rem; font-size: 0.9rem; }
+.tracker-bar { width: 100%; height: 12px; background: var(--cream-dark); border-radius: 6px; margin-top: 1.5rem; overflow: hidden; }
+.tracker-fill { height: 100%; background: linear-gradient(90deg, var(--sage), var(--gold)); border-radius: 6px; width: 2%; transition: width 1.5s ease; }
+.tracker-goal { margin-top: 1rem; font-size: 0.8rem; color: var(--text-light); }
+
+/* Membership */
+.membership-section { background: var(--white); text-align: center; }
+.membership-card { background: linear-gradient(135deg, var(--cream) 0%, var(--warm-bg) 100%); border-radius: 24px; padding: 4rem 3rem; max-width: 650px; margin: 0 auto; border: 1px solid var(--gold-light); }
+.membership-price { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--gold); font-weight: 700; }
+.membership-price span { font-size: 1.2rem; color: var(--text-light); font-family: 'Inter', sans-serif; font-weight: 400; }
+.membership-features { list-style: none; margin: 2rem 0; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; }
+.membership-features li { padding: 0.5rem 0; border-bottom: 1px solid var(--cream-dark); font-size: 0.95rem; color: var(--text-light); }
+.membership-features li::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--sage); margin-right: 0.75rem; }
+.btn { display: inline-block; background: var(--gold); color: var(--white); padding: 0.875rem 2.5rem; border-radius: 50px; font-weight: 500; font-size: 0.95rem; letter-spacing: 0.05em; transition: background 0.3s; border: none; cursor: pointer; }
+.btn:hover { background: #b8953d; }
+
+/* Anti-Trafficking */
+.shield-section { background: linear-gradient(180deg, #2C2C2C 0%, #1A1A1A 100%); color: var(--cream); }
+.shield-section .section-label { color: var(--gold-light); }
+.shield-section .section-title { color: var(--white); }
+.shield-section .section-subtitle { color: rgba(250,247,242,0.7); }
+.shield-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.shield-item { padding: 2rem; border: 1px solid rgba(201,169,110,0.2); border-radius: 16px; }
+.shield-item h3 { color: var(--gold); font-size: 1.15rem; margin-bottom: 0.5rem; }
+.shield-item p { color: rgba(250,247,242,0.65); font-size: 0.9rem; }
+
+/* Transparency */
+.transparency-section { background: var(--cream); }
+.funding-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+.funding-source { text-align: center; padding: 2.5rem 1.5rem; border-radius: 16px; background: var(--white); }
+.funding-source .amount { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; }
+.funding-source h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+.funding-source p { color: var(--text-light); font-size: 0.85rem; }
+
+/* Bloom Circle */
+.bloom-section { background: var(--white); text-align: center; }
+.bloom-desc { max-width: 600px; margin: 0 auto 2rem; color: var(--text-light); }
+.bloom-visual { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+.bloom-petal { width: 100px; height: 100px; border-radius: 50% 50% 50% 0; background: var(--cream); transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; border: 1px solid var(--gold-light); }
+.bloom-petal span { transform: rotate(45deg); font-size: 0.7rem; font-weight: 500; color: var(--text-light); text-align: center; padding: 0.5rem; }
+
+/* Seasonal */
+.seasonal-section { background: var(--warm-bg); }
+.seasons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.season { text-align: center; padding: 2rem 1rem; border-radius: 16px; background: var(--white); transition: transform 0.3s; }
+.season:hover { transform: translateY(-3px); }
+.season-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+.season h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+.season p { color: var(--text-light); font-size: 0.8rem; }
+
+/* Footer */
+footer { background: #1A1A1A; color: var(--cream); padding: 4rem 2rem 2rem; }
+.footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+.footer-col h4 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 1rem; }
+.footer-col p, .footer-col a { color: rgba(250,247,242,0.6); font-size: 0.85rem; line-height: 1.8; display: block; }
+.footer-col a:hover { color: var(--gold-light); }
+.footer-bottom { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(250,247,242,0.1); font-size: 0.8rem; color: rgba(250,247,242,0.4); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-logo { font-size: 2.5rem; }
+  .hero-acronyms { gap: 1.5rem; }
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(250,247,242,0.98); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--cream-dark); }
+  .nav-toggle { display: block; }
+  .steps, .programs, .pillars, .shield-content, .funding-grid, .seasons { grid-template-columns: 1fr; }
+  .section-title { font-size: 2rem; }
+  .membership-card { padding: 2.5rem 1.5rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
+<!-- Navigation -->
+<nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">WellMade Foundation</a>
-    <ul class="nav-links">
-      <li><a href="#well-framework">WELL</a></li>
-      <li><a href="#made-framework">MADE</a></li>
-      <li><a href="#membership">Membership</a></li>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#shield">Shield</a></li>
-      <li><a href="#transparency">Transparency</a></li>
-      <li><a href="#membership" class="nav-cta">Join</a></li>
+    <div class="nav-logo">Well<span>Made</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#learn">Learn</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#participate">Participate</a></li>
+      <li><a href="#refer">Refer</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
   </div>
 </nav>
 
-<div class="mobile-overlay" id="mobileOverlay"></div>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#well-framework" class="mobile-link">WELL Framework</a>
-  <a href="#made-framework" class="mobile-link">MADE Framework</a>
-  <a href="#families" class="mobile-link">1M Families</a>
-  <a href="#membership" class="mobile-link">Membership</a>
-  <a href="#programs" class="mobile-link">Programs</a>
-  <a href="#shield" class="mobile-link">Anti-Trafficking Shield</a>
-  <a href="#transparency" class="mobile-link">Transparency</a>
-  <a href="#contact" class="mobile-link">Contact</a>
-  <a href="#membership" class="btn btn-gold mobile-link" style="text-align:center;margin-top:1rem">Become a Founding Family</a>
-</div>
-
-<!-- HERO -->
-<section class="hero" id="mission">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
+<!-- Hero -->
+<section class="hero">
   <div class="hero-content">
-    <h1><span class="well-word">Well</span><span class="made-word">Made</span> Foundation</h1>
-    <p class="tagline">Global Impact -- Humanitarian Core -- Protected Legacy</p>
-    <p class="hero-acronym">
-      <strong>WELL</strong> = Wisdom Empowering Love &amp; Leadership<br>
-      <strong>MADE</strong> = Mothers And Daughters Empowered / Moms And Dads Empowered
-    </p>
-    <p class="hero-mission">A vetted humanitarian shield dedicated to multi-generational preservation, protective advocacy, and empowering families through wisdom and community.</p>
-    <div class="hero-buttons">
-      <a href="#well-framework" class="btn btn-gold">Start a WELL</a>
-      <a href="#made-framework" class="btn btn-outline">Explore MADE</a>
+    <div class="hero-logo">
+      <span class="well">Well</span><span class="made">Made</span>
     </div>
+    <div class="hero-acronyms">
+      <div class="hero-acronym">
+        <h3 style="color: var(--sage-dark);">WELL</h3>
+        <p>Wisdom Empowering Love &amp; Leadership</p>
+      </div>
+      <div class="hero-acronym">
+        <h3 style="color: var(--gold);">MADE</h3>
+        <p>Mothers And Daughters Empowered</p>
+        <p>Moms And Dads Empowered</p>
+      </div>
+    </div>
+    <p class="hero-tagline">Building legacy through love, culture, and community.</p>
+    <a href="#participate" class="hero-cta">Join the Movement</a>
   </div>
-  <div class="scroll-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg></div>
 </section>
 
-<!-- WELL + MADE SPLIT -->
-<section class="section section-gold">
-  <div class="section-inner text-center reveal">
-    <p class="section-label">Two Frameworks, One Mission</p>
-    <h2 class="section-title">WellMade = WELL + MADE</h2>
-    <p class="section-subtitle">The name itself carries our purpose</p>
-    <div class="framework-split">
-      <div class="framework-card well-card reveal">
-        <h3>WELL</h3>
-        <div class="acronym">Wisdom Empowering Love &amp; Leadership</h3></div>
-        <p>A platform for wisdom holders to gather, share, and lead. WELL focus groups create space for meaningful conversation and collective growth.</p>
-        <ul>
-          <li>Hosted focus groups on meaningful topics</li>
-          <li>Anyone can apply to start a WELL</li>
-          <li>Proceeds support the foundation</li>
-          <li>Pay-it-forward model: wisdom shared is wisdom multiplied</li>
-        </ul>
-        <a href="#well-framework" class="btn btn-gold" style="font-size:.82rem;padding:.6rem 1.5rem">Start a WELL</a>
+<!-- WELL Framework -->
+<section class="well-section" id="learn">
+  <div class="container">
+    <p class="section-label">The WELL Framework</p>
+    <h2 class="section-title">Start a WELL</h2>
+    <p class="section-subtitle">Hosted focus groups rooted in shared wisdom. Proceeds flow directly to the foundation.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Apply</h3>
+        <p>Submit your intention to host or join a WELL circle in your community.</p>
       </div>
-      <div class="framework-card made-card reveal reveal-delay-1">
-        <h3>MADE</h3>
-        <div class="acronym">Mothers And Daughters Empowered / Moms And Dads Empowered</div>
-        <p>A universally welcoming umbrella for family empowerment. Rooted in Filipino cultural values of bayanihan and sampaguita grace, MADE programs are open to all families everywhere.</p>
-        <ul>
-          <li>MADE to Travel -- family adventure and cultural exchange</li>
-          <li>MADE with Money -- financial literacy for families</li>
-          <li>MADE in the Bay -- Bay Area community programs</li>
-          <li>MADE on Maui -- island-based healing and retreats</li>
-        </ul>
-        <a href="#made-framework" class="btn btn-outline-dark" style="font-size:.82rem;padding:.6rem 1.5rem">Explore MADE Programs</a>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Gather &amp; Share</h3>
+        <p>Host focus groups centered on real conversations, lived wisdom, and collective growth.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Pay It Forward</h3>
+        <p>All proceeds support the WellMade Foundation and its family-first mission.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WELL FRAMEWORK (DETAILED) -->
-<section class="section" id="well-framework">
-  <div class="section-inner">
-    <div class="text-center reveal">
-      <p class="section-label">The WELL Framework</p>
-      <h2 class="section-title">Start a WELL</h2>
-      <p class="section-subtitle">Wisdom Empowering Love &amp; Leadership</p>
-      <p style="max-width:700px;margin:0 auto 2rem;line-height:1.8;opacity:.85">
-        A WELL is a hosted focus group on a meaningful topic. If you carry wisdom, experience, or a gift that can uplift others, you can apply to host a WELL. Gather your community, share your knowledge, and pay it forward. All proceeds go to the WellMade Foundation.
-      </p>
-    </div>
-    <div class="well-host-grid reveal">
-      <div class="well-host-card">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
-          <span style="color:var(--ocean);font-size:1.2rem;font-family:var(--serif);font-weight:700">1</span>
-        </div>
-        <h4>Apply to Host</h4>
-        <p>Submit your topic and vision for a WELL focus group. We welcome all wisdom holders.</p>
+<!-- MADE Framework -->
+<section class="made-section" id="participate">
+  <div class="container">
+    <p class="section-label">The MADE Framework</p>
+    <h2 class="section-title">Empowered Families, Rooted in Culture</h2>
+    <p class="made-intro">You do not need to share the culture to belong here. MADE is an inclusive space where every family is welcome.</p>
+    <div class="programs">
+      <div class="program">
+        <h3>MADE to Travel</h3>
+        <p>Family-centered travel experiences that broaden horizons and deepen bonds across generations.</p>
       </div>
-      <div class="well-host-card">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
-          <span style="color:var(--ocean);font-size:1.2rem;font-family:var(--serif);font-weight:700">2</span>
-        </div>
-        <h4>Gather &amp; Share</h4>
-        <p>Lead your session, share your wisdom, and create meaningful connection with participants.</p>
+      <div class="program">
+        <h3>MADE with Money</h3>
+        <p>Financial literacy and generational wealth-building designed for real families with real goals.</p>
       </div>
-      <div class="well-host-card">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
-          <span style="color:var(--ocean);font-size:1.2rem;font-family:var(--serif);font-weight:700">3</span>
-        </div>
-        <h4>Pay It Forward</h4>
-        <p>Proceeds from every WELL go directly to the foundation, fueling the next wave of impact.</p>
+      <div class="program">
+        <h3>MADE in the Bay</h3>
+        <p>Community programming rooted in Bay Area culture, connection, and collective uplift.</p>
       </div>
-    </div>
-    <div class="text-center" style="margin-top:2.5rem">
-      <button class="btn btn-gold" onclick="openModal('well-modal')">Apply to Start a WELL</button>
+      <div class="program">
+        <h3>MADE on Maui</h3>
+        <p>Retreats and gatherings that honor island culture while building lasting family legacies.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- MADE FRAMEWORK (DETAILED) -->
-<section class="section section-alt" id="made-framework">
-  <div class="section-inner">
-    <div class="text-center reveal">
-      <p class="section-label">The MADE Framework</p>
-      <h2 class="section-title">Mothers And Daughters Empowered / Moms And Dads Empowered</h2>
-      <p class="section-subtitle">Rooted in Filipino values, open to all families</p>
-      <p style="max-width:700px;margin:0 auto 1rem;line-height:1.8;color:rgba(253,251,247,.8)">
-        MADE carries the spirit of bayanihan -- the Filipino tradition of communal unity -- and the grace of the sampaguita flower. While the cultural roots are Filipino, every program is designed to welcome all families, everywhere. You do not need to share the culture to belong here.
-      </p>
-    </div>
-    <div class="made-programs-grid reveal">
-      <div class="made-program">
-        <h4>MADE to Travel</h4>
-        <p>Family adventures and cultural exchange experiences that broaden horizons and deepen bonds.</p>
-      </div>
-      <div class="made-program">
-        <h4>MADE with Money</h4>
-        <p>Financial literacy workshops designed for families -- building generational wealth and security together.</p>
-      </div>
-      <div class="made-program">
-        <h4>MADE in the Bay</h4>
-        <p>Community programs, gatherings, and resources for families in the San Francisco Bay Area.</p>
-      </div>
-      <div class="made-program">
-        <h4>MADE on Maui</h4>
-        <p>Island-based healing retreats, nature immersion, and family restoration on Maui.</p>
-      </div>
-    </div>
-    <div class="text-center" style="margin-top:2rem">
-      <button class="btn btn-gold" onclick="openModal('made-modal')">Get Involved with MADE</button>
-    </div>
-  </div>
-</section>
-
-<!-- 1M FAMILIES TRACKER -->
-<section class="tracker section" id="families">
-  <div class="section-inner reveal">
-    <p class="tracker-label">The Living Love Collective</p>
-    <h2 class="tracker-title">One Million Families</h2>
-    <div class="tracker-ring">
-      <svg viewBox="0 0 280 280">
-        <circle class="bg" cx="140" cy="140" r="120"/>
-        <circle class="progress" id="ringProgress" cx="140" cy="140" r="120" stroke-dasharray="754" stroke-dashoffset="754"/>
-      </svg>
-      <div class="center">
-        <div class="tracker-number">0</div>
-        <div class="tracker-of">of 1,000,000 families</div>
-      </div>
-    </div>
-    <h3 class="tracker-goal">Our Goal: 1,000,000 Families</h3>
-    <div class="tracker-bar"><div class="tracker-bar-fill" id="trackerBar"></div></div>
-  </div>
-</section>
-
-<!-- TWO PILLARS (Sampaguita + Bayani under MADE) -->
-<section class="section section-gold">
-  <div class="section-inner text-center reveal">
-    <p class="section-label">Cultural Roots of MADE</p>
-    <h2 class="section-title">Sampaguita &amp; Bayani</h2>
-    <p style="max-width:600px;margin:0 auto 2rem;font-size:.95rem;line-height:1.7;opacity:.8">The two pillars that ground the MADE framework, drawn from Filipino heritage and offered to the world.</p>
-    <div class="pillars" style="max-width:700px;margin:2rem auto 0">
-      <div class="pillar pillar-fem">
-        <div style="width:56px;height:56px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem"><span style="color:#fff;font-size:1.4rem;font-family:var(--serif);font-weight:600">S</span></div>
+<!-- Cultural Roots -->
+<section class="culture-section">
+  <div class="container">
+    <p class="section-label">Cultural Roots</p>
+    <h2 class="section-title">Sampaguita + Bayani</h2>
+    <p class="section-subtitle">Two pillars of Filipino heritage that anchor the MADE framework.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-icon">&#10047;</span>
         <h3>Sampaguita</h3>
-        <p><em>The Feminine</em></p>
-        <p style="margin-top:.5rem">Grace, nurturing, and the sacred bond of motherhood</p>
+        <p>The national flower of the Philippines. A symbol of purity, resilience, and the quiet strength that runs through every family.</p>
+        <span class="pillar-tag">Purity &amp; Resilience</span>
       </div>
-      <div class="pillar pillar-mas">
-        <div style="width:56px;height:56px;border-radius:50%;background:var(--ocean);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem"><span style="color:#fff;font-size:1.4rem;font-family:var(--serif);font-weight:600">B</span></div>
+      <div class="pillar">
+        <span class="pillar-icon">&#9733;</span>
         <h3>Bayani</h3>
-        <p><em>The Masculine</em></p>
-        <p style="margin-top:.5rem">Strength, protection, and the warrior spirit of legacy</p>
+        <p>From "bayanihan" — the spirit of communal unity. The belief that no family builds alone, and no one is left behind.</p>
+        <span class="pillar-tag">Community &amp; Unity</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- $30 MEMBERSHIP -->
-<section class="section" id="membership">
-  <div class="section-inner">
-    <div class="membership-grid">
-      <div class="reveal">
-        <p class="section-label">Join the Movement</p>
-        <div class="membership-price">$30</div>
-        <div class="membership-tag">Lifetime Founding Family Membership</div>
-        <p class="membership-desc">Your $30 membership directly fuels operational scalability -- building the infrastructure to protect and empower families. 100% of memberships go toward growing this ecosystem.</p>
-        <div style="margin-top:2rem"><a href="#donate-form" class="btn btn-gold">Become a Founding Family</a></div>
+<!-- 1M Families Tracker -->
+<section class="tracker-section">
+  <div class="container">
+    <p class="section-label">Global Mission</p>
+    <h2 class="section-title">1 Million Families</h2>
+    <div class="tracker-widget">
+      <div class="tracker-number" id="familyCount">0</div>
+      <p class="tracker-label">Families joined worldwide</p>
+      <div class="tracker-bar">
+        <div class="tracker-fill" id="trackerFill"></div>
       </div>
-      <div class="form-card reveal reveal-delay-1" id="donate-form">
-        <h3 style="font-family:var(--serif);font-size:1.3rem;margin-bottom:.3rem">Claim Your Place</h3>
-        <p style="color:var(--sage);font-size:.9rem;margin-bottom:1.5rem">Join as a Lifetime Founding Family Member</p>
-        <form class="form" onsubmit="return submitForm(event,'Founding Family Membership')">
-          <input type="text" name="name" placeholder="Full Name" required>
-          <input type="email" name="email" placeholder="Email Address" required>
-          <input type="tel" name="phone" placeholder="Phone (optional)">
-          <button type="submit" class="btn btn-gold">Become a Founding Family -- $30</button>
-        </form>
-        <div style="text-align:center;margin-top:1.2rem">
-          <button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.82rem;padding:.6rem 1.5rem" onclick="openModal('shield-modal')">Fund the Anti-Trafficking Shield</button>
-        </div>
+      <p class="tracker-goal">Goal: 1,000,000 families</p>
+    </div>
+  </div>
+</section>
+
+<!-- Membership -->
+<section class="membership-section">
+  <div class="container">
+    <p class="section-label">Lifetime Membership</p>
+    <h2 class="section-title">Join for Life</h2>
+    <div class="membership-card">
+      <div class="membership-price">$30 <span>/ lifetime</span></div>
+      <ul class="membership-features">
+        <li>Access to all MADE sub-programs</li>
+        <li>WELL circle invitations</li>
+        <li>Bloom Circle Household Registry</li>
+        <li>Seasonal programming &amp; retreats</li>
+        <li>Anti-trafficking resources &amp; shielding</li>
+        <li>Legacy anchoring for your family</li>
+      </ul>
+      <a href="#donate" class="btn">Become a Member</a>
+    </div>
+  </div>
+</section>
+
+<!-- Anti-Trafficking Shield -->
+<section class="shield-section">
+  <div class="container">
+    <p class="section-label">Protection</p>
+    <h2 class="section-title">Anti-Trafficking Shield</h2>
+    <p class="section-subtitle">Every family deserves safety. The WellMade Foundation commits to shielding, education, and prevention.</p>
+    <div class="shield-content">
+      <div class="shield-item">
+        <h3>Awareness</h3>
+        <p>Education programs that teach families to recognize the signs of trafficking and exploitation.</p>
+      </div>
+      <div class="shield-item">
+        <h3>Prevention</h3>
+        <p>Community networks that create protective environments through vigilance and mutual care.</p>
+      </div>
+      <div class="shield-item">
+        <h3>Recovery</h3>
+        <p>Support pathways for survivors, connecting them with resources, advocacy, and long-term healing.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROGRAMS -->
-<section class="section section-alt" id="programs">
-  <div class="section-inner">
-    <div class="text-center reveal">
-      <p class="section-label">How We Serve</p>
-      <h2 class="section-title">Program Areas</h2>
-      <p class="section-subtitle">Building strength, connection, and legacy through community</p>
-    </div>
-    <div class="programs-grid">
-      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Bloom Circle</h3><p>Seasonal wellness circles for healing, reflection, and renewal.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Bloom Circle')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Community Fundraisers</h3><p>Community fundraising initiatives that bring people together for purpose.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Community Fundraisers')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-2"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Safety Circles</h3><p>Protective community spaces for those who need shelter and solidarity.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Safety Circles')">Get Involved</button></div>
-      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Youth Development</h3><p>Youth leadership and mentorship for the next generation.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Youth Development')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Family Pentathlon</h3><p>Annual family athletic tournament building bonds through friendly competition.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Family Pentathlon')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-2"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Sampaguita Sunday Scholarship Gala</h3><p>Annual scholarship gala held each May honoring academic excellence.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Sampaguita Sunday Scholarship Gala')">Get Involved</button></div>
-      <div class="program-card reveal"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Mabuhay Monday Awards</h3><p>Community leadership awards celebrating those who uplift others.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Mabuhay Monday Awards')">Get Involved</button></div>
-      <div class="program-card reveal reveal-delay-1"><div class="program-icon" style="font-size:1.5rem">●</div><h3>Seasonal Programming</h3><p>Rotating seasonal offerings aligned with nature's rhythms and community needs.</p><button class="btn btn-outline" style="border-color:var(--ocean);color:var(--ocean);font-size:.8rem;padding:.45rem 1.2rem" onclick="openModal('program-modal','Seasonal Programming')">Get Involved</button></div>
-    </div>
-  </div>
-</section>
-
-<!-- ANTI-TRAFFICKING SHIELD -->
-<section class="section section-gold" id="shield">
-  <div class="section-inner text-center reveal">
-    <p class="section-label">Protecting the Vulnerable</p>
-    <h2 class="section-title">The Anti-Trafficking Shield</h2>
-    <div class="shield-quote">
-      "$100 from every premium retreat ticket on Pure Wellness Joy goes directly to the Anti-Trafficking Shield."
-    </div>
-    <p style="font-size:1rem;opacity:.75;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto">
-      Supplying emergency sanctuary, legal infrastructure, and protective rescue initiatives.
-    </p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <button class="btn btn-gold" onclick="openModal('shield-modal')">Support the Shield</button>
-      <a href="#membership" class="btn btn-outline-dark">Become a Member</a>
-    </div>
-  </div>
-</section>
-
-<!-- THE SAMPAGUITA PROMISE -->
-<section class="section">
-  <div class="section-inner">
-    <div class="sampaguita-grid">
-      <div class="reveal">
-        <img src="https://static.showit.co/800/zO85CWRUPm5b8e-xLufKug/321008/mysticbella_beautiful_hawaii_jasmine_flowers_just_past_sunset_421bd657-2b0a-4123-bab8-9973b481765e_3.png" alt="Jasmine flowers" class="sampaguita-img">
+<!-- Financial Transparency -->
+<section class="transparency-section" id="donate">
+  <div class="container">
+    <p class="section-label">Financial Transparency</p>
+    <h2 class="section-title">Where It Comes From</h2>
+    <p class="section-subtitle">Every dollar is accounted for. The foundation is sustained through three channels.</p>
+    <div class="funding-grid">
+      <div class="funding-source">
+        <div class="amount">10%</div>
+        <h3>PureWellnessJoy</h3>
+        <p>Ten percent of all proceeds from PureWellnessJoy go directly to the foundation.</p>
       </div>
-      <div class="reveal reveal-delay-1">
-        <p class="section-label">Our Legacy</p>
-        <h2 class="section-title">The Sampaguita Promise</h2>
-        <p style="margin-bottom:1.5rem;line-height:1.8;opacity:.85">The foundation functions as an immortal, employee-owned entity designed to protect lineages forever. Like the sampaguita -- delicate yet enduring -- our commitment to families is unwavering.</p>
+      <div class="funding-source">
+        <div class="amount">100%</div>
+        <h3>WELL Proceeds</h3>
+        <p>All proceeds from WELL focus groups and hosted circles support foundation programs.</p>
+      </div>
+      <div class="funding-source">
+        <div class="amount">Direct</div>
+        <h3>Donations</h3>
+        <p>Tax-deductible contributions from individuals and families who share our mission.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE SOVEREIGN SYNDICATE -->
-<section class="section section-alt">
-  <div class="section-inner">
-    <div class="sovereign-grid">
-      <div class="reveal">
-        <div class="sovereign-visual" style="font-family:var(--serif);font-size:2rem;color:rgba(253,251,247,.3);letter-spacing:.1em;text-transform:uppercase">Sovereign<br>Syndicate</div>
+<!-- Bloom Circle -->
+<section class="bloom-section">
+  <div class="container">
+    <p class="section-label">Bloom Circle</p>
+    <h2 class="section-title">Household Registry</h2>
+    <p class="bloom-desc">The Bloom Circle is a living registry of every household that has joined the WellMade family. A digital tapestry of families committed to legacy, culture, and mutual protection.</p>
+    <div class="bloom-visual">
+      <div class="bloom-petal"><span>Wisdom</span></div>
+      <div class="bloom-petal"><span>Love</span></div>
+      <div class="bloom-petal"><span>Legacy</span></div>
+      <div class="bloom-petal"><span>Culture</span></div>
+      <div class="bloom-petal"><span>Unity</span></div>
+      <div class="bloom-petal"><span>Shield</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Seasonal Programming -->
+<section class="seasonal-section" id="shop">
+  <div class="container">
+    <p class="section-label">Seasonal Programming</p>
+    <h2 class="section-title">Throughout the Year</h2>
+    <div class="seasons">
+      <div class="season">
+        <span class="season-icon">&#9752;</span>
+        <h3>Spring</h3>
+        <p>New beginnings. Enrollment opens, WELL circles launch, and families plant seeds for the year.</p>
       </div>
-      <div class="sovereign-content reveal reveal-delay-1">
-        <p class="section-label">Private Legacy Pillar</p>
-        <h2>The Sovereign Syndicate</h2>
-        <p>A private, elite wealth pillar dedicated to multi-generational prosperity. The Sovereign Syndicate exists for those who understand that true legacy requires both spiritual and financial infrastructure.</p>
-        <p style="margin-bottom:2rem">Access is by invitation or application only.</p>
-        <button class="btn btn-gold" onclick="openModal('sovereign-modal')">Request Access</button>
+      <div class="season">
+        <span class="season-icon">&#9788;</span>
+        <h3>Summer</h3>
+        <p>Travel, retreats, and community gatherings. MADE to Travel and MADE on Maui come alive.</p>
+      </div>
+      <div class="season">
+        <span class="season-icon">&#9752;</span>
+        <h3>Fall</h3>
+        <p>Harvest wisdom. Financial literacy intensives, cultural celebrations, and family storytelling.</p>
+      </div>
+      <div class="season">
+        <span class="season-icon">&#10052;</span>
+        <h3>Winter</h3>
+        <p>Rest and reflection. Legacy planning, year-end giving, and grounding rituals for the year ahead.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FINANCIAL TRANSPARENCY -->
-<section class="section" id="transparency">
-  <div class="section-inner">
-    <div class="text-center reveal">
-      <p class="section-label">Full Accountability</p>
-      <h2 class="section-title">Financial Transparency Ledger</h2>
-      <p class="section-subtitle">Full transparency on how funds are allocated.</p>
-    </div>
-    <div class="ledger reveal">
-      <div class="ledger-item">
-        <div class="ledger-icon" style="font-size:1rem">●</div>
-        <div class="ledger-text"><h4>Pure Wellness Joy -- Foundation</h4><p>10% of all profits flow into the Foundation -- 70% scholarships, 30% operations</p></div>
-        <div class="ledger-pct">10%</div>
-      </div>
-      <div class="ledger-item">
-        <div class="ledger-icon" style="font-size:1rem">●</div>
-        <div class="ledger-text"><h4>Premium Retreat Tickets -- Anti-Trafficking Shield</h4><p>$100 from every DrJ premium retreat ticket goes directly to the Shield</p></div>
-        <div class="ledger-pct">$100</div>
-      </div>
-      <div class="ledger-item">
-        <div class="ledger-icon" style="font-size:1rem">●</div>
-        <div class="ledger-text"><h4>Membership -- Operational Scalability</h4><p>100% of $30 Lifetime Founding Family Memberships fuel growth</p></div>
-        <div class="ledger-pct">100%</div>
-      </div>
-      <div class="ledger-item">
-        <div class="ledger-icon" style="font-size:1rem">●</div>
-        <div class="ledger-text"><h4>WELL Focus Groups -- Foundation</h4><p>All proceeds from hosted WELL sessions go directly to the foundation</p></div>
-        <div class="ledger-pct">100%</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EACH ONE SHIELD ONE -->
-<section class="section section-gold">
-  <div class="section-inner text-center reveal">
-    <p class="section-label">Community Outreach</p>
-    <h2 class="section-title">Each One, Shield One</h2>
-    <p style="max-width:600px;margin:1rem auto 2rem;line-height:1.8;opacity:.85">Request your community outreach kit.</p>
-    <button class="btn btn-gold" onclick="openModal('outreach-modal')">Request Your Kit</button>
-  </div>
-</section>
-
-<!-- PHOTOS BREAK -->
-<section class="section" style="padding:0">
-  <div style="max-width:1100px;margin:0 auto;padding:0 2rem">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-      <img src="https://static.showit.co/800/eVufrIjdiRm-EyF8XAkzsQ/shared/pexels-leeloothefirst-4942566.jpg" alt="Wellness" style="width:100%;border-radius:16px;object-fit:cover;height:350px">
-      <img src="https://static.showit.co/800/N0yzYqAaYvu31ErFtlLn_g/321008/517953063_10165720430890744_2291706329923788505_n.jpg" alt="Community" style="width:100%;border-radius:16px;object-fit:cover;height:350px">
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section" id="contact">
-  <div class="section-inner">
-    <div class="text-center reveal">
-      <p class="section-label">Get in Touch</p>
-      <h2 class="section-title">Connect With Us</h2>
-    </div>
-    <div class="contact-grid reveal" style="margin-top:2rem">
-      <div>
-        <p style="margin-bottom:1.5rem;line-height:1.8;opacity:.85">Whether you're looking to join as a Founding Family, start a WELL, get involved with MADE, volunteer, or simply learn more -- we'd love to hear from you.</p>
-        <div style="margin-top:2rem">
-          <img src="https://static.showit.co/800/N0yzYqAaYvu31ErFtlLn_g/321008/517953063_10165720430890744_2291706329923788505_n.jpg" alt="Community" style="width:100%;border-radius:16px;height:280px;object-fit:cover">
-        </div>
-      </div>
-      <div class="form-card">
-        <h3 style="font-family:var(--serif);font-size:1.3rem;margin-bottom:1.5rem">Send a Message</h3>
-        <form class="form" onsubmit="return submitForm(event,'Contact Form')">
-          <input type="text" name="name" placeholder="Full Name" required>
-          <input type="email" name="email" placeholder="Email Address" required>
-          <textarea name="message" placeholder="Your message..." required></textarea>
-          <button type="submit" class="btn btn-gold">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
+<!-- Footer -->
+<footer id="refer">
   <div class="footer-grid">
-    <div>
-      <h4>WellMade Foundation</h4>
-      <a href="#well-framework">Start a WELL</a>
-      <a href="#made-framework">MADE Programs</a>
-      <a href="#membership">Founding Family Membership</a>
-      <a href="#programs">All Programs</a>
+    <div class="footer-col">
+      <h4>Pure Wellness Love</h4>
+      <p>Wellness products and resources that nourish the whole family.</p>
+      <a href="#">Shop PureWellnessJoy</a>
+      <a href="#">Wellness Blog</a>
     </div>
-    <div>
-      <h4>Pure Wellness Joy</h4>
-      <a href="#">Wellness Retreats</a>
-      <a href="#">Healing Programs</a>
-      <a href="#">Premium Experiences</a>
+    <div class="footer-col">
+      <h4>Well Made Foundation</h4>
+      <p>Building legacy through the WELL and MADE frameworks.</p>
+      <a href="#learn">About WELL</a>
+      <a href="#participate">About MADE</a>
+      <a href="#donate">Donate</a>
+      <a href="#">Refer a Family</a>
     </div>
-    <div>
+    <div class="footer-col">
       <h4>Dr. Jasmine</h4>
+      <p>Founder and guiding voice behind the WellMade vision.</p>
       <a href="#">About Dr. Jasmine</a>
-      <a href="#shield">Anti-Trafficking Shield</a>
-      <a href="#">The Sovereign Syndicate</a>
-      <a href="#transparency">Financial Transparency</a>
+      <a href="#">Speaking Inquiries</a>
+      <a href="#">Contact</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 WellMade Foundation. Founded and guided with complete devotion by Dr. Jasmine Therese Esguerra.<br>
-    WELL = Wisdom Empowering Love &amp; Leadership. MADE = Mothers And Daughters Empowered / Moms And Dads Empowered.</p>
+    <p>WellMade Foundation. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- MODALS -->
-<div class="modal-overlay" id="shield-modal">
-  <div class="modal">
-    <button class="close-modal" onclick="closeModal('shield-modal')">&#215;</button>
-    <h2>Support the Shield</h2>
-    <p>Support the Anti-Trafficking Shield. Your contribution helps provide emergency sanctuary, legal infrastructure, and protective rescue.</p>
-    <form class="form" onsubmit="return submitForm(event,'Anti-Trafficking Shield Support')">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="message" placeholder="How would you like to help?"></textarea>
-      <button type="submit" class="btn btn-gold">Pledge Support</button>
-    </form>
-  </div>
-</div>
-
-<div class="modal-overlay" id="sovereign-modal">
-  <div class="modal">
-    <button class="close-modal" onclick="closeModal('sovereign-modal')">&#215;</button>
-    <h2>The Sovereign Syndicate</h2>
-    <p>Request access to the private legacy wealth pillar. Discretion is sacred. All inquiries are confidential.</p>
-    <form class="form" onsubmit="return submitForm(event,'Sovereign Syndicate Access Request')">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="message" placeholder="Tell us about your vision for legacy..."></textarea>
-      <button type="submit" class="btn btn-gold">Request Access</button>
-    </form>
-  </div>
-</div>
-
-<div class="modal-overlay" id="outreach-modal">
-  <div class="modal">
-    <button class="close-modal" onclick="closeModal('outreach-modal')">&#215;</button>
-    <h2>Each One, Shield One</h2>
-    <p>Request your community outreach kit.</p>
-    <form class="form" onsubmit="return submitForm(event,'Each One Shield One Kit Request')">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="message" placeholder="Where will you share the mission?"></textarea>
-      <button type="submit" class="btn btn-gold">Request Your Kit</button>
-    </form>
-  </div>
-</div>
-
-<div class="modal-overlay" id="program-modal">
-  <div class="modal">
-    <button class="close-modal" onclick="closeModal('program-modal')">&#215;</button>
-    <h2 id="program-modal-title">Get Involved</h2>
-    <p>Express your interest in this program. We'll reach out with next steps.</p>
-    <form class="form" onsubmit="return submitForm(event,'Program Interest')">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="message" placeholder="How would you like to be involved?"></textarea>
-      <button type="submit" class="btn btn-gold">Express Interest</button>
-    </form>
-  </div>
-</div>
-
-<div class="modal-overlay" id="well-modal">
-  <div class="modal">
-    <button class="close-modal" onclick="closeModal('well-modal')">&#215;</button>
-    <h2>Start a WELL</h2>
-    <p>Apply to host a WELL focus group. Share your wisdom, gather your community, and pay it forward. All proceeds go to the WellMade Foundation.</p>
-    <form class="form" onsubmit="return submitForm(event,'WELL Host Application')">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="text" name="topic" placeholder="Proposed WELL topic">
-      <textarea name="message" placeholder="Describe your vision for this WELL..." required></textarea>
-      <button type="submit" class="btn btn-gold">Submit Application</button>
-    </form>
-  </div>
-</div>
-
-<div class="modal-overlay" id="made-modal">
-  <div class="modal">
-    <button class="close-modal" onclick="closeModal('made-modal')">&#215;</button>
-    <h2>Get Involved with MADE</h2>
-    <p>Whether you're a mother, daughter, father, or son -- MADE programs welcome all families. Tell us how you'd like to participate.</p>
-    <form class="form" onsubmit="return submitForm(event,'MADE Program Interest')">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <select name="program" style="padding:.85rem 1.2rem;border:1.5px solid rgba(45,74,62,.15);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--cream);color:var(--ocean)">
-        <option value="">Select a program...</option>
-        <option value="MADE to Travel">MADE to Travel</option>
-        <option value="MADE with Money">MADE with Money</option>
-        <option value="MADE in the Bay">MADE in the Bay</option>
-        <option value="MADE on Maui">MADE on Maui</option>
-        <option value="General">General Interest</option>
-      </select>
-      <textarea name="message" placeholder="Tell us about yourself and your family..."></textarea>
-      <button type="submit" class="btn btn-gold">Express Interest</button>
-    </form>
-  </div>
-</div>
-
 <script>
-// NAV SCROLL
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
-
-// MOBILE MENU
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileOverlay = document.getElementById('mobileOverlay');
-function toggleMenu(open) {
-  mobileMenu.classList.toggle('open', open);
-  mobileOverlay.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
+// Tracker animation
+function animateCounter() {
+  const el = document.getElementById('familyCount');
+  const fill = document.getElementById('trackerFill');
+  let count = 0;
+  const target = 0; // Replace with real count
+  const duration = 2000;
+  const step = Math.max(1, Math.floor(target / (duration / 16)));
+  const interval = setInterval(() => {
+    count += step;
+    if (count >= target) { count = target; clearInterval(interval); }
+    el.textContent = count.toLocaleString();
+    fill.style.width = Math.max(2, (count / 1000000) * 100) + '%';
+  }, 16);
 }
-hamburger.addEventListener('click', () => toggleMenu(true));
-mobileOverlay.addEventListener('click', () => toggleMenu(false));
-document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
-
-// REVEAL ON SCROLL
-const reveals = document.querySelectorAll('.reveal');
+// Run on scroll into view
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
-}, { threshold: 0.15 });
-reveals.forEach(el => observer.observe(el));
+  entries.forEach(e => { if (e.isIntersecting) { animateCounter(); observer.disconnect(); }});
+}, { threshold: 0.5 });
+observer.observe(document.querySelector('.tracker-widget'));
 
-// FAMILY COUNTER
-let counted = false;
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !counted) {
-      counted = true;
-      const ring = document.getElementById('ringProgress');
-      const circumference = 754;
-      ring.style.strokeDashoffset = circumference;
-      document.getElementById('trackerBar').style.width = '0%';
-    }
-  });
-}, { threshold: 0.3 });
-counterObserver.observe(document.querySelector('.tracker'));
-
-// MODALS
-function openModal(id, programName) {
-  document.getElementById(id).classList.add('open');
-  document.body.style.overflow = 'hidden';
-  if (programName && id === 'program-modal') {
-    document.getElementById('program-modal-title').textContent = programName;
-  }
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeModal(overlay.id);
+// Smooth scroll for nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('navLinks').classList.remove('open');
   });
 });
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
-    toggleMenu(false);
-  }
-});
-
-// FORM SUBMISSION
-function submitForm(event, type) {
-  event.preventDefault();
-  const form = event.target;
-  const name = form.querySelector('[name="name"]').value;
-  const email = form.querySelector('[name="email"]').value;
-  const message = form.querySelector('[name="message"]')?.value || '';
-  const subject = encodeURIComponent('WellMade Foundation -- ' + type);
-  const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nType: ' + type + '\n\n' + message);
-  window.location.href = 'mailto:wildejack1010@gmail.com?subject=' + subject + '&body=' + body;
-  const modal = form.closest('.modal-overlay');
-  if (modal) closeModal(modal.id);
-  return false;
-}
 </script>
 </body>
 </html>

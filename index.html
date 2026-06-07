@@ -52,11 +52,40 @@
     .nav-logo { font-size: 12px; }
   }
 
+  /* ── EDITORIAL IMAGES ── */
+  .editorial-img {
+    width: 100%; display: block; object-fit: cover;
+  }
+  .img-full {
+    width: 100%; max-height: 520px; object-fit: cover;
+  }
+  .img-split {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin: 0;
+  }
+  .img-split img { width: 100%; height: 400px; object-fit: cover; display: block; }
+  .img-contained {
+    max-width: 900px; margin: 0 auto; display: block;
+  }
+  .img-caption {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11px; font-style: italic; color: #76716d;
+    text-align: center; padding: 16px 0; letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .img-split { grid-template-columns: 1fr; }
+    .img-split img { height: 280px; }
+    .img-full { max-height: 360px; }
+  }
+
   /* ── HERO ── */
   .hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 140px 40px 120px;
     position: relative;
+    background: linear-gradient(to bottom, rgba(253,251,247,0.3) 0%, rgba(253,251,247,0.95) 100%),
+      url('images/family-beach-sunset.jpg') center/cover no-repeat;
   }
   .hero-content { max-width: 800px; }
   .hero-eyebrow {
@@ -375,6 +404,11 @@
   </div>
 </section>
 
+<!-- IMAGE: Hands planting -->
+<div style="padding: 0;">
+  <img src="images/hands-planting.jpg" alt="Hands holding new growth" class="img-contained" style="max-height: 480px;">
+</div>
+
 <!-- THE MADE FRAMEWORK -->
 <section>
   <div class="section-inner">
@@ -404,6 +438,12 @@
   </div>
 </section>
 
+<!-- IMAGE: Maui mountains -->
+<div style="padding: 80px 40px 0;">
+  <img src="images/maui-mountains.jpg" alt="Maui mountain landscape" class="img-full" style="max-height: 480px;">
+  <p class="img-caption">MADE on Maui &mdash; where families connect to land, culture, and each other</p>
+</div>
+
 <!-- CULTURAL ROOTS -->
 <section>
   <div class="section-inner" style="text-align: center;">
@@ -431,6 +471,12 @@
     <p class="cultural-note">The Sampaguita is the national flower of the Philippines -- a living emblem of this foundation's commitment to heritage, beauty, and resilience.</p>
   </div>
 </section>
+
+<!-- IMAGE: Split - friends + ocean -->
+<div class="img-split">
+  <img src="images/friends-sea.jpg" alt="Community by the sea">
+  <img src="images/ocean-sunset-rocks.jpg" alt="Ocean at sunset">
+</div>
 
 <!-- THE 8 PROGRAMS -->
 <section id="programs">
@@ -510,6 +556,11 @@
   </div>
 </section>
 
+<!-- IMAGE: Hands with light -->
+<div style="padding: 80px 40px 0;">
+  <img src="images/hands-light.jpg" alt="Hands in light" class="img-contained" style="max-height: 400px;">
+</div>
+
 <!-- FINANCIAL TRANSPARENCY -->
 <section>
   <div class="section-inner">
@@ -545,6 +596,12 @@
   </div>
 </section>
 
+<!-- IMAGE: Woman in field with mountains -->
+<div style="padding: 0;">
+  <img src="images/woman-field-mountains.jpg" alt="Arms open to the horizon" class="img-full" style="max-height: 440px;">
+  <p class="img-caption">Posture of Victory</p>
+</div>
+
 <!-- SEASONAL PROGRAMMING -->
 <section>
   <div class="section-inner">
@@ -577,6 +634,11 @@
     </div>
   </div>
 </section>
+
+<!-- IMAGE: Green hills -->
+<div style="padding: 80px 40px 0;">
+  <img src="images/green-hills.jpg" alt="Rolling green hills" class="img-contained" style="max-height: 400px;">
+</div>
 
 <!-- 1 MILLION FAMILIES -->
 <section class="counter-section">

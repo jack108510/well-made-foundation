@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WellMade Foundation — Building Stronger Families, Stronger Communities</title>
+<title>WellMade Foundation — Wisdom Empowering Love & Leadership</title>
+<meta name="description" content="Building strong families through the WELL and MADE frameworks. A nonprofit foundation rooted in Filipino heritage.">
 <style>
   :root {
     --gold: #D4AF37;
@@ -20,9 +21,7 @@
     --shadow-hover: 0 8px 30px rgba(44, 24, 16, 0.15);
     --radius: 12px;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--text-dark);
@@ -59,12 +58,16 @@
   }
   .hero-content { max-width: 800px; }
   .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.2rem, 5.5vw, 3.8rem);
     font-weight: 800; margin-bottom: 1rem;
     text-shadow: 0 2px 20px rgba(0,0,0,0.3);
   }
   .hero h1 span { color: var(--gold-light); }
-  .hero p { font-size: 1.25rem; opacity: 0.95; margin-bottom: 2rem; line-height: 1.8; }
+  .hero p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 2rem; line-height: 1.8; }
+  .hero .tagline {
+    font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 1.5rem; opacity: 0.9;
+  }
   .btn {
     display: inline-block; padding: 0.9rem 2.2rem; border-radius: 50px;
     text-decoration: none; font-weight: 600; font-size: 1rem;
@@ -79,73 +82,135 @@
   section { padding: 5rem 2rem; }
   .section-header { text-align: center; margin-bottom: 3.5rem; }
   .section-header h2 { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 0.5rem; }
-  .section-header p { color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+  .section-header p { color: var(--text-light); font-size: 1.1rem; max-width: 650px; margin: 0 auto; }
   .accent-line { width: 60px; height: 3px; background: var(--gold); margin: 1rem auto; border-radius: 2px; }
   .container { max-width: 1200px; margin: 0 auto; }
 
-  /* What We Do */
-  #what-we-do { background: var(--warm-bg); }
+  /* WELL Framework */
+  #well-framework { background: var(--warm-bg); }
+  .framework-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .framework-text h3 { font-size: 1.1rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.5rem; }
+  .framework-text .meaning { font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; }
+  .framework-text p { color: var(--text-mid); margin-bottom: 1.5rem; }
+  .steps { list-style: none; counter-reset: step; }
+  .steps li {
+    counter-increment: step; padding: 1rem 0; padding-left: 3rem; position: relative;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+    color: var(--text-mid);
+  }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 1rem;
+    width: 2rem; height: 2rem; background: var(--gold); color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.9rem;
+  }
+  .steps li strong { color: var(--text-dark); }
+  .framework-visual {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    border-radius: var(--radius); padding: 3rem; text-align: center; color: white;
+  }
+  .framework-visual .acronym {
+    font-size: 4rem; font-weight: 900; letter-spacing: 0.1em;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .framework-visual .expansion { font-size: 1rem; margin-top: 1rem; opacity: 0.9; line-height: 1.6; }
+
+  /* MADE Framework */
+  #made-framework { background: white; }
+  .made-header { text-align: center; margin-bottom: 0.5rem; }
+  .made-header .acronym-expand { color: var(--text-light); font-size: 0.95rem; font-style: italic; }
+  .made-programs {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem; margin-top: 2.5rem;
+  }
+  .made-card {
+    background: var(--warm-bg); border-radius: var(--radius); padding: 2rem;
+    border-left: 4px solid var(--gold); transition: all 0.3s;
+  }
+  .made-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .made-card h3 { color: var(--gold-dark); margin-bottom: 0.75rem; font-size: 1.15rem; }
+  .made-card p { color: var(--text-mid); font-size: 0.95rem; }
+
+  /* Cultural Roots */
+  #cultural-roots { background: var(--warm-bg); }
+  .culture-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+  .culture-card { text-align: center; padding: 2rem; }
+  .culture-card .symbol { font-size: 3rem; margin-bottom: 1rem; }
+  .culture-card h3 { color: var(--gold-dark); margin-bottom: 0.75rem; }
+  .culture-card p { color: var(--text-mid); font-size: 0.95rem; }
+  .sampaguita-intro {
+    text-align: center; max-width: 700px; margin: 0 auto 2rem;
+    color: var(--text-mid); font-size: 1.05rem;
+  }
+
+  /* Programs */
+  #programs { background: white; }
   .programs-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
   }
   .program-card {
-    background: var(--card-bg); border-radius: var(--radius); padding: 2rem;
-    box-shadow: var(--shadow); transition: all 0.3s;
+    background: var(--warm-bg); border-radius: var(--radius); padding: 1.5rem;
+    transition: all 0.3s;
   }
-  .program-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-  .program-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
-  .program-card h3 { color: var(--gold-dark); margin-bottom: 0.75rem; font-size: 1.2rem; }
-  .program-card p { color: var(--text-mid); font-size: 0.95rem; }
+  .program-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .program-card .icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .program-card h3 { color: var(--gold-dark); margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .program-card p { color: var(--text-mid); font-size: 0.9rem; }
 
-  /* Story */
-  #our-story { background: white; }
-  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .story-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-  .story-img img { width: 100%; height: 400px; object-fit: cover; display: block; }
-  .story-text h3 { font-size: 1.5rem; color: var(--gold-dark); margin-bottom: 1rem; }
-  .story-text p { color: var(--text-mid); margin-bottom: 1rem; }
-
-  /* Impact */
-  #impact {
-    background: linear-gradient(rgba(44,24,16,0.7), rgba(44,24,16,0.7)),
-      url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1600&q=80') center/cover no-repeat fixed;
+  /* Shield */
+  #shield {
+    background: linear-gradient(rgba(44,24,16,0.8), rgba(44,24,16,0.8)),
+      url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600&q=80') center/cover no-repeat;
     color: white; text-align: center;
   }
-  #impact .section-header h2 { color: white; }
-  #impact .section-header p { color: rgba(255,255,255,0.85); }
-  .impact-stats {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem; margin-top: 2rem;
-  }
-  .stat { padding: 2rem; }
-  .stat .number { font-size: 3rem; font-weight: 800; color: var(--gold-light); }
-  .stat .label { font-size: 1rem; opacity: 0.9; margin-top: 0.5rem; }
-
-  /* Get Involved */
-  #get-involved { background: var(--warm-bg); }
-  .involve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-  .involve-card {
-    background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
-    box-shadow: var(--shadow); transition: all 0.3s;
-  }
-  .involve-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-  .involve-card img { width: 100%; height: 220px; object-fit: cover; }
-  .involve-card .content { padding: 1.5rem 2rem 2rem; }
-  .involve-card h3 { color: var(--gold-dark); margin-bottom: 0.75rem; }
-  .involve-card p { color: var(--text-mid); font-size: 0.95rem; margin-bottom: 1.2rem; }
+  #shield .section-header h2 { color: white; }
+  #shield .section-header p { color: rgba(255,255,255,0.85); }
+  #shield .shield-desc { max-width: 700px; margin: 0 auto 2rem; color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.8; }
 
   /* Transparency */
-  #transparency { background: white; }
-  .transparency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-  .transparency-list { list-style: none; }
-  .transparency-list li {
-    padding: 1rem 0; border-bottom: 1px solid rgba(212,175,55,0.2);
-    display: flex; align-items: flex-start; gap: 1rem;
+  #transparency { background: var(--warm-bg); }
+  .transparency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .trans-card {
+    background: white; border-radius: var(--radius); padding: 2rem;
+    box-shadow: var(--shadow); text-align: center;
   }
-  .transparency-list li .check { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; margin-top: 0.15rem; }
-  .transparency-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-  .transparency-img img { width: 100%; height: 380px; object-fit: cover; display: block; }
+  .trans-card .source { font-size: 2rem; font-weight: 800; color: var(--gold); }
+  .trans-card h3 { color: var(--text-dark); margin: 0.75rem 0 0.5rem; font-size: 1.1rem; }
+  .trans-card p { color: var(--text-mid); font-size: 0.95rem; }
+
+  /* Membership */
+  #membership { background: white; text-align: center; }
+  .membership-box {
+    max-width: 600px; margin: 0 auto; background: var(--warm-bg);
+    border-radius: var(--radius); padding: 3rem; border: 2px solid var(--gold);
+  }
+  .membership-box .price { font-size: 3.5rem; font-weight: 900; color: var(--gold-dark); }
+  .membership-box .price span { font-size: 1.2rem; font-weight: 500; color: var(--text-mid); }
+  .membership-box .type { font-size: 1.1rem; color: var(--text-dark); font-weight: 600; margin: 0.5rem 0 1rem; }
+  .membership-box p { color: var(--text-mid); margin-bottom: 1.5rem; }
+
+  /* Seasonal */
+  #seasonal { background: var(--warm-bg); }
+  .seasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+  .season-card {
+    background: white; border-radius: var(--radius); padding: 2rem; text-align: center;
+    box-shadow: var(--shadow); transition: all 0.3s;
+  }
+  .season-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .season-card .season-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .season-card h3 { color: var(--gold-dark); margin-bottom: 0.5rem; }
+  .season-card p { color: var(--text-mid); font-size: 0.9rem; }
+
+  /* Families Counter */
+  #counter {
+    background: white; text-align: center; padding: 4rem 2rem;
+  }
+  .counter-display { margin: 2rem 0; }
+  .counter-display .current { font-size: 4rem; font-weight: 900; color: var(--gold); }
+  .counter-display .of { font-size: 1.5rem; color: var(--text-light); margin: 0 0.5rem; }
+  .counter-display .goal { font-size: 2rem; font-weight: 700; color: var(--text-dark); }
+  .counter-tagline { color: var(--text-light); font-size: 1.1rem; margin-top: 1rem; font-style: italic; }
 
   /* Contact */
   #contact { background: var(--warm-bg); }
@@ -158,9 +223,7 @@
     border-radius: 8px; font-family: inherit; font-size: 1rem;
     background: white; transition: border-color 0.3s;
   }
-  .contact-form input:focus, .contact-form textarea:focus {
-    outline: none; border-color: var(--gold);
-  }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--gold); }
   .contact-form textarea { min-height: 140px; resize: vertical; }
 
   /* Footer */
@@ -169,10 +232,11 @@
     padding: 3rem 2rem; text-align: center;
   }
   footer .footer-logo { font-size: 1.3rem; font-weight: 700; color: var(--gold); margin-bottom: 1rem; }
+  footer .collective { color: var(--gold-light); font-size: 0.95rem; margin-bottom: 1rem; }
+  footer .sites { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  footer .sites a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+  footer .sites a:hover { color: var(--gold); }
   footer p { font-size: 0.9rem; }
-  footer .social { margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; }
-  footer .social a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
-  footer .social a:hover { color: var(--gold); }
 
   /* Responsive */
   @media (max-width: 768px) {
@@ -183,7 +247,8 @@
       top: 100%; left: 0; right: 0; background: rgba(255,253,247,0.98);
       padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid rgba(212,175,55,0.2);
     }
-    .story-grid, .transparency-grid, .contact-grid { grid-template-columns: 1fr; }
+    .framework-grid, .contact-grid { grid-template-columns: 1fr; }
+    .culture-grid { grid-template-columns: 1fr; }
     .btn-outline { margin-left: 0; margin-top: 0.75rem; }
   }
 </style>
@@ -195,10 +260,11 @@
   <a href="#" class="logo">Well<span>Made</span> Foundation</a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
   <ul class="nav-links">
-    <li><a href="#what-we-do">What We Do</a></li>
-    <li><a href="#our-story">Our Story</a></li>
-    <li><a href="#impact">Impact</a></li>
-    <li><a href="#get-involved">Get Involved</a></li>
+    <li><a href="#well-framework">WELL</a></li>
+    <li><a href="#made-framework">MADE</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#shield">Shield</a></li>
+    <li><a href="#membership">Membership</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -206,140 +272,170 @@
 <!-- Hero -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Building <span>Stronger Families</span>,<br>Stronger Communities</h1>
-    <p>The WellMade Foundation empowers families and communities through education, wellness programs, and meaningful connection — because every person deserves the chance to thrive.</p>
-    <a href="#get-involved" class="btn btn-gold">Get Involved</a>
-    <a href="#our-story" class="btn btn-outline">Our Story</a>
+    <div class="tagline">WellMade Foundation</div>
+    <h1><span>Wisdom Empowering</span><br>Love & Leadership</h1>
+    <p>Building strong families through the WELL and MADE frameworks. Rooted in Filipino heritage, open to all. Where every family has the tools to thrive across generations.</p>
+    <a href="#well-framework" class="btn btn-gold">Start a WELL</a>
+    <a href="#made-framework" class="btn btn-outline">Explore MADE</a>
   </div>
 </section>
 
-<!-- What We Do -->
-<section id="what-we-do">
+<!-- WELL Framework -->
+<section id="well-framework">
   <div class="container">
     <div class="section-header">
-      <h2>What We Do</h2>
+      <h2>The WELL Framework</h2>
       <div class="accent-line"></div>
-      <p>We meet families where they are — with programs designed to uplift, educate, and connect.</p>
+      <p>A way of being. When a family operates in WELL, every decision, tradition, and conversation becomes part of something bigger than any one person.</p>
+    </div>
+    <div class="framework-grid">
+      <div class="framework-text">
+        <h3>The Philosophy</h3>
+        <div class="meaning">WELL calls each family member to lead with wisdom, nurture with love, and protect with intention.</div>
+        <p>It calls each family member to lead with wisdom, nurture with love, and protect with intention. WELL isn't a program you attend — it's a way your family operates.</p>
+        <h3 style="margin-top: 2rem;">How to Start a WELL</h3>
+        <ol class="steps">
+          <li><strong>Gather Your Circle</strong> — Bring together people who share your values and vision for family legacy. This is your WELL circle.</li>
+          <li><strong>Commit to the Framework</strong> — Adopt WELL principles: wisdom, empowerment, love, leadership.</li>
+          <li><strong>Build Together</strong> — Use the tools, retreats, and community of WellMade to grow.</li>
+        </ol>
+      </div>
+      <div class="framework-visual">
+        <div class="acronym">WELL</div>
+        <div class="expansion">
+          <strong>W</strong>isdom<br>
+          <strong>E</strong>mpowering<br>
+          <strong>L</strong>ove &<br>
+          <strong>L</strong>eadership
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MADE Framework -->
+<section id="made-framework">
+  <div class="container">
+    <div class="section-header">
+      <h2>The MADE Framework</h2>
+      <div class="accent-line"></div>
+      <div class="made-header">
+        <span class="acronym-expand">Mothers And Daughters Empowered / Moms And Dads Empowered</span>
+      </div>
+      <p style="margin-top: 1rem;">The action arm. Structured programs where parents and children grow together. Every MADE program is inclusive, culturally grounded, and community-driven.</p>
+    </div>
+    <div class="made-programs">
+      <div class="made-card">
+        <h3>✈️ MADE to Travel</h3>
+        <p>Family travel experiences — cultural awareness, independence, shared memories across generations.</p>
+      </div>
+      <div class="made-card">
+        <h3>💰 MADE to Money</h3>
+        <p>Financial literacy for the whole family — wealth-building habits and economic empowerment.</p>
+      </div>
+      <div class="made-card">
+        <h3>🌉 MADE in the Bay</h3>
+        <p>Bay Area workshops, circles, and community events — local culture and family connection.</p>
+      </div>
+      <div class="made-card">
+        <h3>🌺 MADE on Maui</h3>
+        <p>Retreats and healing on Maui — connecting families to land, culture, and each other. Transformative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cultural Roots -->
+<section id="cultural-roots">
+  <div class="container">
+    <div class="section-header">
+      <h2>Cultural Roots</h2>
+      <div class="accent-line"></div>
+      <p class="sampaguita-intro">The sampaguita is the national flower of the Philippines — symbolizing purity, devotion, and the strength of a promise kept. It is the living emblem of the WellMade Foundation.</p>
+    </div>
+    <div class="culture-grid">
+      <div class="culture-card">
+        <div class="symbol">🌸</div>
+        <h3>Sampaguita</h3>
+        <p>The feminine — grace, nurturing, and the sacred bond of motherhood.</p>
+      </div>
+      <div class="culture-card">
+        <div class="symbol">🛡️</div>
+        <h3>The Sampaguita Promise</h3>
+        <p>Purity, devotion, and the strength of a promise kept. Our commitment to every family we serve.</p>
+      </div>
+      <div class="culture-card">
+        <div class="symbol">⚔️</div>
+        <h3>Bayani</h3>
+        <p>The masculine — strength, protection, and the warrior spirit of legacy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- All 8 Programs -->
+<section id="programs">
+  <div class="container">
+    <div class="section-header">
+      <h2>How We Serve</h2>
+      <div class="accent-line"></div>
+      <p>Eight programs designed to uplift, empower, and protect families.</p>
     </div>
     <div class="programs-grid">
       <div class="program-card">
-        <div class="icon">👶</div>
-        <h3>Early Childhood Support</h3>
-        <p>Resources and programming for parents and caregivers of young children, including developmental screenings, play groups, and parent education workshops.</p>
+        <div class="icon">👩‍👧</div>
+        <h3>Mothers & Daughters Empowered</h3>
+        <p>Empowerment programming for mothers and daughters to lead, heal, and grow together.</p>
       </div>
       <div class="program-card">
-        <div class="icon">💚</div>
-        <h3>Family Wellness</h3>
-        <p>Access to mental health resources, wellness workshops, and family counseling connections. Because healthy families start with healthy support systems.</p>
+        <div class="icon">👨‍👩‍👧‍👦</div>
+        <h3>Moms & Dads Empowered</h3>
+        <p>Resources and community for parents building strong, intentional families.</p>
       </div>
       <div class="program-card">
-        <div class="icon">🤝</div>
-        <h3>Community Building</h3>
-        <p>Creating spaces where families connect, share experiences, and build lasting support networks through community events, meetups, and mentorship pairings.</p>
+        <div class="icon">🎪</div>
+        <h3>Community Fundraisers</h3>
+        <p>Community-driven fundraising — bringing people together for shared purpose.</p>
       </div>
       <div class="program-card">
-        <div class="icon">📚</div>
-        <h3>Education Workshops</h3>
-        <p>Free and low-cost workshops covering financial literacy, parenting skills, nutrition, career development, and topics that families actually need.</p>
-      </div>
-      <div class="program-card">
-        <div class="icon">🏠</div>
-        <h3>Resource Navigation</h3>
-        <p>Helping families find and access existing community resources — from housing assistance to childcare subsidies to food programs — without the runaround.</p>
+        <div class="icon">🔒</div>
+        <h3>Safety Circles</h3>
+        <p>Protective community spaces — support, resources, and belonging.</p>
       </div>
       <div class="program-card">
         <div class="icon">🌟</div>
-        <h3>Youth Enrichment</h3>
-        <p>After-school programs, mentorship opportunities, and creative outlets for kids and teens to explore their potential in a safe, supportive environment.</p>
+        <h3>Youth Development</h3>
+        <p>Youth leadership programs — nurturing the next generation.</p>
+      </div>
+      <div class="program-card">
+        <div class="icon">🏃</div>
+        <h3>Family Pentathlon</h3>
+        <p>Annual family athletic tournament — health, teamwork, friendly competition.</p>
+      </div>
+      <div class="program-card">
+        <div class="icon">🌸</div>
+        <h3>Sampaguita Sunday Gala</h3>
+        <p>Annual scholarship gala each May — celebrating culture, investing in futures.</p>
+      </div>
+      <div class="program-card">
+        <div class="icon">🏆</div>
+        <h3>Mabuhay Monday Awards</h3>
+        <p>Community leadership awards — recognizing the WellMade spirit.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Our Story -->
-<section id="our-story">
+<!-- Anti-Trafficking Shield -->
+<section id="shield">
   <div class="container">
     <div class="section-header">
-      <h2>Our Story</h2>
+      <h2>The Shield</h2>
       <div class="accent-line"></div>
+      <p>Every family deserves protection.</p>
     </div>
-    <div class="story-grid">
-      <div class="story-img">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Community gathering">
-      </div>
-      <div class="story-text">
-        <h3>Founded by Jasmine, Built for Everyone</h3>
-        <p>The WellMade Foundation was born from a simple but powerful belief: every family deserves a strong foundation. Our founder, Jasmine, saw firsthand how community support — or the lack of it — shapes the trajectory of families and children.</p>
-        <p>After years of working with families in her community and witnessing gaps in access to basic resources, Jasmine created WellMade to be the bridge. Not a handout, but a hand up. A place where families find the tools, connections, and encouragement they need to build the lives they envision.</p>
-        <p>"WellMade" isn't just our name — it's our standard. We believe that well-made families build well-made communities. And that starts with showing up for each other.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Impact -->
-<section id="impact">
-  <div class="container">
-    <div class="section-header">
-      <h2>Our Impact</h2>
-      <div class="accent-line"></div>
-      <p>Every number represents a family supported, a child encouraged, a community strengthened.</p>
-    </div>
-    <div class="impact-stats">
-      <div class="stat">
-        <div class="number">500+</div>
-        <div class="label">Families Served</div>
-      </div>
-      <div class="stat">
-        <div class="number">50+</div>
-        <div class="label">Workshops &amp; Events</div>
-      </div>
-      <div class="stat">
-        <div class="number">100+</div>
-        <div class="label">Volunteers &amp; Partners</div>
-      </div>
-      <div class="stat">
-        <div class="number">3</div>
-        <div class="label">Core Programs</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Get Involved -->
-<section id="get-involved">
-  <div class="container">
-    <div class="section-header">
-      <h2>Get Involved</h2>
-      <div class="accent-line"></div>
-      <p>Whether you give an hour, a dollar, or your voice — you make a difference.</p>
-    </div>
-    <div class="involve-grid">
-      <div class="involve-card">
-        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80" alt="Volunteers helping community">
-        <div class="content">
-          <h3>Volunteer</h3>
-          <p>Join our team of volunteers who make our programs possible. Whether you can help weekly or occasionally, there's a place for you — from event setup to mentoring to administrative support.</p>
-          <a href="#contact" class="btn btn-gold" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Sign Up to Volunteer</a>
-        </div>
-      </div>
-      <div class="involve-card">
-        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&q=80" alt="Community support">
-        <div class="content">
-          <h3>Donate</h3>
-          <p>Your financial support directly funds programs for families who need them. Every dollar goes toward workshops, resources, and community events. We're transparent about where your money goes.</p>
-          <a href="#contact" class="btn btn-gold" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Make a Donation</a>
-        </div>
-      </div>
-      <div class="involve-card">
-        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt="Team collaboration">
-        <div class="content">
-          <h3>Partner With Us</h3>
-          <p>Are you a business, organization, or church group looking to make a local impact? We'd love to explore partnership opportunities — from sponsoring events to co-hosting workshops.</p>
-          <a href="#contact" class="btn btn-gold" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Become a Partner</a>
-        </div>
-      </div>
-    </div>
+    <p class="shield-desc">The Shield exists to ensure that protection is real, funded, and relentless. Emergency sanctuary, legal infrastructure, and protective rescue initiatives for vulnerable families and individuals.</p>
+    <a href="#contact" class="btn btn-gold">Support the Shield</a>
   </div>
 </section>
 
@@ -347,24 +443,92 @@
 <section id="transparency">
   <div class="container">
     <div class="section-header">
-      <h2>Transparency &amp; Accountability</h2>
+      <h2>Financial Transparency</h2>
       <div class="accent-line"></div>
-      <p>We take your trust seriously. Here's how we ensure every dollar is well spent.</p>
+      <p>We're explicit about where money comes from. Every dollar tracked.</p>
     </div>
     <div class="transparency-grid">
-      <div>
-        <ul class="transparency-list">
-          <li><span class="check">✓</span><div><strong>Financial Reporting</strong> — We publish annual reports detailing how funds are raised and allocated across our programs.</div></li>
-          <li><span class="check">✓</span><div><strong>Community-Led</strong> — Our programs are shaped by the families we serve, not imposed from the top down.</div></li>
-          <li><span class="check">✓</span><div><strong> measurable Outcomes</strong> — We track the impact of every initiative and share results openly with our supporters.</div></li>
-          <li><span class="check">✓</span><div><strong>Low Overhead</strong> — We keep administrative costs minimal so the majority of donations go directly to programs.</div></li>
-          <li><span class="check">✓</span><div><strong>Open Communication</strong> — Have questions about our operations? We're happy to answer them. Reach out anytime.</div></li>
-        </ul>
+      <div class="trans-card">
+        <div class="source">10%</div>
+        <h3>Pure Wellness Joy</h3>
+        <p>10% of all proceeds from Pure Wellness Joy go directly to the foundation.</p>
       </div>
-      <div class="transparency-img">
-        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80" alt="Helping hands community">
+      <div class="trans-card">
+        <div class="source">100%</div>
+        <h3>WELL Proceeds</h3>
+        <p>All proceeds from WELL focus groups and hosted circles support the foundation.</p>
+      </div>
+      <div class="trans-card">
+        <div class="source">🎁</div>
+        <h3>Donations</h3>
+        <p>Tax-deductible direct contributions from individuals and families.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Membership -->
+<section id="membership">
+  <div class="container">
+    <div class="section-header">
+      <h2>Become a Founding Family</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="membership-box">
+      <div class="price">$30 <span>lifetime</span></div>
+      <div class="type">Founding Family Membership</div>
+      <p>Your membership directly fuels the WELL and MADE frameworks. 100% of memberships go toward growing this ecosystem.</p>
+      <a href="#contact" class="btn btn-gold">Claim Your Place</a>
+    </div>
+  </div>
+</section>
+
+<!-- Seasonal Programming -->
+<section id="seasonal">
+  <div class="container">
+    <div class="section-header">
+      <h2>Throughout the Year</h2>
+      <div class="accent-line"></div>
+      <p>Every season brings a new focus for families to grow together.</p>
+    </div>
+    <div class="seasons-grid">
+      <div class="season-card">
+        <div class="season-icon">🌱</div>
+        <h3>Spring</h3>
+        <p>New beginnings. Enrollment opens, WELL circles launch, families plant seeds for the year.</p>
+      </div>
+      <div class="season-card">
+        <div class="season-icon">☀️</div>
+        <h3>Summer</h3>
+        <p>Travel, retreats, gatherings. MADE to Travel and MADE on Maui come alive.</p>
+      </div>
+      <div class="season-card">
+        <div class="season-icon">🍂</div>
+        <h3>Fall</h3>
+        <p>Harvest wisdom. Financial literacy intensives, cultural celebrations, family storytelling.</p>
+      </div>
+      <div class="season-card">
+        <div class="season-icon">❄️</div>
+        <h3>Winter</h3>
+        <p>Rest and reflection. Legacy planning, year-end giving, grounding rituals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Families Counter -->
+<section id="counter">
+  <div class="container">
+    <div class="section-header">
+      <h2>1 Million Families</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="counter-display">
+      <span class="current">0</span>
+      <span class="of">of</span>
+      <span class="goal">1,000,000</span>
+    </div>
+    <p class="counter-tagline">Every journey starts at zero. We're just getting started.</p>
   </div>
 </section>
 
@@ -372,20 +536,16 @@
 <section id="contact">
   <div class="container">
     <div class="section-header">
-      <h2>Connect With Us</h2>
+      <h2>Get in Touch</h2>
       <div class="accent-line"></div>
-      <p>Questions, ideas, or just want to say hello? We'd love to hear from you.</p>
+      <p>Whether you're a family looking for support, wanting to volunteer, or an organization interested in partnering — this is where it starts.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
         <h3>Let's Talk</h3>
         <p>📧 <strong>Email:</strong> hello@wellmadefoundation.org</p>
         <p>📍 <strong>Based in:</strong> Alberta, Canada</p>
-        <p style="margin-top: 1.5rem;">Whether you're a family looking for support, a volunteer wanting to help, or an organization interested in partnering — this is where it starts. Fill out the form and we'll be in touch.</p>
-        <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: var(--radius); border-left: 4px solid var(--gold);">
-          <p style="font-style: italic; color: var(--text-mid);">"Every person who reaches out — whether for help or to offer it — is proof that community works."</p>
-          <p style="color: var(--gold-dark); font-weight: 600; margin-top: 0.5rem;">— Jasmine, Founder</p>
-        </div>
+        <p style="margin-top: 1.5rem; font-style: italic; color: var(--text-light);">"Every person who reaches out — whether for help or to offer it — is proof that community works."</p>
       </div>
       <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We\'ll be in touch soon.'); this.reset();">
         <input type="text" placeholder="Your Name" required>
@@ -401,13 +561,14 @@
 <!-- Footer -->
 <footer>
   <div class="footer-logo">WellMade Foundation</div>
+  <div class="collective">Part of The Living Love Collective</div>
+  <div class="sites">
+    <a href="https://jack108510.github.io/dr-jasmine-site/">Dr. Jasmine</a>
+    <a href="https://jack108510.github.io/pure-wellness-joy/">Pure Wellness Joy</a>
+    <a href="#">WellMade Foundation</a>
+  </div>
   <p>Building stronger families, stronger communities.</p>
   <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 WellMade Foundation. All rights reserved.</p>
-  <div class="social">
-    <a href="#">Instagram</a>
-    <a href="#">Facebook</a>
-    <a href="#">LinkedIn</a>
-  </div>
 </footer>
 
 </body>

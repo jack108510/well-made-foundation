@@ -19,6 +19,21 @@
 
   ::selection { background: #1a1918; color: #fdfbf7; }
 
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -43,7 +58,7 @@
     font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
     color: #4a4643; text-decoration: none; transition: color 0.3s;
   }
-  .nav-links a:hover { color: #1a1918; }
+  .nav-links a:hover { color: #1a1918; letter-spacing: 2.5px; }
 
   @media (max-width: 640px) {
     .nav-inner { padding: 14px 20px; }
@@ -83,31 +98,62 @@
   .hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 140px 40px 120px;
-    position: relative;
-    background: linear-gradient(to bottom, rgba(253,251,247,0.3) 0%, rgba(253,251,247,0.95) 100%),
-      url('images/family-beach-sunset.jpg') center/cover no-repeat;
+    position: relative; overflow: hidden;
+    background: #1a1918;
   }
-  .hero-content { max-width: 800px; }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('images/family-beach-sunset.jpg') center/cover no-repeat;
+    will-change: transform;
+    transform: translateZ(0);
+    scale: 1.1;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(26, 25, 24, 0.7) 0%,
+      rgba(26, 25, 24, 0.4) 40%,
+      rgba(212, 175, 55, 0.15) 70%,
+      rgba(253, 251, 247, 0.2) 100%
+    );
+  }
+  .hero-content {
+    position: relative; z-index: 2; max-width: 800px;
+  }
   .hero-eyebrow {
     font-family: 'Times New Roman', Times, serif;
     font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
-    color: #76716d; margin-bottom: 32px;
+    color: #d4af37; margin-bottom: 32px;
   }
   .hero h1 {
     font-family: 'Times New Roman', Times, serif;
     font-size: clamp(42px, 7vw, 80px);
     font-weight: 400; line-height: 1.05;
-    letter-spacing: -1px; color: #1a1918;
+    letter-spacing: -1px; color: #fdfbf7;
     margin-bottom: 40px;
   }
   .hero-rule {
-    width: 60px; height: 1px; background: #a39e99;
-    margin: 0 auto 40px; border: none;
+    width: 60px; height: 2px; border: none;
+    margin: 0 auto 40px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    position: relative; overflow: hidden;
+  }
+  .hero-rule::after {
+    content: '';
+    position: absolute; top: 0; left: -60px;
+    width: 60px; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(253,251,247,0.8), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0% { left: -60px; }
+    100% { left: 120px; }
   }
   .hero-subtitle {
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px; font-style: italic;
-    color: #4a4643; line-height: 1.8; max-width: 600px; margin: 0 auto;
+    color: rgba(253,251,247,0.85); line-height: 1.8; max-width: 600px; margin: 0 auto;
   }
 
   /* ── SECTION SHARED ── */
@@ -161,9 +207,20 @@
   }
   .made-card {
     padding: 48px 40px; border: 1px solid #eae7e2;
-    transition: border-color 0.3s;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative; overflow: hidden;
+    background: transparent;
   }
-  .made-card:hover { border-color: #a39e99; }
+  .made-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 0; background: #fdf5e8;
+    transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 0;
+  }
+  .made-card:hover::before { height: 100%; }
+  .made-card:hover { border-color: #d4af37; transform: translateY(-4px); }
+  .made-card > * { position: relative; z-index: 1; }
   .made-card-title {
     font-family: 'Times New Roman', Times, serif;
     font-size: 22px; font-weight: 400; color: #1a1918;
@@ -221,8 +278,17 @@
     padding: 32px 36px; border-bottom: 1px solid #eae7e2;
     border-right: 1px solid #eae7e2;
     display: flex; align-items: baseline; gap: 16px;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .program-item:nth-child(2n) { border-right: none; }
+  .program-item:nth-child(odd) { background: transparent; }
+  .program-item:nth-child(even) { background: rgba(212, 175, 55, 0.03); }
+  .program-item:hover {
+    background: rgba(212, 175, 55, 0.08);
+    padding-left: 44px;
+  }
+  .program-item:hover .program-num { color: #d4af37; }
+  .program-item:hover .program-name { color: #d4af37; }
   .program-num {
     font-family: 'Times New Roman', Times, serif;
     font-size: 12px; color: #a39e99; letter-spacing: 1px; flex-shrink: 0;
@@ -243,6 +309,21 @@
   /* ── SHIELD ── */
   .shield-section {
     background: #1a1918; color: #fdfbf7;
+    position: relative; overflow: hidden;
+  }
+  .shield-section::before {
+    content: '';
+    position: absolute; top: -50%; right: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .shield-section::after {
+    content: '';
+    position: absolute; bottom: -30%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+    pointer-events: none;
   }
   .shield-section .section-label { color: #76716d; }
   .shield-section .section-title { color: #fdfbf7; }
@@ -252,11 +333,11 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: 22px; font-style: italic; color: #fdfbf7;
     line-height: 1.6; margin-top: 48px; max-width: 600px;
-    border-left: 2px solid #a39e99; padding-left: 28px;
+    border-left: 2px solid #d4af37; padding-left: 28px;
   }
   .shield-callout {
     margin-top: 32px; font-size: 14px; letter-spacing: 2px;
-    text-transform: uppercase; color: #76716d;
+    text-transform: uppercase; color: #d4af37;
   }
 
   /* ── TRANSPARENCY ── */
@@ -295,7 +376,15 @@
     display: grid; grid-template-columns: repeat(2, 1fr);
     gap: 60px; margin-top: 60px;
   }
-  .season { }
+  .season { 
+    padding: 36px 32px; border-left: 3px solid transparent;
+    transition: all 0.4s ease;
+  }
+  .season:hover { background: rgba(212, 175, 55, 0.04); }
+  .season:nth-child(1) { border-left-color: #7cb342; }
+  .season:nth-child(2) { border-left-color: #d4af37; }
+  .season:nth-child(3) { border-left-color: #bf6b3f; }
+  .season:nth-child(4) { border-left-color: #5c7a9e; }
   .season-name {
     font-family: 'Times New Roman', Times, serif;
     font-size: 22px; font-weight: 400; color: #1a1918;
@@ -368,6 +457,8 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">The Living Love Collective</p>
     <h1>Well Made<br>Foundation</h1>
@@ -378,7 +469,7 @@
 
 <!-- THE WELL FRAMEWORK -->
 <section id="well">
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">The Philosophy</p>
     <h2 class="section-title">The Well Framework</h2>
     <hr class="section-rule">
@@ -405,13 +496,13 @@
 </section>
 
 <!-- IMAGE: Hands planting -->
-<div style="padding: 0;">
+<div style="padding: 0;" class="reveal">
   <img src="images/hands-planting.jpg" alt="Hands holding new growth" class="img-contained" style="max-height: 480px;">
 </div>
 
 <!-- THE MADE FRAMEWORK -->
 <section>
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">The Framework</p>
     <h2 class="section-title">The MADE Framework</h2>
     <hr class="section-rule">
@@ -439,14 +530,14 @@
 </section>
 
 <!-- IMAGE: Maui mountains -->
-<div style="padding: 80px 40px 0;">
+<div style="padding: 80px 40px 0;" class="reveal">
   <img src="images/maui-mountains.jpg" alt="Maui mountain landscape" class="img-full" style="max-height: 480px;">
   <p class="img-caption">MADE on Maui &mdash; where families connect to land, culture, and each other</p>
 </div>
 
 <!-- CULTURAL ROOTS -->
 <section>
-  <div class="section-inner" style="text-align: center;">
+  <div class="section-inner reveal" style="text-align: center;">
     <p class="section-label">The Heritage</p>
     <h2 class="section-title">Cultural Roots</h2>
     <hr class="section-rule" style="margin-left: auto; margin-right: auto;">
@@ -473,14 +564,14 @@
 </section>
 
 <!-- IMAGE: Split - friends + ocean -->
-<div class="img-split">
+<div class="img-split reveal">
   <img src="images/friends-sea.jpg" alt="Community by the sea">
   <img src="images/ocean-sunset-rocks.jpg" alt="Ocean at sunset">
 </div>
 
 <!-- THE 8 PROGRAMS -->
 <section id="programs">
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">How We Serve</p>
     <h2 class="section-title">The Eight Programs</h2>
     <hr class="section-rule">
@@ -543,7 +634,7 @@
 
 <!-- THE SHIELD -->
 <section class="shield-section">
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">Protective Advocacy</p>
     <h2 class="section-title">The Shield</h2>
     <hr class="section-rule">
@@ -557,13 +648,13 @@
 </section>
 
 <!-- IMAGE: Hands with light -->
-<div style="padding: 80px 40px 0;">
+<div style="padding: 80px 40px 0;" class="reveal">
   <img src="images/hands-light.jpg" alt="Hands in light" class="img-contained" style="max-height: 400px;">
 </div>
 
 <!-- FINANCIAL TRANSPARENCY -->
 <section>
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">Where It Goes</p>
     <h2 class="section-title">Financial Transparency</h2>
     <hr class="section-rule">
@@ -587,7 +678,7 @@
 
 <!-- MEMBERSHIP -->
 <section id="membership" class="membership-section">
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">Join the Family</p>
     <h2 class="section-title">Founding Family Membership</h2>
     <hr class="section-rule" style="margin-left: auto; margin-right: auto;">
@@ -597,14 +688,14 @@
 </section>
 
 <!-- IMAGE: Woman in field with mountains -->
-<div style="padding: 0;">
+<div style="padding: 0;" class="reveal">
   <img src="images/woman-field-mountains.jpg" alt="Arms open to the horizon" class="img-full" style="max-height: 440px;">
   <p class="img-caption">Posture of Victory</p>
 </div>
 
 <!-- SEASONAL PROGRAMMING -->
 <section>
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">The Rhythm</p>
     <h2 class="section-title">Seasonal Programming</h2>
     <hr class="section-rule">
@@ -636,13 +727,13 @@
 </section>
 
 <!-- IMAGE: Green hills -->
-<div style="padding: 80px 40px 0;">
+<div style="padding: 80px 40px 0;" class="reveal">
   <img src="images/green-hills.jpg" alt="Rolling green hills" class="img-contained" style="max-height: 400px;">
 </div>
 
 <!-- 1 MILLION FAMILIES -->
 <section class="counter-section">
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">The Global Goal</p>
     <h2 class="section-title">One Million Families</h2>
     <hr class="section-rule" style="margin-left: auto; margin-right: auto;">
@@ -657,7 +748,7 @@
 
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
-  <div class="section-inner">
+  <div class="section-inner reveal">
     <p class="section-label">Connect</p>
     <h2 class="section-title">Contact</h2>
     <hr class="section-rule" style="margin-left: auto; margin-right: auto;">
@@ -720,5 +811,30 @@
  </div>
 </footer>
 
+<script>
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Parallax hero
+const heroBg = document.getElementById('hero-bg');
+if (heroBg) {
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < window.innerHeight * 1.5) {
+          heroBg.style.transform = 'translateY(' + (y * 0.35) + 'px) scale(1.1)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+</script>
 </body>
 </html>

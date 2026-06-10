@@ -35,18 +35,27 @@ nav .nav-links a:hover::after{width:100%}
 .label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:40px}
 
 /* Hero */
-.hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-img{position:absolute;inset:0;background:url('images/family-beach-sunset.jpg') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,26,.75) 0%,rgba(26,26,26,.4) 50%,rgba(26,26,26,.7) 100%)}
-.hero-content{position:relative;z-index:2;padding:0 100px;max-width:1000px}
-.hero-content .label{color:var(--gold-light)}
-.hero-content h1{font-size:clamp(44px,6.5vw,92px);color:#fff;font-weight:300;line-height:1.05;letter-spacing:-1px;margin-bottom:24px}
-.hero-content h1 em{font-style:italic;color:var(--gold-light)}
-.hero-content p{color:rgba(255,255,255,.65);font-size:15px;max-width:500px;line-height:1.9}
-.btn-gold{display:inline-block;padding:14px 40px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:all .3s;margin-top:32px}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55)}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;max-width:900px;padding:0 40px}
+.hero-content h1{font-size:clamp(40px,6vw,80px);color:#fff;font-weight:400;line-height:1.1;letter-spacing:-1px;margin-bottom:20px}
+.hero-content p{color:rgba(255,255,255,.7);font-size:16px;line-height:1.9;max-width:600px;margin:0 auto 36px}
+.btn-gold{display:inline-block;padding:16px 48px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:all .3s}
 .btn-gold:hover{background:var(--gold);color:var(--charcoal)}
 .btn-gold-solid{display:inline-block;padding:16px 48px;background:var(--gold);color:var(--charcoal);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:all .3s}
 .btn-gold-solid:hover{background:var(--gold-light)}
+
+/* Impact Stats */
+.impact-stats{background:var(--ivory);padding:100px 80px;text-align:center}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1000px;margin:0 auto}
+.stat-item h3{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);color:var(--gold);font-weight:400;margin-bottom:8px}
+.stat-item p{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#777}
+
+/* Mission */
+.mission{padding:140px 80px;text-align:center;max-width:800px;margin:0 auto}
+.mission h2{font-size:clamp(36px,4.5vw,60px);font-weight:300;line-height:1.15;margin-bottom:30px}
+.mission p{color:#666;font-size:16px;line-height:2}
 
 /* Well Framework */
 .well-framework{padding:160px 80px}
@@ -82,10 +91,10 @@ nav .nav-links a:hover::after{width:100%}
 .programs-visual img{width:100%;height:600px;object-fit:cover}
 
 /* Shield */
-.shield{padding:160px 80px;background:var(--cream);position:relative}
+.shield{padding:160px 80px;background:#1a1a1a;color:#fff;position:relative}
 .shield-inner{max-width:1000px;margin:0 auto;text-align:center}
-.shield h2{font-size:clamp(36px,5vw,64px);font-weight:300;margin-bottom:16px}
-.shield p{color:#666;font-size:15px;line-height:1.9;margin-bottom:16px}
+.shield h2{font-size:clamp(36px,5vw,64px);font-weight:300;margin-bottom:16px;color:var(--gold-light)}
+.shield p{color:rgba(255,255,255,.6);font-size:15px;line-height:1.9;margin-bottom:16px}
 .shield .shield-icon{font-size:64px;margin-bottom:50px}
 
 /* Financial Transparency */
@@ -144,7 +153,10 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
 .footer-copy{text-align:center;color:rgba(255,255,255,.3);font-size:12px;letter-spacing:.5px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08)}
 
 @media(max-width:1024px){
-  .hero-content{padding:0 40px}
+  .hero-content{padding:0 40px;text-align:center}
+  .impact-stats{padding:80px 40px}
+  .stats-row{grid-template-columns:1fr 1fr;gap:30px}
+  .mission{padding:100px 40px}
   .well-framework,.made,.programs,.shield,.finance,.cultural,.calendar,.referral,.founding{padding:120px 40px}
   .well-steps{grid-template-columns:1fr;gap:40px}
   .made-grid{grid-template-columns:1fr}
@@ -158,7 +170,11 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
   .footer-grid{grid-template-columns:1fr;gap:40px;text-align:center}
 }
 @media(max-width:640px){
-  .hero-content{padding:0 24px}
+  .hero-content{padding:0 24px;text-align:center}
+  .impact-stats{padding:60px 24px}
+  .stats-row{grid-template-columns:1fr 1fr;gap:20px}
+  .stat-item h3{font-size:32px}
+  .mission{padding:80px 24px}
   .well-framework,.made,.programs,.shield,.finance,.cultural,.calendar,.referral,.founding{padding:140px 48px}
   nav .nav-links{display:none}
   .seasons{grid-template-columns:1fr 1fr;gap:20px}
@@ -185,10 +201,50 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
   <div class="hero-img"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content reveal">
-    <div class="label" style="color:var(--gold-light)">The Soil & Social Impact</div>
-    <h1>Well Made<br><em>Foundation</em></h1>
-    <div class="gold-line"></div>
-    <p>Where families gather, commit, and build together. The foundation beneath every branch — community programs, cultural preservation, and the architecture of protection.</p>
+    <h1>We fight for the families who need it most.</h1>
+    <p>Community programs, cultural preservation, and the architecture of protection.</p>
+    <a href="#founding" class="btn-gold-solid">Join the Movement — $30 Lifetime Membership</a>
+  </div>
+</section>
+
+<!-- Impact Stats -->
+<section class="impact-stats">
+  <div class="stats-row reveal">
+    <div class="stat-item">
+      <h3>142,305</h3>
+      <p>Families Anchored</p>
+    </div>
+    <div class="stat-item">
+      <h3>8 Programs</h3>
+      <p>Community Programs</p>
+    </div>
+    <div class="stat-item">
+      <h3>4 MADE</h3>
+      <p>Initiatives</p>
+    </div>
+    <div class="stat-item">
+      <h3>$30</h3>
+      <p>For Life</p>
+    </div>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="mission reveal">
+  <h2>Our mission is to anchor one million families in power and protection.</h2>
+  <div class="gold-line" style="margin:0 auto 30px"></div>
+  <p>The Well Made Foundation exists to build the infrastructure families need — not just to survive, but to lead. Through community programs, cultural preservation, financial architecture, and anti-trafficking protection, we create the soil from which generational power grows.</p>
+</section>
+
+<!-- The Shield (dark) -->
+<section class="shield" id="shield">
+  <div class="shield-inner reveal">
+    <div class="shield-icon">🛡</div>
+    <div class="label" style="color:var(--gold)">The Shield</div>
+    <h2>Anti-Human<br>Trafficking</h2>
+    <div class="gold-line" style="margin:0 auto 30px"></div>
+    <p>The Shield is the Living Love Collective's commitment to the most vulnerable. Anti-human trafficking infrastructure, emergency sanctuary, and the legal architecture of protection.</p>
+    <p>This is not a side initiative. It is structural. $100 from every Dr. Jasmine premium ticket, 10% of every Pure Wellness purchase, and 100% of direct donations to the Shield fund the fight against trafficking.</p>
   </div>
 </section>
 
@@ -217,8 +273,6 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
     </div>
   </div>
 </section>
-
-<div class="gold-divider"></div>
 
 <!-- MADE Framework -->
 <section class="made" id="made">
@@ -273,18 +327,6 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
     <div class="programs-visual reveal-right">
       <img src="images/hands-planting.jpg" alt="Community programs">
     </div>
-  </div>
-</section>
-
-<!-- Shield -->
-<section class="shield" id="shield">
-  <div class="shield-inner reveal">
-    <div class="shield-icon">♂</div>
-    <div class="label">The Shield</div>
-    <h2>Anti-Human<br>Trafficking</h2>
-    <div class="gold-line" style="margin:0 auto 30px"></div>
-    <p>The Shield is the Living Love Collective's commitment to the most vulnerable. Anti-human trafficking infrastructure, emergency sanctuary, and the legal architecture of protection.</p>
-    <p>This is not a side initiative. It is structural. $100 from every Dr. Jasmine premium ticket, 10% of every Pure Wellness purchase, and 100% of direct donations to the Shield fund the fight against trafficking.</p>
   </div>
 </section>
 

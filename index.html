@@ -94,6 +94,13 @@ nav .nav-links a:hover::after{width:100%}
 .shield-pillar h4{font-size:14px;font-weight:600;margin-bottom:8px;color:var(--white)}
 .shield-pillar p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7}
 
+/* Image Breaks */
+.image-break{width:100%;height:400px;position:relative;overflow:hidden}
+.image-break img{width:100%;height:100%;object-fit:cover;display:block}
+.image-break .overlay{position:absolute;inset:0;background:rgba(10,22,40,.35)}
+.image-break .break-text{position:absolute;bottom:0;left:0;right:0;padding:40px;text-align:center;color:var(--white);z-index:2}
+.image-break .break-text p{font-size:clamp(18px,2.5vw,24px);font-weight:300;max-width:700px;margin:0 auto;line-height:1.5}
+
 /* Finance */
 .finance-section{padding:120px 40px;background:var(--white);border-bottom:1px solid var(--border)}
 .finance-section .section-head{text-align:center;margin-bottom:80px}
@@ -237,8 +244,8 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
 <section class="impact-stats">
   <div class="stats-row reveal">
     <div class="stat-item">
-      <h3>142,305</h3>
-      <p>Families Anchored</p>
+      <h3>1M</h3>
+      <p>Our Goal — Families by 2035</p>
     </div>
     <div class="stat-item">
       <h3>8</h3>
@@ -281,6 +288,12 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
     </div>
   </div>
 </section>
+
+<!-- Image Break: Community -->
+<div class="image-break reveal">
+  <img src="images/hands-planting.jpg" alt="Community planting together">
+  <div class="overlay"></div>
+</div>
 
 <!-- 5. The MADE Framework -->
 <section class="made-section">
@@ -338,6 +351,13 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
   </div>
 </section>
 
+<!-- Image Break: Protection -->
+<div class="image-break reveal">
+  <img src="images/ocean-sunset-rocks.jpg" alt="Ocean sunset over rocks">
+  <div class="overlay"></div>
+  <div class="break-text"><p>Protection is communal — and it begins with showing up.</p></div>
+</div>
+
 <!-- 7. The Shield -->
 <section class="shield-section">
   <div class="container reveal">
@@ -389,33 +409,12 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
   </div>
 </section>
 
-<!-- 9. Impact Stories -->
-<section class="stories-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-label">Testimony</div>
-      <h2>Impact Stories</h2>
-    </div>
-    <div class="stories-grid">
-      <div class="story-card reveal">
-        <h3>The Santos Family</h3>
-        <div class="story-tag">MADE to Travel</div>
-        <p>After losing their home, the Santos family found community through MADE to Travel. Today they've rebuilt and sponsor two other families.</p>
-      </div>
-      <div class="story-card reveal">
-        <h3>Mothers & Daughters Circle</h3>
-        <div class="story-tag">Empowered Program</div>
-        <p>12 mother-daughter pairs completed the Empowered program. 100% reported stronger family bonds and renewed cultural connection.</p>
-      </div>
-      <div class="story-card reveal">
-        <h3>Shield Response</h3>
-        <div class="story-tag">Emergency Sanctuary</div>
-        <p>A family in crisis received emergency sanctuary within 48 hours. Legal infrastructure and community support prevented trafficking and reunited the household.</p>
-      </div>
-    </div>
-    <p class="disclaimer reveal">Stories represent the impact of our programs. Names changed for privacy.</p>
-  </div>
-</section>
+<!-- Image Break: Connection -->
+<div class="image-break reveal">
+  <img src="images/friends-sea.jpg" alt="Friends by the sea">
+  <div class="overlay"></div>
+  <div class="break-text"><p>Real stories are coming — built by real families, in real time.</p></div>
+</div>
 
 <!-- 10. Upcoming Programs -->
 <section class="events-section">
@@ -477,6 +476,12 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
   </div>
 </section>
 
+<!-- Image Break: Sacred Land -->
+<div class="image-break reveal">
+  <img src="images/maui-mountains.jpg" alt="Maui mountains landscape">
+  <div class="overlay"></div>
+</div>
+
 <!-- 12. Solar Calendar -->
 <section class="calendar-section">
   <div class="container">
@@ -508,6 +513,13 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
     </div>
   </div>
 </section>
+
+<!-- Image Break: Light -->
+<div class="image-break reveal">
+  <img src="images/hands-light.jpg" alt="Hands reaching toward light">
+  <div class="overlay"></div>
+  <div class="break-text"><p>Your commitment becomes someone's protection.</p></div>
+</div>
 
 <!-- Founding Family CTA -->
 <section class="founding-section">

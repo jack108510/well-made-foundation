@@ -588,20 +588,73 @@ window.addEventListener('scroll',()=>{document.getElementById('mainNav').classLi
   if(localStorage.getItem('wm-popup-closed'))return;
   var overlay=document.createElement('div');
   overlay.id='popup-overlay';
-  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s;overflow-y:auto;padding:20px';
   var box=document.createElement('div');
-  box.style.cssText='background:#fff;border-radius:4px;padding:60px 50px;max-width:480px;width:90%;text-align:center;font-family:system-ui,-apple-system,sans-serif;position:relative';
-  box.innerHTML='<button id="popup-close" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:24px;color:#888;cursor:pointer">&times;</button><h3 style="font-size:24px;font-weight:600;color:#0a1628;margin-bottom:12px">Join the Movement</h3><p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:30px">Get updates on programs, community impact, and how you can help protect families.</p><form id="popup-form" style="display:flex;flex-direction:column;gap:12px"><input type="text" placeholder="Your Name" required style="padding:14px 18px;border:1px solid #e0e0e0;border-radius:3px;font-size:14px;font-family:inherit"><input type="email" placeholder="Your Email" required style="padding:14px 18px;border:1px solid #e0e0e0;border-radius:3px;font-size:14px;font-family:inherit"><button type="submit" style="padding:14px;background:#c9a96e;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:3px;font-family:inherit;transition:background .3s" onmouseover="this.style.background=\'#b8964f\'" onmouseout="this.style.background=\'#c9a96e\'">Join the List</button></form>';
+  box.style.cssText='background:#fff;border-radius:6px;padding:50px 44px;max-width:560px;width:100%;font-family:system-ui,-apple-system,sans-serif;position:relative;max-height:90vh;overflow-y:auto';
+  box.innerHTML=`
+<button id="popup-close" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:28px;color:#888;cursor:pointer;line-height:1">&times;</button>
+
+<div style="text-align:center;margin-bottom:28px">
+  <h3 style="font-size:26px;font-weight:700;color:#0a1628;margin-bottom:8px">Become a Founding Family</h3>
+  <p style="font-size:13px;color:#888;line-height:1.6">One commitment. Lifetime impact.</p>
+</div>
+
+<div style="background:#f8f9fa;border-radius:4px;padding:24px;margin-bottom:28px">
+  <div style="text-align:center;margin-bottom:16px">
+    <span style="font-size:40px;font-weight:700;color:#c9a96e">$30</span>
+    <span style="font-size:14px;color:#888;display:block;margin-top:4px">Lifetime Membership</span>
+  </div>
+  <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:#444;line-height:2.2">
+    <li style="padding-left:20px;position:relative">&#10003; Access to all 8 Community Programs</li>
+    <li style="padding-left:20px;position:relative">&#10003; Family Pentathlon enrollment</li>
+    <li style="padding-left:20px;position:relative">&#10003; Blush Coming-of-Age Circle access</li>
+    <li style="padding-left:20px;position:relative">&#10003; Sampaguita Sunday Gala invitation</li>
+    <li style="padding-left:20px;position:relative">&#10003; Mabuhay Monday Awards nomination</li>
+    <li style="padding-left:20px;position:relative">&#10003; Financial transparency reports</li>
+    <li style="padding-left:20px;position:relative">&#10003; "Each One, Shield One" referral kit</li>
+  </ul>
+</div>
+
+<div style="margin-bottom:28px">
+  <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#c9a96e;margin-bottom:16px;font-weight:600">Common Questions</p>
+  <div style="border-bottom:1px solid #e8e8e8;padding:12px 0">
+    <p style="font-size:13px;font-weight:600;color:#0a1628;margin-bottom:4px">Is this a subscription?</p>
+    <p style="font-size:12px;color:#666;line-height:1.6">No. $30 once. You're a Founding Family for life.</p>
+  </div>
+  <div style="border-bottom:1px solid #e8e8e8;padding:12px 0">
+    <p style="font-size:13px;font-weight:600;color:#0a1628;margin-bottom:4px">Where does the money go?</p>
+    <p style="font-size:12px;color:#666;line-height:1.6">100% goes to programs, scholarships, and community infrastructure.</p>
+  </div>
+  <div style="border-bottom:1px solid #e8e8e8;padding:12px 0">
+    <p style="font-size:13px;font-weight:600;color:#0a1628;margin-bottom:4px">Do I have to be local?</p>
+    <p style="font-size:12px;color:#666;line-height:1.6">No. Programs are available in-person (Bay Area & Maui) and digitally.</p>
+  </div>
+  <div style="padding:12px 0">
+    <p style="font-size:13px;font-weight:600;color:#0a1628;margin-bottom:4px">Can I refer another family?</p>
+    <p style="font-size:12px;color:#666;line-height:1.6">Yes. Every member gets the "Each One, Shield One" referral kit.</p>
+  </div>
+</div>
+
+<form id="popup-form" style="display:flex;flex-direction:column;gap:10px">
+  <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#c9a96e;font-weight:600;margin-bottom:4px">Sign Up</p>
+  <input type="text" placeholder="Your Name" required style="padding:12px 16px;border:1px solid #e0e0e0;border-radius:3px;font-size:14px;font-family:inherit">
+  <input type="email" placeholder="Your Email" required style="padding:12px 16px;border:1px solid #e0e0e0;border-radius:3px;font-size:14px;font-family:inherit">
+  <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:#666;cursor:pointer">
+    <input type="checkbox" id="popup-member" style="accent-color:#c9a96e"> I'm already a member — just add me to the mailing list
+  </label>
+  <button type="submit" style="padding:14px;background:#c9a96e;color:#fff;border:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:3px;font-family:inherit;transition:background .3s;margin-top:4px">Join</button>
+</form>`;
   overlay.appendChild(box);
   document.body.appendChild(overlay);
-  setTimeout(function(){overlay.style.opacity='1'},1500);
+  setTimeout(function(){overlay.style.opacity='1'},2000);
   document.getElementById('popup-close').onclick=function(){overlay.style.opacity='0';setTimeout(function(){overlay.remove()},400);localStorage.setItem('wm-popup-closed','1')};
   overlay.onclick=function(e){if(e.target===overlay){document.getElementById('popup-close').click()}};
   document.getElementById('popup-form').onsubmit=function(e){
     e.preventDefault();
-    var name=this.elements[0].value;var email=this.elements[1].value;
-    window.location.href='mailto:jack@wildroseautomations.ca?subject=WellMade%20Mailing%20List%20Signup&body=Name%3A%20'+encodeURIComponent(name)+'%0AEmail%3A%20'+encodeURIComponent(email);
-    box.innerHTML='<h3 style="font-size:24px;font-weight:600;color:#0a1628;margin-bottom:12px">Welcome</h3><p style="font-size:14px;color:#666;line-height:1.7">You\'re in. We\'ll be in touch.</p><button onclick="document.getElementById(\'popup-close\').click()" style="margin-top:20px;padding:12px 30px;background:#c9a96e;color:#fff;border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:3px">Close</button>';
+    var name=this.elements[0].value;var email=this.elements[1].value;var isMember=document.getElementById('popup-member').checked;
+    var subject=isMember?'WellMade%20Mailing%20List%20(Existing%20Member)':'WellMade%20Founding%20Family%20Signup';
+    window.location.href='mailto:jack@wildroseautomations.ca?subject='+subject+'&body=Name%3A%20'+encodeURIComponent(name)+'%0AEmail%3A%20'+encodeURIComponent(email)+'%0AExisting%20Member%3A%20'+(isMember?'Yes':'No');
+    box.innerHTML='<div style="text-align:center;padding:30px 0"><h3 style="font-size:24px;font-weight:600;color:#0a1628;margin-bottom:12px">Welcome to the Family</h3><p style="font-size:14px;color:#666;line-height:1.7">We\\'ll be in touch shortly.</p><button onclick="document.getElementById(\\'popup-close\\').click()" style="margin-top:24px;padding:12px 30px;background:#c9a96e;color:#fff;border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:3px">Close</button></div>';
   };
 })();
 </script>

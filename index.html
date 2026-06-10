@@ -244,8 +244,8 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
 <section class="impact-stats">
   <div class="stats-row reveal">
     <div class="stat-item">
-      <h3>1M</h3>
-      <p>Our Goal — Families by 2035</p>
+      <h3 id="family-counter" data-target="1000000">0</h3>
+      <p>Families — Goal: 1,000,000 by 2035</p>
     </div>
     <div class="stat-item">
       <h3>8</h3>
@@ -582,6 +582,30 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40)});
+
+// Live counter — counts up when scrolled into view
+const counter=document.getElementById('family-counter');
+if(counter){
+  let counted=false;
+  const co=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting&&!counted){counted=true;co.unobserve(e.target);
+    const target=parseInt(counter.dataset.target);
+    // Start from a realistic small number, count up over ~3s
+    const start=Math.floor(target*0.0001);
+    const duration=3000;
+    const startTime=performance.now();
+    function tick(now){
+      const elapsed=now-startTime;
+      const progress=Math.min(elapsed/duration,1);
+      // Ease out cubic
+      const eased=1-Math.pow(1-progress,3);
+      const current=Math.floor(start+(target-start)*eased);
+      counter.textContent=current.toLocaleString();
+      if(progress<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }})},{threshold:0.3});
+  co.observe(counter);
+}
 </script>
 </body>
 </html>

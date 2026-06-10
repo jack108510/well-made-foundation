@@ -438,6 +438,51 @@
     transition: border-color 0.3s;
   }
   .contact-email:hover { border-color: #1a1918; }
+
+  /* CTA BUTTONS */
+  .cta-btn {
+    display: inline-block;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fdfbf7;
+    background: #1a1918;
+    padding: 16px 40px;
+    text-decoration: none;
+    transition: background 0.3s, letter-spacing 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+  .cta-btn:hover {
+    background: #3d3a38;
+    letter-spacing: 3px;
+  }
+  .cta-btn-outline {
+    display: inline-block;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1a1918;
+    background: transparent;
+    padding: 14px 38px;
+    text-decoration: none;
+    border: 1px solid #1a1918;
+    transition: background 0.3s, color 0.3s, letter-spacing 0.3s;
+    cursor: pointer;
+  }
+  .cta-btn-outline:hover {
+    background: #1a1918;
+    color: #fdfbf7;
+    letter-spacing: 3px;
+  }
+  .cta-group {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
 </style>
 </head>
 <body>
@@ -684,6 +729,10 @@
     <hr class="section-rule" style="margin-left: auto; margin-right: auto;">
     <div class="membership-price"><span>$</span>30</div>
     <p class="membership-desc">Lifetime membership. 100% goes to growing the ecosystem &mdash; new communities, new programs, new families reached.</p>
+    <div class="cta-group" style="justify-content: center;">
+      <a href="mailto:contact@wellmadefoundation.org?subject=Lifetime%20Membership" class="cta-btn">Join for $30 &mdash; Lifetime Membership</a>
+      <a href="mailto:contact@wellmadefoundation.org?subject=Donation" class="cta-btn-outline">Donate</a>
+    </div>
   </div>
 </section>
 
@@ -746,6 +795,21 @@
   </div>
 </section>
 
+
+<!-- THE ECOSYSTEM -->
+<section>
+  <div class="section-inner" style="text-align: center;">
+    <p class="section-label reveal">The Ecosystem</p>
+    <h2 class="section-title reveal">The Living Love Collective</h2>
+    <hr class="section-rule reveal" style="margin-left: auto; margin-right: auto;">
+    <p class="section-body reveal" style="max-width: 600px; margin: 0 auto;">Well Made Foundation is one of three engines in the Living Love Collective.</p>
+    <div style="display: flex; gap: 40px; justify-content: center; margin-top: 48px; flex-wrap: wrap;" class="reveal">
+      <a href="https://jack108510.github.io/dr-jasmine-site/" style="font-family: 'Times New Roman', Times, serif; font-size: 16px; color: #1a1918; text-decoration: none; border-bottom: 1px solid #a39e99; padding-bottom: 2px; transition: border-color 0.3s;">Dr. Jasmine — The Root</a>
+      <a href="https://jack108510.github.io/pure-wellness-joy/" style="font-family: 'Times New Roman', Times, serif; font-size: 16px; color: #1a1918; text-decoration: none; border-bottom: 1px solid #a39e99; padding-bottom: 2px; transition: border-color 0.3s;">Pure Wellness Love — The Branches</a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
   <div class="section-inner reveal">
@@ -772,33 +836,33 @@
  <!-- Engine I -->
  <div>
  <h3 style="font-family: 'Times New Roman', Times, serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #3d3a38; margin-bottom: 12px;">PURE WELLNESS LOVE</h3>
- <p style="font-size: 11px; color: #76716d; line-height: 1.6; margin-bottom: 12px;">The Branches (Commerce & Sanctuary Elements)</p>
+ <p style="font-size: 11px; color: #76716d; line-height: 1.6; margin-bottom: 12px;">The Branches (Commerce &amp; Sanctuary Elements)</p>
  <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2;">
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Shop The Lifestyle Store</a></li>
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Join The Bloom Circle Registry</a></li>
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Explore Milestone & Ritual Kits</a></li>
+ <li><a href="https://jack108510.github.io/pure-wellness-joy/#store" style="color: #4a4643; text-decoration: none;">Shop The Lifestyle Store</a></li>
+ <li><a href="https://jack108510.github.io/pure-wellness-joy/#bloom" style="color: #4a4643; text-decoration: none;">Join The Bloom Circle Registry</a></li>
+ <li><a href="https://jack108510.github.io/pure-wellness-joy/#store" style="color: #4a4643; text-decoration: none;">Explore Milestone &amp; Ritual Kits</a></li>
  </ul>
  </div>
 
  <!-- Engine II -->
  <div>
  <h3 style="font-family: 'Times New Roman', Times, serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #3d3a38; margin-bottom: 12px;">WELL MADE FOUNDATION</h3>
- <p style="font-size: 11px; color: #76716d; line-height: 1.6; margin-bottom: 12px;">The Soil (Humanitarian Shield & Family Care)</p>
+ <p style="font-size: 11px; color: #76716d; line-height: 1.6; margin-bottom: 12px;">The Soil (Humanitarian Shield &amp; Family Care)</p>
  <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2;">
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Donate: $30 Lifetime Family Entry</a></li>
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Mothers & Daughters / Moms & Dads Empowered</a></li>
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Participate in the Family Pentathlon</a></li>
+ <li><a href="https://jack108510.github.io/well-made-foundation/#membership" style="color: #4a4643; text-decoration: none;">Donate: $30 Lifetime Family Entry</a></li>
+ <li><a href="https://jack108510.github.io/well-made-foundation/#programs" style="color: #4a4643; text-decoration: none;">Mothers &amp; Daughters / Moms &amp; Dads Empowered</a></li>
+ <li><a href="https://jack108510.github.io/well-made-foundation/#programs" style="color: #4a4643; text-decoration: none;">Participate in the Family Pentathlon</a></li>
  </ul>
  </div>
 
  <!-- Engine III -->
  <div>
  <h3 style="font-family: 'Times New Roman', Times, serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #3d3a38; margin-bottom: 12px;">DR. JASMINE</h3>
- <p style="font-size: 11px; color: #76716d; line-height: 1.6; margin-bottom: 12px;">The Root (Clinical Somatics & Personal Authority)</p>
+ <p style="font-size: 11px; color: #76716d; line-height: 1.6; margin-bottom: 12px;">The Root (Clinical Somatics &amp; Personal Authority)</p>
  <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2;">
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Learn About the Divine Spark Platform</a></li>
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Advanced Somatic Practitioner Frameworks</a></li>
- <li><a href="#" style="color: #4a4643; text-decoration: none;">Executive Leadership Summits & Retreats</a></li>
+ <li><a href="https://jack108510.github.io/dr-jasmine-site/#offerings" style="color: #4a4643; text-decoration: none;">Learn About the Divine Spark Platform</a></li>
+ <li><a href="https://jack108510.github.io/dr-jasmine-site/#practice" style="color: #4a4643; text-decoration: none;">Advanced Somatic Practitioner Frameworks</a></li>
+ <li><a href="https://jack108510.github.io/dr-jasmine-site/#offerings" style="color: #4a4643; text-decoration: none;">Executive Leadership Summits &amp; Retreats</a></li>
  </ul>
  </div>
 

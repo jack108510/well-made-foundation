@@ -244,7 +244,7 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
 <section class="impact-stats">
   <div class="stats-row reveal">
     <div class="stat-item">
-      <h3 id="family-counter" data-target="1000000">0</h3>
+      <h3><span id="family-counter">0</span> <span style="font-size:0.4em;color:#888">of 1,000,000</span></h3>
       <p>Families — Goal: 1,000,000 by 2035</p>
     </div>
     <div class="stat-item">
@@ -491,7 +491,7 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
     </div>
     <div class="seasons">
       <div class="season reveal">
-        <div class="icon">🌱</div>
+        <div class="icon">☉</div>
         <h4>Spring</h4>
         <p>A season of planting — intentions, lineage stories, and somatic foundations.</p>
       </div>
@@ -501,7 +501,7 @@ footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-t
         <p>Full expression. The bloom of practiced devotion and embodied leadership.</p>
       </div>
       <div class="season reveal">
-        <div class="icon">🍂</div>
+        <div class="icon">☿</div>
         <h4>Fall</h4>
         <p>Harvest and honoring. Gathering what was planted, preparing for the inward turn.</p>
       </div>
@@ -583,29 +583,27 @@ const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isI
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40)});
 
-// Live counter — counts up when scrolled into view
-const counter=document.getElementById('family-counter');
-if(counter){
-  let counted=false;
-  const co=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting&&!counted){counted=true;co.unobserve(e.target);
-    const target=parseInt(counter.dataset.target);
-    // Start from a realistic small number, count up over ~3s
-    const start=Math.floor(target*0.0001);
-    const duration=3000;
-    const startTime=performance.now();
-    function tick(now){
-      const elapsed=now-startTime;
-      const progress=Math.min(elapsed/duration,1);
-      // Ease out cubic
-      const eased=1-Math.pow(1-progress,3);
-      const current=Math.floor(start+(target-start)*eased);
-      counter.textContent=current.toLocaleString();
-      if(progress<1)requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }})},{threshold:0.3});
-  co.observe(counter);
-}
+// Mailing list popup
+(function(){
+  if(localStorage.getItem('wm-popup-closed'))return;
+  var overlay=document.createElement('div');
+  overlay.id='popup-overlay';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s';
+  var box=document.createElement('div');
+  box.style.cssText='background:#fff;border-radius:4px;padding:60px 50px;max-width:480px;width:90%;text-align:center;font-family:system-ui,-apple-system,sans-serif;position:relative';
+  box.innerHTML='<button id="popup-close" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:24px;color:#888;cursor:pointer">&times;</button><h3 style="font-size:24px;font-weight:600;color:#0a1628;margin-bottom:12px">Join the Movement</h3><p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:30px">Get updates on programs, community impact, and how you can help protect families.</p><form id="popup-form" style="display:flex;flex-direction:column;gap:12px"><input type="text" placeholder="Your Name" required style="padding:14px 18px;border:1px solid #e0e0e0;border-radius:3px;font-size:14px;font-family:inherit"><input type="email" placeholder="Your Email" required style="padding:14px 18px;border:1px solid #e0e0e0;border-radius:3px;font-size:14px;font-family:inherit"><button type="submit" style="padding:14px;background:#c9a96e;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:3px;font-family:inherit;transition:background .3s" onmouseover="this.style.background=\'#b8964f\'" onmouseout="this.style.background=\'#c9a96e\'">Join the List</button></form>';
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  setTimeout(function(){overlay.style.opacity='1'},1500);
+  document.getElementById('popup-close').onclick=function(){overlay.style.opacity='0';setTimeout(function(){overlay.remove()},400);localStorage.setItem('wm-popup-closed','1')};
+  overlay.onclick=function(e){if(e.target===overlay){document.getElementById('popup-close').click()}};
+  document.getElementById('popup-form').onsubmit=function(e){
+    e.preventDefault();
+    var name=this.elements[0].value;var email=this.elements[1].value;
+    window.location.href='mailto:jack@wildroseautomations.ca?subject=WellMade%20Mailing%20List%20Signup&body=Name%3A%20'+encodeURIComponent(name)+'%0AEmail%3A%20'+encodeURIComponent(email);
+    box.innerHTML='<h3 style="font-size:24px;font-weight:600;color:#0a1628;margin-bottom:12px">Welcome</h3><p style="font-size:14px;color:#666;line-height:1.7">You\'re in. We\'ll be in touch.</p><button onclick="document.getElementById(\'popup-close\').click()" style="margin-top:20px;padding:12px 30px;background:#c9a96e;color:#fff;border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:3px">Close</button>';
+  };
+})();
 </script>
 </body>
 </html>

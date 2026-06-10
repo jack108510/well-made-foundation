@@ -4,210 +4,236 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Well Made Foundation — The Soil & Social Impact</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--ivory:#fdfbf7;--charcoal:#1a1a1a;--gold:#c9a96e;--cream:#f5f0e8;--gold-light:#e8d5a8}
+:root{--navy:#0a1628;--white:#ffffff;--gold:#c9a96e;--light:#f8f9fa;--text:#1a1a1a;--border:#e0e0e0}
 html{scroll-behavior:smooth}
-body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--ivory);color:var(--charcoal);font-weight:300;line-height:2;overflow-x:hidden}
-h1,h2,h3,h4,h5{font-family:'Playfair Display',Georgia,serif;font-weight:400}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);line-height:1.7;overflow-x:hidden}
 
-.tracker-bar{background:var(--charcoal);color:var(--gold);text-align:center;padding:10px 20px;font-size:11px;letter-spacing:3px;font-weight:400;font-family:'Playfair Display',serif}
-
-nav{position:fixed;top:36px;left:0;right:0;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;transition:background .4s}
-nav.scrolled{background:rgba(253,251,247,.95);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(201,169,110,.15)}
-nav .logo{font-family:'Playfair Display',serif;font-size:16px;letter-spacing:4px;color:var(--charcoal);text-decoration:none;text-transform:uppercase}
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;background:var(--white);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+nav .logo{font-size:13px;letter-spacing:4px;color:var(--navy);text-decoration:none;text-transform:uppercase;font-weight:600}
 nav .nav-links{display:flex;gap:40px;list-style:none}
-nav .nav-links a{color:var(--charcoal);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:400;position:relative;padding-bottom:2px}
-nav .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+nav .nav-links a{color:var(--navy);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:500;position:relative;padding-bottom:4px}
+nav .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .3s}
 nav .nav-links a:hover::after{width:100%}
 
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+/* Utility */
+.container{max-width:1200px;margin:0 auto;padding:0 40px}
+.section-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:600}
+.section-rule{width:100%;height:1px;background:var(--border)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .8s ease,transform .8s ease}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(60px);transition:opacity .8s ease,transform .8s ease}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
 
-.gold-line{width:60px;height:1px;background:var(--gold);margin:24px 0}
-.gold-divider{text-align:center;padding:140px 0}
-.gold-divider::before{content:'';color:var(--gold);font-size:18px;letter-spacing:20px}
-.label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:40px}
+/* Buttons */
+.btn-primary{display:inline-block;padding:16px 48px;background:var(--gold);color:var(--navy);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;transition:opacity .3s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{display:inline-block;padding:16px 48px;border:1px solid var(--white);color:var(--white);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:all .3s}
+.btn-outline:hover{background:var(--white);color:var(--navy)}
+.btn-outline-dark{display:inline-block;padding:16px 48px;border:1px solid var(--navy);color:var(--navy);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:all .3s}
+.btn-outline-dark:hover{background:var(--navy);color:var(--white)}
 
 /* Hero */
 .hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-img{position:absolute;inset:0;background:url('images/family-beach-sunset.jpg') center/cover no-repeat}
-.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55)}
-.hero-content{position:relative;z-index:2;text-align:center;color:#fff;max-width:900px;padding:0 40px}
-.hero-content h1{font-size:clamp(40px,6vw,80px);color:#fff;font-weight:400;line-height:1.1;letter-spacing:-1px;margin-bottom:20px}
-.hero-content p{color:rgba(255,255,255,.7);font-size:16px;line-height:1.9;max-width:600px;margin:0 auto 36px}
-.btn-gold{display:inline-block;padding:16px 48px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:all .3s}
-.btn-gold:hover{background:var(--gold);color:var(--charcoal)}
-.btn-gold-solid{display:inline-block;padding:16px 48px;background:var(--gold);color:var(--charcoal);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:all .3s}
-.btn-gold-solid:hover{background:var(--gold-light)}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,22,40,.75)}
+.hero-content{position:relative;z-index:2;text-align:center;color:var(--white);max-width:840px;padding:0 40px}
+.hero-content h1{font-size:clamp(36px,5vw,64px);color:var(--white);font-weight:300;line-height:1.15;letter-spacing:-.5px;margin-bottom:24px}
+.hero-content p{color:rgba(255,255,255,.7);font-size:17px;line-height:1.8;max-width:640px;margin:0 auto 40px;font-weight:300}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* Mission Bar */
+.mission-bar{padding:80px 40px;text-align:center;border-bottom:1px solid var(--border)}
+.mission-bar p{font-size:clamp(18px,2.5vw,24px);font-weight:300;color:var(--text);max-width:800px;margin:0 auto;line-height:1.5}
+.mission-bar .gold-underline{display:block;width:80px;height:2px;background:var(--gold);margin:20px auto 0}
 
 /* Impact Stats */
-.impact-stats{background:var(--ivory);padding:100px 80px;text-align:center}
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1000px;margin:0 auto}
-.stat-item h3{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);color:var(--gold);font-weight:400;margin-bottom:8px}
-.stat-item p{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#777}
-
-/* Mission */
-.mission{padding:140px 80px;text-align:center;max-width:800px;margin:0 auto}
-.mission h2{font-size:clamp(36px,4.5vw,60px);font-weight:300;line-height:1.15;margin-bottom:30px}
-.mission p{color:#666;font-size:16px;line-height:2}
+.impact-stats{padding:120px 40px;background:var(--white);text-align:center;border-bottom:1px solid var(--border)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:60px;max-width:1000px;margin:0 auto}
+.stat-item h3{font-size:clamp(40px,5vw,64px);color:var(--gold);font-weight:700;margin-bottom:12px;letter-spacing:-1px}
+.stat-item p{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#888;font-weight:500}
 
 /* Well Framework */
-.well-framework{padding:160px 80px}
-.well-framework h2{font-size:clamp(36px,4.5vw,60px);font-weight:300;margin-bottom:16px}
-.well-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:60px;margin-top:80px}
-.well-step{text-align:center;padding:50px 30px;border:1px solid var(--cream);position:relative;transition:border-color .3s}
-.well-step:hover{border-color:var(--gold)}
-.well-step .step-num{font-family:'Playfair Display',serif;font-size:72px;color:var(--cream);font-weight:700;line-height:1;margin-bottom:40px}
-.well-step h3{font-size:22px;font-weight:400;margin-bottom:10px}
-.well-step p{font-size:13px;color:#777;line-height:2}
+.well-framework{padding:120px 40px;background:var(--light)}
+.well-framework .section-head{text-align:center;margin-bottom:80px}
+.well-framework h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px}
+.well-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:60px;max-width:1000px;margin:0 auto}
+.well-step{text-align:center;padding:50px 30px}
+.well-step .step-num{font-size:64px;color:var(--gold);font-weight:700;line-height:1;margin-bottom:24px;opacity:.3}
+.well-step h3{font-size:20px;font-weight:600;margin-bottom:12px;color:var(--text)}
+.well-step p{font-size:14px;color:#666;line-height:1.8}
 
 /* MADE Framework */
-.made{background:var(--charcoal);color:#fff;padding:160px 80px;position:relative;overflow:hidden}
-.made::before{content:'MADE';position:absolute;top:-40px;right:-10px;font-size:clamp(100px,14vw,220px);font-family:'Playfair Display',serif;color:rgba(201,169,110,.04);font-weight:700;pointer-events:none}
-.made h2{font-size:clamp(36px,4.5vw,60px);font-weight:300;margin-bottom:16px}
-.made>p{color:rgba(255,255,255,.5);font-size:14px;max-width:500px;margin-bottom:80px}
-.made-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.made-card{border:1px solid rgba(201,169,110,.2);padding:50px 40px;transition:border-color .3s}
-.made-card:hover{border-color:var(--gold)}
-.made-card h3{font-size:26px;font-weight:400;margin-bottom:10px;color:var(--gold-light)}
-.made-card .tagline{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,169,110,.5);margin-bottom:16px}
-.made-card p{color:rgba(255,255,255,.55);font-size:14px;line-height:2.1}
+.made-section{padding:120px 40px;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.made-section .section-head{text-align:center;margin-bottom:80px}
+.made-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px}
+.made-section>p{text-align:center;color:#888;font-size:15px;max-width:500px;margin:0 auto}
+.made-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1000px;margin:0 auto}
+.made-card{background:var(--white);padding:50px 40px;box-shadow:0 2px 20px rgba(0,0,0,.06);transition:box-shadow .3s}
+.made-card:hover{box-shadow:0 8px 40px rgba(0,0,0,.1)}
+.made-card h3{font-size:22px;font-weight:600;margin-bottom:6px;color:var(--text)}
+.made-card .tagline{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:600}
+.made-card p{font-size:14px;color:#666;line-height:1.8;margin-bottom:20px}
+.made-card a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:600;transition:opacity .3s}
+.made-card a:hover{opacity:.7}
 
-/* Eight Programs */
-.programs{padding:160px 80px}
-.programs-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.programs h2{font-size:clamp(36px,4.5vw,56px);font-weight:300}
-.program-list{list-style:none;counter-reset:prog}
-.program-list li{counter-increment:prog;padding:24px 0;border-bottom:1px solid var(--cream);display:flex;align-items:baseline;gap:20px;transition:padding-left .3s}
-.program-list li:hover{padding-left:12px}
-.program-list li::before{content:counter(prog,decimal-leading-zero);font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);min-width:40px}
-.program-list li span{font-size:16px;font-weight:400}
-.programs-visual img{width:100%;height:600px;object-fit:cover}
+/* Programs */
+.programs-section{padding:120px 40px;background:var(--white);border-bottom:1px solid var(--border)}
+.programs-section .section-head{text-align:center;margin-bottom:60px}
+.programs-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px}
+.program-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 80px;max-width:800px;margin:0 auto}
+.program-grid li{list-style:none;padding:16px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;font-size:16px;font-weight:400}
+.program-grid li::before{content:'';width:8px;height:8px;background:var(--gold);border-radius:50%;flex-shrink:0}
 
 /* Shield */
-.shield{padding:160px 80px;background:#1a1a1a;color:#fff;position:relative}
-.shield-inner{max-width:1000px;margin:0 auto;text-align:center}
-.shield h2{font-size:clamp(36px,5vw,64px);font-weight:300;margin-bottom:16px;color:var(--gold-light)}
-.shield p{color:rgba(255,255,255,.6);font-size:15px;line-height:1.9;margin-bottom:16px}
-.shield .shield-icon{font-size:64px;margin-bottom:50px}
+.shield-section{padding:120px 40px;background:var(--navy);color:var(--white);text-align:center}
+.shield-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px;margin-bottom:16px}
+.shield-section>p{color:rgba(255,255,255,.6);font-size:15px;line-height:1.8;max-width:600px;margin:0 auto 60px}
+.shield-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:0 auto 60px}
+.shield-pillar h4{font-size:14px;font-weight:600;margin-bottom:8px;color:var(--white)}
+.shield-pillar p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7}
 
-/* Financial Transparency */
-.finance{padding:160px 80px}
-.finance h2{font-size:clamp(32px,4vw,48px);font-weight:300;text-align:center;margin-bottom:16px}
-.finance-flows{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:80px}
-.finance-flow{padding:80px 50px;text-align:center;border:1px solid var(--cream);transition:border-color .3s}
-.finance-flow:hover{border-color:var(--gold)}
-.finance-flow h4{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px}
-.finance-flow .source{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.finance-flow p{font-size:13px;color:#777;line-height:2}
+/* Finance */
+.finance-section{padding:120px 40px;background:var(--white);border-bottom:1px solid var(--border)}
+.finance-section .section-head{text-align:center;margin-bottom:80px}
+.finance-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px}
+.finance-flows{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1000px;margin:0 auto}
+.finance-flow{background:var(--light);padding:60px 40px;text-align:center}
+.finance-flow h4{font-size:18px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.finance-flow .source{font-size:24px;color:var(--gold);font-weight:700;margin-bottom:16px}
+.finance-flow p{font-size:13px;color:#888;line-height:1.8}
 
-/* Founding Family */
-.founding{background:var(--charcoal);color:#fff;padding:160px 80px;text-align:center;position:relative;overflow:hidden}
-.founding::before{content:'$30';position:absolute;top:-20px;right:40px;font-size:clamp(100px,14vw,200px);font-family:'Playfair Display',serif;color:rgba(201,169,110,.04);font-weight:700;pointer-events:none}
-.founding h2{font-size:clamp(36px,4.5vw,60px);font-weight:300;margin-bottom:16px}
-.founding .price{font-family:'Playfair Display',serif;font-size:80px;color:var(--gold);font-weight:300;margin:30px 0}
-.founding p{color:rgba(255,255,255,.55);font-size:15px;line-height:2.1;max-width:550px;margin:0 auto 40px}
+/* Stories */
+.stories-section{padding:120px 40px;background:var(--light)}
+.stories-section .section-head{text-align:center;margin-bottom:80px}
+.stories-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px}
+.stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px;margin:0 auto}
+.story-card{background:var(--white);padding:48px 36px;box-shadow:0 2px 16px rgba(0,0,0,.05)}
+.story-card h3{font-size:20px;font-weight:600;margin-bottom:6px}
+.story-card .story-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:600}
+.story-card p{font-size:14px;color:#666;line-height:1.8}
+.stories-section .disclaimer{text-align:center;font-size:12px;color:#aaa;margin-top:48px;font-style:italic}
 
-/* Cultural Roots */
-.cultural{padding:160px 80px}
-.cultural h2{font-size:clamp(36px,4vw,52px);font-weight:300;text-align:center;margin-bottom:60px}
-.roots-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
-.root{text-align:center;padding:100px 60px;border:1px solid var(--cream);transition:border-color .3s}
-.root:hover{border-color:var(--gold)}
-.root .emoji{font-size:48px;margin-bottom:24px}
-.root h3{font-size:28px;font-weight:400;margin-bottom:8px}
-.root .subtitle{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:40px}
-.root p{font-size:14px;color:#777;line-height:2.1}
+/* Events */
+.events-section{padding:120px 40px;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.events-section .section-head{text-align:center;margin-bottom:80px}
+.events-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px}
+.events-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1000px;margin:0 auto}
+.event-card{background:var(--light);padding:48px 40px}
+.event-card .event-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:600}
+.event-card h3{font-size:22px;font-weight:600;margin-bottom:12px}
+.event-card p{font-size:14px;color:#666;line-height:1.8;margin-bottom:24px}
+.event-card a{display:inline-block;padding:12px 32px;border:1px solid var(--navy);color:var(--navy);text-decoration:none;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:all .3s}
+.event-card a:hover{background:var(--navy);color:var(--white)}
 
-/* Solar Calendar */
-.calendar{padding:140px 80px;background:var(--cream);text-align:center}
-.calendar h2{font-size:clamp(36px,4vw,52px);font-weight:300;margin-bottom:60px}
-.seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
-.season{padding:40px 20px;background:var(--ivory);border:1px solid transparent;transition:border-color .3s}
+/* Cultural */
+.cultural-section{padding:120px 40px;background:var(--navy);color:var(--white);text-align:center}
+.cultural-section .section-head{margin-bottom:80px}
+.cultural-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px}
+.roots-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:900px;margin:0 auto}
+.root{padding:60px 40px}
+.root .symbol{font-size:48px;margin-bottom:20px;opacity:.8}
+.root h3{font-size:24px;font-weight:600;margin-bottom:6px;color:var(--white)}
+.root .subtitle{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:600}
+.root p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.8}
+
+/* Calendar */
+.calendar-section{padding:120px 40px;background:var(--white);border-top:1px solid var(--border)}
+.calendar-section .section-head{text-align:center;margin-bottom:80px}
+.calendar-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px}
+.seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:0 auto}
+.season{padding:40px 24px;text-align:center;border:1px solid var(--border);transition:border-color .3s}
 .season:hover{border-color:var(--gold)}
-.season .emoji{font-size:36px;margin-bottom:16px}
-.season h4{font-size:22px;font-weight:400;margin-bottom:12px}
-.season p{font-size:13px;color:#777;line-height:2}
+.season .icon{font-size:32px;margin-bottom:16px}
+.season h4{font-size:18px;font-weight:600;margin-bottom:10px}
+.season p{font-size:13px;color:#888;line-height:1.7}
+
+/* Founding CTA */
+.founding-section{padding:120px 40px;background:var(--navy);color:var(--white);text-align:center}
+.founding-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px;margin-bottom:16px}
+.founding-section .price{font-size:72px;color:var(--gold);font-weight:700;margin:24px 0;letter-spacing:-2px}
+.founding-section>p{color:rgba(255,255,255,.55);font-size:15px;line-height:1.8;max-width:500px;margin:0 auto 40px}
 
 /* Referral */
-.referral{padding:160px 80px;text-align:center}
-.referral h2{font-size:clamp(36px,4.5vw,60px);font-weight:300;margin-bottom:16px}
-.referral p{color:#666;font-size:15px;line-height:1.9;max-width:600px;margin:0 auto 40px}
+.referral-section{padding:120px 40px;text-align:center;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.referral-section h2{font-size:clamp(32px,4vw,48px);font-weight:300;letter-spacing:-.5px;margin-bottom:16px}
+.referral-section>p{color:#888;font-size:15px;line-height:1.8;max-width:560px;margin:0 auto 40px}
 
-footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:1px solid rgba(201,169,110,.15)}
-.footer-title{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:6px;text-align:center;margin-bottom:16px;color:var(--gold)}
-.footer-subtitle{text-align:center;color:rgba(255,255,255,.45);font-size:13px;letter-spacing:1px;margin-bottom:60px;max-width:600px;margin-left:auto;margin-right:auto}
+/* Footer */
+footer{background:var(--navy);color:var(--white);padding:80px 40px 48px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-title{font-size:12px;letter-spacing:6px;text-align:center;margin-bottom:12px;color:var(--gold);font-weight:600}
+.footer-subtitle{text-align:center;color:rgba(255,255,255,.4);font-size:13px;letter-spacing:.5px;margin-bottom:60px;max-width:600px;margin-left:auto;margin-right:auto}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:60px;margin-bottom:60px}
-.footer-col h4{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:4px}
-.footer-col .col-role{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-col h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.footer-col h4 a{color:var(--white);text-decoration:none}
+.footer-col .col-role{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:600}
 .footer-col ul{list-style:none}
 .footer-col ul li{margin-bottom:8px}
-.footer-col ul li a{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:color .3s}
+.footer-col ul li a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13px;transition:color .3s}
 .footer-col ul li a:hover{color:var(--gold)}
-.footer-copy{text-align:center;color:rgba(255,255,255,.3);font-size:12px;letter-spacing:.5px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-copy{text-align:center;color:rgba(255,255,255,.25);font-size:12px;letter-spacing:.5px;padding-top:40px;border-top:1px solid rgba(255,255,255,.06)}
 
+/* Responsive */
 @media(max-width:1024px){
-  .hero-content{padding:0 40px;text-align:center}
-  .impact-stats{padding:80px 40px}
-  .stats-row{grid-template-columns:1fr 1fr;gap:30px}
-  .mission{padding:100px 40px}
-  .well-framework,.made,.programs,.shield,.finance,.cultural,.calendar,.referral,.founding{padding:120px 40px}
+  nav{padding:16px 30px}
+  nav .nav-links{gap:24px}
+  .stats-row{grid-template-columns:1fr 1fr;gap:40px}
   .well-steps{grid-template-columns:1fr;gap:40px}
   .made-grid{grid-template-columns:1fr}
-  .programs-inner{grid-template-columns:1fr;gap:60px}
   .finance-flows{grid-template-columns:1fr}
+  .stories-grid{grid-template-columns:1fr}
+  .events-grid{grid-template-columns:1fr}
   .roots-grid{grid-template-columns:1fr}
   .seasons{grid-template-columns:1fr 1fr}
-  nav{padding:14px 30px}
-  nav .nav-links{gap:24px}
-  footer{padding:80px 40px 40px}
+  .shield-pillars{grid-template-columns:1fr}
+  .program-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:40px;text-align:center}
 }
 @media(max-width:640px){
-  .hero-content{padding:0 24px;text-align:center}
-  .impact-stats{padding:60px 24px}
-  .stats-row{grid-template-columns:1fr 1fr;gap:20px}
-  .stat-item h3{font-size:32px}
-  .mission{padding:80px 24px}
-  .well-framework,.made,.programs,.shield,.finance,.cultural,.calendar,.referral,.founding{padding:140px 48px}
   nav .nav-links{display:none}
-  .seasons{grid-template-columns:1fr 1fr;gap:20px}
-  footer{padding:120px 48px 30px}
+  .hero-content h1{font-size:32px}
+  .stats-row{grid-template-columns:1fr 1fr;gap:24px}
+  .stat-item h3{font-size:36px}
+  .seasons{grid-template-columns:1fr 1fr}
+  .hero-ctas{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
 
-<div class="tracker-bar">THE LIVING LOVE COLLECTIVE &nbsp;·&nbsp; 142,305 / 1,000,000 FAMILIES ANCHORED IN POWER & PROTECTION</div>
-
+<!-- Nav -->
 <nav id="mainNav">
   <a href="#" class="logo">Well Made Foundation</a>
   <ul class="nav-links">
-    <li><a href="#founding?subject=Donation%20to%20Well%20Made%20Foundation&body=Name%3A%0AAmount%3A%0ADesignation%3A%0A%0AI%20want%20to%20support%20the%20Well%20Made%20Foundation.">Donate</a></li>
+    <li><a href="mailto:jack@wildroseautomations.ca?subject=Donation%20to%20Well%20Made%20Foundation&body=Name%3A%0AAmount%3A%0ADesignation%3A%0A%0AI%20want%20to%20support%20the%20Well%20Made%20Foundation.">Donate</a></li>
     <li><a href="#programs">Participate</a></li>
     <li><a href="https://jack108510.github.io/dr-jasmine-site/">Learn</a></li>
     <li><a href="#referral">Refer</a></li>
   </ul>
 </nav>
 
-<!-- Hero -->
+<!-- 1. Hero -->
 <section class="hero">
   <div class="hero-img"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content reveal">
-    <h1>We fight for the families who need it most.</h1>
-    <p>Community programs, cultural preservation, and the architecture of protection.</p>
-    <a href="#founding" class="btn-gold-solid?subject=Founding%20Family%20Membership%20-%20%2430%20Lifetime&body=Name%3A%0AEmail%3A%0APhone%3A%0ALocation%3A%0A%0AI%20want%20to%20join%20the%20Well%20Made%20Foundation%20as%20a%20Founding%20Family%20Member.">Join the Movement — $30 Lifetime Membership</a>
+    <h1>Every family deserves protection.</h1>
+    <p>Well Made Foundation builds the infrastructure of community safety, cultural preservation, and whole-family generational care.</p>
+    <div class="hero-ctas">
+      <a href="mailto:jack@wildroseautomations.ca?subject=Founding%20Family%20Membership%20-%20%2430%20Lifetime&body=Name%3A%0AEmail%3A%0APhone%3A%0ALocation%3A%0A%0AI%20want%20to%20join%20the%20Well%20Made%20Foundation%20as%20a%20Founding%20Family%20Member." class="btn-primary">Become a Founding Family — $30</a>
+      <a href="mailto:jack@wildroseautomations.ca?subject=Donation%20to%20Well%20Made%20Foundation&body=Name%3A%0AAmount%3A%0ADesignation%3A%0A%0AI%20want%20to%20support%20the%20Well%20Made%20Foundation." class="btn-outline">Donate</a>
+    </div>
   </div>
 </section>
 
-<!-- Impact Stats -->
+<!-- 2. Mission Bar -->
+<section class="mission-bar reveal">
+  <p>Our mission: anchor one million families in power and protection by 2035.</p>
+  <span class="gold-underline"></span>
+</section>
+
+<!-- 3. Impact Stats -->
 <section class="impact-stats">
   <div class="stats-row reveal">
     <div class="stat-item">
@@ -215,12 +241,12 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
       <p>Families Anchored</p>
     </div>
     <div class="stat-item">
-      <h3>8 Programs</h3>
-      <p>Community Programs</p>
+      <h3>8</h3>
+      <p>Programs</p>
     </div>
     <div class="stat-item">
-      <h3>4 MADE</h3>
-      <p>Initiatives</p>
+      <h3>4</h3>
+      <p>MADE Initiatives</p>
     </div>
     <div class="stat-item">
       <h3>$30</h3>
@@ -229,278 +255,288 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
   </div>
 </section>
 
-<!-- Impact Stories -->
-<section class="impact-stories" style="background:var(--ivory);padding:160px 80px">
-  <div style="max-width:1100px;margin:0 auto">
-    <div class="reveal" style="text-align:center;margin-bottom:80px">
-      <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px">Testimony</div>
-      <h2 style="font-size:clamp(36px,4.5vw,60px);font-weight:300">Real Impact</h2>
-      <div class="gold-line" style="margin:20px auto 0"></div>
+<!-- 4. The Well Framework -->
+<section class="well-framework">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">The Framework</div>
+      <h2>The Well</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px">
-      <div class="reveal" style="background:var(--cream);padding:50px 40px;border-left:3px solid var(--gold)">
-        <h3 style="font-size:24px;font-weight:400;margin-bottom:8px">The Santos Family</h3>
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px">MADE to Travel</div>
-        <p style="font-size:14px;line-height:2;color:#666">After losing their home, the Santos family found community through MADE to Travel. Today they've rebuilt and sponsor two other families.</p>
+    <div class="well-steps">
+      <div class="well-step reveal">
+        <div class="step-num">01</div>
+        <h3>Gather Your Circle</h3>
+        <p>Identify your family unit — biological, chosen, or communal. The Well begins with the circle you draw.</p>
       </div>
-      <div class="reveal" style="background:var(--cream);padding:50px 40px;border-left:3px solid var(--gold)">
-        <h3 style="font-size:24px;font-weight:400;margin-bottom:8px">Mothers & Daughters Circle</h3>
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Empowered Program</div>
-        <p style="font-size:14px;line-height:2;color:#666">12 mother-daughter pairs completed the Empowered program. 100% reported stronger family bonds and renewed cultural connection.</p>
+      <div class="well-step reveal">
+        <div class="step-num">02</div>
+        <h3>Commit</h3>
+        <p>A founding commitment to show up, participate, and protect. This is not passive membership — it is devotion in action.</p>
       </div>
-      <div class="reveal" style="background:var(--cream);padding:50px 40px;border-left:3px solid var(--gold)">
-        <h3 style="font-size:24px;font-weight:400;margin-bottom:8px">Shield Response</h3>
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Emergency Sanctuary</div>
-        <p style="font-size:14px;line-height:2;color:#666">A family in crisis received emergency sanctuary within 48 hours. Legal infrastructure and community support prevented trafficking and reunited the household.</p>
+      <div class="well-step reveal">
+        <div class="step-num">03</div>
+        <h3>Build Together</h3>
+        <p>Through MADE programs, Shield initiatives, and seasonal rhythms, families construct a shared architecture of empowerment.</p>
       </div>
     </div>
-    <p class="reveal" style="text-align:center;font-size:12px;color:#999;margin-top:60px;font-style:italic">Stories represent the impact of our programs. Names changed for privacy.</p>
   </div>
 </section>
 
-<!-- Mission -->
-<section class="mission reveal">
-  <h2>Our mission is to anchor one million families in power and protection.</h2>
-  <div class="gold-line" style="margin:0 auto 30px"></div>
-  <p>The Well Made Foundation exists to build the infrastructure families need — not just to survive, but to lead. Through community programs, cultural preservation, financial architecture, and anti-trafficking protection, we create the soil from which generational power grows.</p>
-</section>
-
-<!-- The Shield (dark) -->
-<section class="shield" id="shield">
-  <div class="shield-inner reveal">
-    <div class="shield-icon">🛡</div>
-    <div class="label" style="color:var(--gold)">The Shield</div>
-    <h2>Anti-Human<br>Trafficking</h2>
-    <div class="gold-line" style="margin:0 auto 30px"></div>
-    <p>The Shield is the Living Love Collective's commitment to the most vulnerable. Anti-human trafficking infrastructure, emergency sanctuary, and the legal architecture of protection.</p>
-    <p>This is not a side initiative. It is structural. $100 from every Dr. Jasmine premium ticket, 10% of every Pure Wellness purchase, and 100% of direct donations to the Shield fund the fight against trafficking.</p>
-  </div>
-</section>
-
-<!-- Well Framework -->
-<section class="well-framework" id="well">
-  <div class="reveal">
-    <div class="label">The Framework</div>
-    <h2>The Well</h2>
-    <div class="gold-line"></div>
-  </div>
-  <div class="well-steps">
-    <div class="well-step reveal">
-      <div class="step-num">01</div>
-      <h3>Gather Your Circle</h3>
-      <p>Identify your family unit — biological, chosen, or communal. The Well begins with the circle you draw.</p>
+<!-- 5. The MADE Framework -->
+<section class="made-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">The MADE Framework</div>
+      <h2>Families Become What They Practice</h2>
     </div>
-    <div class="well-step reveal">
-      <div class="step-num">02</div>
-      <h3>Commit</h3>
-      <p>A founding commitment to show up, participate, and protect. This is not passive membership — it is devotion in action.</p>
-    </div>
-    <div class="well-step reveal">
-      <div class="step-num">03</div>
-      <h3>Build Together</h3>
-      <p>Through MADE programs, Shield initiatives, and seasonal rhythms, families construct a shared architecture of empowerment.</p>
+    <div class="made-grid">
+      <div class="made-card reveal">
+        <h3>MADE to Travel</h3>
+        <div class="tagline">Mobility · Access · Worldview</div>
+        <p>Breaking geographic limitations. Travel as education, exposure, and the expansion of what a family believes is possible.</p>
+        <a href="mailto:jack@wildroseautomations.ca?subject=MADE%20to%20Travel%20-%20Learn%20More&body=Name%3A%0AEmail%3A%0A%0AI%20want%20to%20learn%20more%20about%20MADE%20to%20Travel.">Learn More →</a>
+      </div>
+      <div class="made-card reveal">
+        <h3>MADE to Money</h3>
+        <div class="tagline">Financial Architecture · Generational Wealth</div>
+        <p>Financial literacy as family practice. Budgets, investments, and the mindset that transforms survival into abundance.</p>
+        <a href="mailto:jack@wildroseautomations.ca?subject=MADE%20to%20Money%20-%20Learn%20More&body=Name%3A%0AEmail%3A%0A%0AI%20want%20to%20learn%20more%20about%20MADE%20to%20Money.">Learn More →</a>
+      </div>
+      <div class="made-card reveal">
+        <h3>MADE in the Bay</h3>
+        <div class="tagline">Bay Area · Community · Local Impact</div>
+        <p>Rooted in the Bay Area community. Local programs, partnerships, and the grassroots infrastructure that holds families close.</p>
+        <a href="mailto:jack@wildroseautomations.ca?subject=MADE%20in%20the%20Bay%20-%20Learn%20More&body=Name%3A%0AEmail%3A%0A%0AI%20want%20to%20learn%20more%20about%20MADE%20in%20the%20Bay.">Learn More →</a>
+      </div>
+      <div class="made-card reveal">
+        <h3>MADE on Maui</h3>
+        <div class="tagline">Maui · Sacred Land · Island Community</div>
+        <p>Anchored in Maui's sacred landscape. Retreats, cultural programming, and the healing that comes from connection to land.</p>
+        <a href="mailto:jack@wildroseautomations.ca?subject=MADE%20on%20Maui%20-%20Learn%20More&body=Name%3A%0AEmail%3A%0A%0AI%20want%20to%20learn%20more%20about%20MADE%20on%20Maui.">Learn More →</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- MADE Framework -->
-<section class="made" id="made">
-  <div class="reveal">
-    <div class="label" style="color:var(--gold)">The MADE Framework</div>
-    <h2>Families Become<br>What They Practice</h2>
-    <div class="gold-line"></div>
-    <p>Four specialized programs designed to transform family capacity across every dimension of life.</p>
-  </div>
-  <div class="made-grid">
-    <div class="made-card reveal">
-      <h3>MADE to Travel</h3>
-      <div class="tagline">Mobility · Access · Worldview</div>
-      <p>Breaking geographic limitations. Travel as education, exposure, and the expansion of what a family believes is possible.</p>
-    </div>
-    <div class="made-card reveal">
-      <h3>MADE to Money</h3>
-      <div class="tagline">Financial Architecture · Generational Wealth</div>
-      <p>Financial literacy as family practice. Budgets, investments, and the mindset that transforms survival into abundance.</p>
-    </div>
-    <div class="made-card reveal">
-      <h3>MADE in the Bay</h3>
-      <div class="tagline">Bay Area · Community · Local Impact</div>
-      <p>Rooted in the Bay Area community. Local programs, partnerships, and the grassroots infrastructure that holds families close.</p>
-    </div>
-    <div class="made-card reveal">
-      <h3>MADE on Maui</h3>
-      <div class="tagline">Maui · Sacred Land · Island Community</div>
-      <p>Anchored in Maui's sacred landscape. Retreats, cultural programming, and the healing that comes from connection to land.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Eight Programs -->
-<section class="programs" id="programs">
-  <div class="programs-inner">
-    <div class="reveal-left">
-      <div class="label">Community Programs</div>
+<!-- 6. The Eight Programs -->
+<section class="programs-section" id="programs">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Community Programs</div>
       <h2>The Eight Programs</h2>
-      <div class="gold-line"></div>
-      <ol class="program-list">
-        <li><span>Mothers & Daughters Empowered</span></li>
-        <li><span>Moms & Dads Empowered</span></li>
-        <li><span>Community Fundraisers</span></li>
-        <li><span>Safety Circles</span></li>
-        <li><span>Youth Development</span></li>
-        <li><span>Family Pentathlon</span></li>
-        <li><span>Sampaguita Sunday Gala</span></li>
-        <li><span>Mabuhay Monday Awards</span></li>
-      </ol>
     </div>
-    <div class="programs-visual reveal-right">
-      <img src="images/hands-planting.jpg" alt="Community programs">
+    <ul class="program-grid reveal">
+      <li>Mothers & Daughters Empowered</li>
+      <li>Moms & Dads Empowered</li>
+      <li>Community Fundraisers</li>
+      <li>Safety Circles</li>
+      <li>Youth Development</li>
+      <li>Family Pentathlon</li>
+      <li>Sampaguita Sunday Gala</li>
+      <li>Mabuhay Monday Awards</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. The Shield -->
+<section class="shield-section">
+  <div class="container reveal">
+    <div class="section-label">Protection Infrastructure</div>
+    <h2>The Shield</h2>
+    <p>Anti-human trafficking. Emergency sanctuary. Legal infrastructure.</p>
+    <div class="shield-pillars">
+      <div class="shield-pillar">
+        <h4>Prevention</h4>
+        <p>Community awareness, education, and early intervention infrastructure.</p>
+      </div>
+      <div class="shield-pillar">
+        <h4>Protection</h4>
+        <p>Emergency sanctuary, legal support, and safe housing for families in crisis.</p>
+      </div>
+      <div class="shield-pillar">
+        <h4>Restoration</h4>
+        <p>Long-term support, community reintegration, and generational healing.</p>
+      </div>
+    </div>
+    <a href="mailto:jack@wildroseautomations.ca?subject=Each%20One%20Shield%20One%20-%20Get%20Involved&body=Name%3A%0ALocation%3A%0A%0AI%20want%20to%20learn%20about%20Shield%20initiatives." class="btn-outline">Each One, Shield One</a>
+  </div>
+</section>
+
+<!-- 8. Financial Transparency -->
+<section class="finance-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Accountability</div>
+      <h2>Financial Transparency</h2>
+    </div>
+    <div class="finance-flows">
+      <div class="finance-flow reveal">
+        <h4>Pure Wellness Love</h4>
+        <div class="source">10%</div>
+        <p>Of gross revenue from every purchase in the lifestyle store — flowing directly to foundation programs and scholarships.</p>
+      </div>
+      <div class="finance-flow reveal">
+        <h4>Dr. Jasmine</h4>
+        <div class="source">$100</div>
+        <p>From every premium ticket — dedicated to the Anti-Human Trafficking Shield.</p>
+      </div>
+      <div class="finance-flow reveal">
+        <h4>Direct Donations</h4>
+        <div class="source">100%</div>
+        <p>Every dollar donated goes directly to scaling programs, scholarships, and community infrastructure.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Upcoming Programs -->
-<section class="events" style="background:var(--cream);padding:160px 80px">
-  <div style="max-width:1100px;margin:0 auto">
-    <div class="reveal" style="text-align:center;margin-bottom:80px">
-      <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px">Enrollment</div>
-      <h2 style="font-size:clamp(36px,4.5vw,60px);font-weight:300">Upcoming Programs</h2>
-      <div class="gold-line" style="margin:20px auto 0"></div>
+<!-- 9. Impact Stories -->
+<section class="stories-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Testimony</div>
+      <h2>Impact Stories</h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
-      <div class="reveal" style="background:var(--ivory);padding:60px 50px;border:1px solid var(--cream);transition:border-color .3s">
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:30px">Seasonal — Register for next cycle</div>
-        <h3 style="font-size:28px;font-weight:400;margin-bottom:16px">Family Pentathlon</h3>
-        <p style="font-size:14px;line-height:2;color:#666;margin-bottom:30px">Annual family fitness and bonding competition. Open to all Founding Family members.</p>
-        <a href="mailto:jack@wildroseautomations.ca?subject=Family%20Pentathlon%20-%20Registration&body=Name%3A%0AFamily%20Size%3A%0ALocation%3A%0A%0AI%20would%20like%20to%20register%20for%20the%20Family%20Pentathlon." style="display:inline-block;padding:12px 36px;border:1px solid var(--gold);color:var(--charcoal);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:all .3s" onmouseover="this.style.background='var(--gold)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--charcoal)'">Register</a>
+    <div class="stories-grid">
+      <div class="story-card reveal">
+        <h3>The Santos Family</h3>
+        <div class="story-tag">MADE to Travel</div>
+        <p>After losing their home, the Santos family found community through MADE to Travel. Today they've rebuilt and sponsor two other families.</p>
       </div>
-      <div class="reveal" style="background:var(--ivory);padding:60px 50px;border:1px solid var(--cream);transition:border-color .3s">
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:30px">Seasonal — Register for next cycle</div>
-        <h3 style="font-size:28px;font-weight:400;margin-bottom:16px">Blush Coming-of-Age Circles</h3>
-        <p style="font-size:14px;line-height:2;color:#666;margin-bottom:30px">Guided ceremonies for young women transitioning into adulthood.</p>
-        <a href="mailto:jack@wildroseautomations.ca?subject=Blush%20Coming-of-Age%20Circles%20-%20Registration&body=Name%3A%0AParticipant%20Name%3A%0AAge%3A%0ALocation%3A%0A%0AI%20would%20like%20to%20register%20for%20the%20Blush%20Coming-of-Age%20Circles." style="display:inline-block;padding:12px 36px;border:1px solid var(--gold);color:var(--charcoal);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:all .3s" onmouseover="this.style.background='var(--gold)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--charcoal)'">Register</a>
+      <div class="story-card reveal">
+        <h3>Mothers & Daughters Circle</h3>
+        <div class="story-tag">Empowered Program</div>
+        <p>12 mother-daughter pairs completed the Empowered program. 100% reported stronger family bonds and renewed cultural connection.</p>
       </div>
-      <div class="reveal" style="background:var(--ivory);padding:60px 50px;border:1px solid var(--cream);transition:border-color .3s">
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:30px">Seasonal — Reserve for next gathering</div>
-        <h3 style="font-size:28px;font-weight:400;margin-bottom:16px">Sampaguita Sunday Gala</h3>
-        <p style="font-size:14px;line-height:2;color:#666;margin-bottom:30px">Seasonal celebration honoring Filipino heritage and community.</p>
-        <a href="mailto:jack@wildroseautomations.ca?subject=Sampaguita%20Sunday%20Gala%20-%20Reservation&body=Name%3A%0AGuests%3A%0ALocation%3A%0A%0AI%20would%20like%20to%20reserve%20for%20the%20Sampaguita%20Sunday%20Gala." style="display:inline-block;padding:12px 36px;border:1px solid var(--gold);color:var(--charcoal);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:all .3s" onmouseover="this.style.background='var(--gold)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--charcoal)'">Reserve</a>
+      <div class="story-card reveal">
+        <h3>Shield Response</h3>
+        <div class="story-tag">Emergency Sanctuary</div>
+        <p>A family in crisis received emergency sanctuary within 48 hours. Legal infrastructure and community support prevented trafficking and reunited the household.</p>
       </div>
-      <div class="reveal" style="background:var(--ivory);padding:60px 50px;border:1px solid var(--cream);transition:border-color .3s">
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:30px">Monthly — Nominate a champion</div>
-        <h3 style="font-size:28px;font-weight:400;margin-bottom:16px">Mabuhay Monday Awards</h3>
-        <p style="font-size:14px;line-height:2;color:#666;margin-bottom:30px">Monthly recognition of community champions.</p>
-        <a href="mailto:jack@wildroseautomations.ca?subject=Mabuhay%20Monday%20Awards%20-%20Nomination&body=Your%20Name%3A%0ANominee%20Name%3A%0AReason%20for%20Nomination%3A%0A%0AI%20would%20like%20to%20nominate%20someone%20for%20the%20Mabuhay%20Monday%20Awards." style="display:inline-block;padding:12px 36px;border:1px solid var(--gold);color:var(--charcoal);text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:all .3s" onmouseover="this.style.background='var(--gold)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--charcoal)'">Nominate</a>
+    </div>
+    <p class="disclaimer reveal">Stories represent the impact of our programs. Names changed for privacy.</p>
+  </div>
+</section>
+
+<!-- 10. Upcoming Programs -->
+<section class="events-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Enrollment</div>
+      <h2>Upcoming Programs</h2>
+    </div>
+    <div class="events-grid">
+      <div class="event-card reveal">
+        <div class="event-label">Seasonal — Register for next cycle</div>
+        <h3>Family Pentathlon</h3>
+        <p>Annual family fitness and bonding competition. Open to all Founding Family members.</p>
+        <a href="mailto:jack@wildroseautomations.ca?subject=Family%20Pentathlon%20-%20Registration&body=Name%3A%0AFamily%20Size%3A%0ALocation%3A%0A%0AI%20would%20like%20to%20register%20for%20the%20Family%20Pentathlon.">Register</a>
+      </div>
+      <div class="event-card reveal">
+        <div class="event-label">Seasonal — Register for next cycle</div>
+        <h3>Blush Coming-of-Age Circles</h3>
+        <p>Guided ceremonies for young women transitioning into adulthood.</p>
+        <a href="mailto:jack@wildroseautomations.ca?subject=Blush%20Coming-of-Age%20Circles%20-%20Registration&body=Name%3A%0AParticipant%20Name%3A%0AAge%3A%0ALocation%3A%0A%0AI%20would%20like%20to%20register%20for%20the%20Blush%20Coming-of-Age%20Circles.">Register</a>
+      </div>
+      <div class="event-card reveal">
+        <div class="event-label">Seasonal — Reserve for next gathering</div>
+        <h3>Sampaguita Sunday Gala</h3>
+        <p>Seasonal celebration honoring Filipino heritage and community.</p>
+        <a href="mailto:jack@wildroseautomations.ca?subject=Sampaguita%20Sunday%20Gala%20-%20Reservation&body=Name%3A%0AGuests%3A%0ALocation%3A%0A%0AI%20would%20like%20to%20reserve%20for%20the%20Sampaguita%20Sunday%20Gala.">Reserve</a>
+      </div>
+      <div class="event-card reveal">
+        <div class="event-label">Monthly — Nominate a champion</div>
+        <h3>Mabuhay Monday Awards</h3>
+        <p>Monthly recognition of community champions.</p>
+        <a href="mailto:jack@wildroseautomations.ca?subject=Mabuhay%20Monday%20Awards%20-%20Nomination&body=Your%20Name%3A%0ANominee%20Name%3A%0AReason%20for%20Nomination%3A%0A%0AI%20would%20like%20to%20nominate%20someone%20for%20the%20Mabuhay%20Monday%20Awards.">Nominate</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Financial Transparency -->
-<section class="finance" id="finance">
-  <div class="reveal">
-    <h2>Financial Transparency</h2>
-    <div class="gold-line" style="margin:0 auto 60px"></div>
-  </div>
-  <div class="finance-flows">
-    <div class="finance-flow reveal">
-      <h4>Pure Wellness Love</h4>
-      <div class="source">10% of Gross Revenue</div>
-      <p>From every purchase in the lifestyle store — flowing directly to foundation programs and scholarships.</p>
+<!-- 11. Cultural Roots -->
+<section class="cultural-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Heritage</div>
+      <h2>Cultural Roots</h2>
     </div>
-    <div class="finance-flow reveal">
-      <h4>Dr. Jasmine</h4>
-      <div class="source">$100 per Premium Ticket</div>
-      <p>From every summit, retreat, and premium event — dedicated to the Anti-Human Trafficking Shield.</p>
-    </div>
-    <div class="finance-flow reveal">
-      <h4>Direct Donations</h4>
-      <div class="source">100% Applied</div>
-      <p>Every dollar donated to WellMade Foundation goes directly to scaling programs, scholarships, and community infrastructure.</p>
+    <div class="roots-grid">
+      <div class="root reveal">
+        <div class="symbol">♀</div>
+        <h3>Sampaguita</h3>
+        <div class="subtitle">The Feminine Principle</div>
+        <p>The national flower of the Philippines — delicate yet enduring. She represents the feminine lineage: mothers, daughters, grandmothers whose quiet strength anchors families.</p>
+      </div>
+      <div class="root reveal">
+        <div class="symbol">♂</div>
+        <h3>Bayani</h3>
+        <div class="subtitle">The Masculine Principle</div>
+        <p>From "bayanihan" — communal unity. He represents the masculine lineage: fathers, sons, uncles who carry protection through devotion, not dominance.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Founding Family -->
-<section class="founding" id="founding">
-  <div class="reveal">
-    <div class="label" style="color:var(--gold)">Become a Founding Family</div>
-    <h2>Join the<br>Foundation</h2>
+<!-- 12. Solar Calendar -->
+<section class="calendar-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Seasonal Rhythm</div>
+      <h2>The 4-Season Solar Calendar</h2>
+    </div>
+    <div class="seasons">
+      <div class="season reveal">
+        <div class="icon">🌱</div>
+        <h4>Spring</h4>
+        <p>A season of planting — intentions, lineage stories, and somatic foundations.</p>
+      </div>
+      <div class="season reveal">
+        <div class="icon">☉</div>
+        <h4>Summer</h4>
+        <p>Full expression. The bloom of practiced devotion and embodied leadership.</p>
+      </div>
+      <div class="season reveal">
+        <div class="icon">🍂</div>
+        <h4>Fall</h4>
+        <p>Harvest and honoring. Gathering what was planted, preparing for the inward turn.</p>
+      </div>
+      <div class="season reveal">
+        <div class="icon">☽</div>
+        <h4>Winter</h4>
+        <p>The sacred pause. Rest, reflection, and deep listening for the next cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founding Family CTA -->
+<section class="founding-section">
+  <div class="container reveal">
+    <div class="section-label" style="color:var(--gold)">Become a Founding Family</div>
+    <h2>Join the Foundation</h2>
     <div class="price">$30</div>
     <p>Lifetime membership. Not a subscription — a commitment. 100% goes to scaling programs, scholarships, and the architecture of protection.</p>
-    <a href="mailto:jack@wildroseautomations.ca?subject=Founding%20Family%20Membership%20-%20%2430%20Lifetime&body=Name%3A%0ALocation%3A%0A%0AI%20want%20to%20join%20the%20Well%20Made%20Foundation.">Join Now</a>
-  </div>
-</section>
-
-<!-- Cultural Roots -->
-<section class="cultural" id="cultural">
-  <div class="reveal">
-    <h2>Cultural Roots</h2>
-    <div class="gold-line" style="margin:0 auto 60px"></div>
-  </div>
-  <div class="roots-grid">
-    <div class="root reveal">
-      <div class="emoji">♀</div>
-      <h3>Sampaguita</h3>
-      <div class="subtitle">The Feminine Principle</div>
-      <p>The national flower of the Philippines — delicate yet enduring. She represents the feminine lineage: mothers, daughters, grandmothers whose quiet strength anchors families.</p>
-    </div>
-    <div class="root reveal">
-      <div class="emoji">♂</div>
-      <h3>Bayani</h3>
-      <div class="subtitle">The Masculine Principle</div>
-      <p>From "bayanihan" — communal unity. He represents the masculine lineage: fathers, sons, uncles who carry protection through devotion, not dominance.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Solar Calendar -->
-<section class="calendar" id="calendar">
-  <div class="reveal">
-    <h2>The 4-Season Solar Calendar</h2>
-    <div class="gold-line" style="margin:0 auto 60px"></div>
-  </div>
-  <div class="seasons">
-    <div class="season reveal">
-      <div class="emoji">🌱</div>
-      <h4>Spring</h4>
-      <p>A season of planting — intentions, lineage stories, and somatic foundations.</p>
-    </div>
-    <div class="season reveal">
-      <div class="emoji">☉</div>
-      <h4>Summer</h4>
-      <p>Full expression. The bloom of practiced devotion and embodied leadership.</p>
-    </div>
-    <div class="season reveal">
-      <div class="emoji">🍂</div>
-      <h4>Fall</h4>
-      <p>Harvest and honoring. Gathering what was planted, preparing for the inward turn.</p>
-    </div>
-    <div class="season reveal">
-      <div class="emoji">☽</div>
-      <h4>Winter</h4>
-      <p>The sacred pause. Rest, reflection, and deep listening for the next cycle.</p>
-    </div>
+    <a href="mailto:jack@wildroseautomations.ca?subject=Founding%20Family%20Membership%20-%20%2430%20Lifetime&body=Name%3A%0ALocation%3A%0A%0AI%20want%20to%20join%20the%20Well%20Made%20Foundation." class="btn-primary">Join Now</a>
   </div>
 </section>
 
 <!-- Referral -->
-<section class="referral" id="referral">
-  <div class="reveal">
-    <div class="label">The Invitation</div>
-    <h2>Each One,<br>Shield One</h2>
-    <div class="gold-line" style="margin:20px auto 40px"></div>
+<section class="referral-section" id="referral">
+  <div class="container reveal">
+    <div class="section-label">The Invitation</div>
+    <h2>Each One, Shield One</h2>
     <p>Every family that joins the Well Made Foundation strengthens the Shield. Refer a family. Expand the circle. Protection is communal — and it begins with you.</p>
-    <a href="mailto:jack@wildroseautomations.ca?subject=Each%20One%20Shield%20One%20-%20Family%20Referral&body=My%20Name%3A%0AFamily%20I%20want%20to%20protect%3A%0ALocation%3A%0A" class="btn-gold" style="color:var(--charcoal);border-color:var(--charcoal)">Refer a Family</a>
+    <a href="mailto:jack@wildroseautomations.ca?subject=Each%20One%20Shield%20One%20-%20Family%20Referral&body=My%20Name%3A%0AFamily%20I%20want%20to%20protect%3A%0ALocation%3A%0A" class="btn-outline-dark">Refer a Family</a>
   </div>
 </section>
 
+<!-- 13. Footer -->
 <footer>
   <div class="footer-title">T H E &nbsp; L I V I N G &nbsp; L O V E &nbsp; C O L L E C T I V E</div>
   <div class="footer-subtitle">An editorial ecosystem of pure living, whole-family generational care, and conscious leadership.</div>
   <div class="footer-grid">
     <div class="footer-col">
-      <h4><a href="https://jack108510.github.io/pure-wellness-joy/" style="color:#fff;text-decoration:none">PURE WELLNESS LOVE</a></h4>
+      <h4><a href="https://jack108510.github.io/pure-wellness-joy/">PURE WELLNESS LOVE</a></h4>
       <div class="col-role">The Branches</div>
       <ul>
         <li><a href="https://jack108510.github.io/pure-wellness-joy/">Shop The Lifestyle Store</a></li>
@@ -509,16 +545,16 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
       </ul>
     </div>
     <div class="footer-col">
-      <h4><a href="https://jack108510.github.io/well-made-foundation/" style="color:#fff;text-decoration:none">WELL MADE FOUNDATION</a></h4>
+      <h4><a href="https://jack108510.github.io/well-made-foundation/">WELL MADE FOUNDATION</a></h4>
       <div class="col-role">The Soil</div>
       <ul>
-        <li><a href="https://jack108510.github.io/well-made-foundation/?subject=Donation%20to%20Well%20Made%20Foundation&body=Name%3A%0AAmount%3A%0ADesignation%3A%0A%0AI%20want%20to%20support%20the%20Well%20Made%20Foundation.">Donate: $30 Lifetime Entry</a></li>
+        <li><a href="mailto:jack@wildroseautomations.ca?subject=Donation%20to%20Well%20Made%20Foundation&body=Name%3A%0AAmount%3A%0ADesignation%3A%0A%0AI%20want%20to%20support%20the%20Well%20Made%20Foundation.">Donate: $30 Lifetime Entry</a></li>
         <li><a href="https://jack108510.github.io/well-made-foundation/">MADE Programs</a></li>
         <li><a href="https://jack108510.github.io/well-made-foundation/">Family Pentathlon</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4><a href="https://jack108510.github.io/dr-jasmine-site/" style="color:#fff;text-decoration:none">DR. JASMINE</a></h4>
+      <h4><a href="https://jack108510.github.io/dr-jasmine-site/">DR. JASMINE</a></h4>
       <div class="col-role">The Root</div>
       <ul>
         <li><a href="https://jack108510.github.io/dr-jasmine-site/">Divine Spark Platform</a></li>
@@ -531,9 +567,9 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
 </footer>
 
 <script>
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
-window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80)});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40)});
 </script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--ivory:#fdfbf7;--charcoal:#1a1a1a;--gold:#c9a96e;--cream:#f5f0e8;--gold-light:#e8d5a8}
 html{scroll-behavior:smooth}
-body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--ivory);color:var(--charcoal);font-weight:300;line-height:1.7;overflow-x:hidden}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--ivory);color:var(--charcoal);font-weight:300;line-height:2;overflow-x:hidden}
 h1,h2,h3,h4,h5{font-family:'Playfair Display',Georgia,serif;font-weight:400}
 
 .tracker-bar{background:var(--charcoal);color:var(--gold);text-align:center;padding:10px 20px;font-size:11px;letter-spacing:3px;font-weight:400;font-family:'Playfair Display',serif}
@@ -30,9 +30,9 @@ nav .nav-links a:hover::after{width:100%}
 .reveal-right.visible{opacity:1;transform:translateX(0)}
 
 .gold-line{width:60px;height:1px;background:var(--gold);margin:24px 0}
-.gold-divider{text-align:center;padding:80px 0}
+.gold-divider{text-align:center;padding:140px 0}
 .gold-divider::before{content:'✦';color:var(--gold);font-size:18px;letter-spacing:20px}
-.label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:40px}
 
 /* Hero */
 .hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
@@ -54,9 +54,9 @@ nav .nav-links a:hover::after{width:100%}
 .well-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:60px;margin-top:80px}
 .well-step{text-align:center;padding:50px 30px;border:1px solid var(--cream);position:relative;transition:border-color .3s}
 .well-step:hover{border-color:var(--gold)}
-.well-step .step-num{font-family:'Playfair Display',serif;font-size:72px;color:var(--cream);font-weight:700;line-height:1;margin-bottom:20px}
+.well-step .step-num{font-family:'Playfair Display',serif;font-size:72px;color:var(--cream);font-weight:700;line-height:1;margin-bottom:40px}
 .well-step h3{font-size:22px;font-weight:400;margin-bottom:10px}
-.well-step p{font-size:13px;color:#777;line-height:1.7}
+.well-step p{font-size:13px;color:#777;line-height:2}
 
 /* MADE Framework */
 .made{background:var(--charcoal);color:#fff;padding:160px 80px;position:relative;overflow:hidden}
@@ -68,7 +68,7 @@ nav .nav-links a:hover::after{width:100%}
 .made-card:hover{border-color:var(--gold)}
 .made-card h3{font-size:26px;font-weight:400;margin-bottom:10px;color:var(--gold-light)}
 .made-card .tagline{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,169,110,.5);margin-bottom:16px}
-.made-card p{color:rgba(255,255,255,.55);font-size:14px;line-height:1.8}
+.made-card p{color:rgba(255,255,255,.55);font-size:14px;line-height:2.1}
 
 /* Eight Programs */
 .programs{padding:160px 80px}
@@ -83,38 +83,38 @@ nav .nav-links a:hover::after{width:100%}
 
 /* Shield */
 .shield{padding:160px 80px;background:var(--cream);position:relative}
-.shield-inner{max-width:800px;margin:0 auto;text-align:center}
+.shield-inner{max-width:1000px;margin:0 auto;text-align:center}
 .shield h2{font-size:clamp(36px,5vw,64px);font-weight:300;margin-bottom:16px}
 .shield p{color:#666;font-size:15px;line-height:1.9;margin-bottom:16px}
-.shield .shield-icon{font-size:64px;margin-bottom:30px}
+.shield .shield-icon{font-size:64px;margin-bottom:50px}
 
 /* Financial Transparency */
 .finance{padding:160px 80px}
 .finance h2{font-size:clamp(32px,4vw,48px);font-weight:300;text-align:center;margin-bottom:16px}
 .finance-flows{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:80px}
-.finance-flow{padding:40px 30px;text-align:center;border:1px solid var(--cream);transition:border-color .3s}
+.finance-flow{padding:80px 50px;text-align:center;border:1px solid var(--cream);transition:border-color .3s}
 .finance-flow:hover{border-color:var(--gold)}
 .finance-flow h4{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px}
 .finance-flow .source{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.finance-flow p{font-size:13px;color:#777;line-height:1.7}
+.finance-flow p{font-size:13px;color:#777;line-height:2}
 
 /* Founding Family */
 .founding{background:var(--charcoal);color:#fff;padding:160px 80px;text-align:center;position:relative;overflow:hidden}
 .founding::before{content:'$30';position:absolute;top:-20px;right:40px;font-size:clamp(100px,14vw,200px);font-family:'Playfair Display',serif;color:rgba(201,169,110,.04);font-weight:700;pointer-events:none}
 .founding h2{font-size:clamp(36px,4.5vw,60px);font-weight:300;margin-bottom:16px}
 .founding .price{font-family:'Playfair Display',serif;font-size:80px;color:var(--gold);font-weight:300;margin:30px 0}
-.founding p{color:rgba(255,255,255,.55);font-size:15px;line-height:1.8;max-width:550px;margin:0 auto 40px}
+.founding p{color:rgba(255,255,255,.55);font-size:15px;line-height:2.1;max-width:550px;margin:0 auto 40px}
 
 /* Cultural Roots */
 .cultural{padding:160px 80px}
 .cultural h2{font-size:clamp(36px,4vw,52px);font-weight:300;text-align:center;margin-bottom:60px}
 .roots-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
-.root{text-align:center;padding:60px 40px;border:1px solid var(--cream);transition:border-color .3s}
+.root{text-align:center;padding:100px 60px;border:1px solid var(--cream);transition:border-color .3s}
 .root:hover{border-color:var(--gold)}
 .root .emoji{font-size:48px;margin-bottom:24px}
 .root h3{font-size:28px;font-weight:400;margin-bottom:8px}
-.root .subtitle{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
-.root p{font-size:14px;color:#777;line-height:1.8}
+.root .subtitle{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:40px}
+.root p{font-size:14px;color:#777;line-height:2.1}
 
 /* Solar Calendar */
 .calendar{padding:140px 80px;background:var(--cream);text-align:center}
@@ -124,7 +124,7 @@ nav .nav-links a:hover::after{width:100%}
 .season:hover{border-color:var(--gold)}
 .season .emoji{font-size:36px;margin-bottom:16px}
 .season h4{font-size:22px;font-weight:400;margin-bottom:12px}
-.season p{font-size:13px;color:#777;line-height:1.7}
+.season p{font-size:13px;color:#777;line-height:2}
 
 /* Referral */
 .referral{padding:160px 80px;text-align:center}
@@ -159,10 +159,10 @@ footer{background:var(--charcoal);color:#fff;padding:100px 80px 60px;border-top:
 }
 @media(max-width:640px){
   .hero-content{padding:0 24px}
-  .well-framework,.made,.programs,.shield,.finance,.cultural,.calendar,.referral,.founding{padding:80px 24px}
+  .well-framework,.made,.programs,.shield,.finance,.cultural,.calendar,.referral,.founding{padding:140px 48px}
   nav .nav-links{display:none}
   .seasons{grid-template-columns:1fr 1fr;gap:20px}
-  footer{padding:60px 24px 30px}
+  footer{padding:120px 48px 30px}
 }
 </style>
 </head>
